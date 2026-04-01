@@ -290,6 +290,39 @@ The editorial objection "ξ is simply a redefinition" is answered by showing the
 
 ---
 
+## REPO — ALL FILES ARE HERE
+**https://github.com/aybllc/pantheon-h0-omega-sensitivity**
+
+Files in repo:
+- `hubble_om_sensitivity_v6.tex` — current manuscript (v6, needs expansion to v7)
+- `hubble_om_sensitivity_v6.pdf` — compiled PDF of current state
+- `gaia_zero_bias_test.py` — ξ-space analysis script (Result 1)
+- `hubble_refit_omega_sensitivity.py` — direct refit script (Result 2)
+- `bootstrap_v1.py` — bootstrap script (N=1000)
+- `zbin_deltaH0.py` — z-binned analysis script (Result 3)
+- `refit_H0_vs_Om.csv` — H₀(Ωm) scan data (17 points)
+- `zbin_deltaH0.csv` — z-bin results (4 bins)
+- `bootstrap_deltaH0.npy` — 1000 bootstrap ΔH₀ samples (numpy array)
+- `gaia_zero_bias_results.csv` — ξ values for all 1,671 SNe (columns: z, xi_shoes, xi_planck, delta_xi, abs_delta_xi)
+- `gpt5_attack_plan_2026-04-01.md` — earlier GPT-5 review analysis
+- `g5_paper_expansion_prompt.md` — this prompt
+
+## CRITICAL STATISTICAL DISCREPANCY — MUST FIX IN V7
+
+The current v6 manuscript reports ⟨|Δξ/ξ|⟩ = 0.56% but this is inconsistent with Eq (2) as written.
+
+**Eq (2) in v6** computes the element-wise mean: ⟨|ξ_SH0ES − ξ_Planck| / ((ξ_SH0ES + ξ_Planck)/2)⟩
+→ This gives **0.29%** (verified from gaia_zero_bias_results.csv)
+
+**The 0.56% figure** comes from mean(|Δξ|) / mean(ξ_mid) = 1.11×10⁻³ / 0.197
+→ This is a ratio of means, not a mean of ratios — a different statistic
+
+**Required fix in v7:** Either:
+- Report 0.29% and keep Eq (2) as written (element-wise mean), OR
+- Report 0.56% and rewrite Eq (2) to show it's mean(|Δξ|)/mean(ξ) with explicit notation
+
+Recommendation: Use 0.56% (ratio of means) — it's simpler, more conservative, and aligns with the gaia_zero_bias_test.py output. But Eq (2) must be rewritten to match. State clearly: "where ⟨·⟩ denotes the sample mean, giving ⟨|Δξ|⟩/⟨ξ⟩ = 1.11×10⁻³/0.197 = 0.56%."
+
 ## DATA SOURCE
 Pantheon+SH0ES.dat — publicly available at https://github.com/PantheonPlusSH0ES/DataRelease  
 Key columns: zCMB, MU_SH0ES, MU_SH0ES_ERR_DIAG, CEPH_DIST, IS_CALIBRATOR
