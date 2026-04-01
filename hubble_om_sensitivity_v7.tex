@@ -268,17 +268,15 @@ $\xi$-space diagnostic.
 \subsection{Definition and $H_0$-independence}
 
 In flat $\Lambda$CDM the expansion rate is
-\begin{equation}
+\begin{equation*}
   E(z) \equiv \frac{H(z)}{H_0}
              = \sqrt{\Omega_m(1+z)^3 + \Omega_\Lambda},
-  \label{eq:Ez}
-\end{equation}
+\end{equation*}
 where $\Omega_\Lambda = 1 - \Omega_m$ for a spatially flat universe.
 The comoving distance to redshift $z$ is
-\begin{equation}
+\begin{equation*}
   d_c(z) = \frac{c}{H_0}\int_0^z \frac{dz'}{E(z')}.
-  \label{eq:dc}
-\end{equation}
+\end{equation*}
 We define the horizon-normalised comoving distance
 \begin{equation}
   \xi(z) \equiv \frac{d_c(z)}{d_H}
@@ -290,11 +288,10 @@ where $d_H \equiv c/H_0$ is the Hubble distance.
 Crucially, because $E(z)$ depends only on $\Omega_m$
 (and not on $H_0$), the coordinate $\xi$ depends only on
 $\Omega_m$ and $z$:
-\begin{equation}
+\begin{equation*}
   \xi(z;\,\Omega_m) = \int_0^z \frac{dz'}%
     {\sqrt{\Omega_m(1+z')^3 + (1-\Omega_m)}}.
-  \label{eq:xi_explicit}
-\end{equation}
+\end{equation*}
 The $H_0$ dependence has cancelled exactly.
 Any difference in $\xi$ between two cosmological frameworks
 arises solely from their different $\Omega_m$ values.
@@ -328,7 +325,7 @@ The fractional $\xi$-residual
                {[\xi_\mathrm{SH0ES}(z_i) + \xi_\mathrm{Planck}(z_i)]/2}
   \label{eq:xi_frac}
 \end{equation}
-is $H_0$-independent by construction.
+is $H_0$-independent by construction (equation~\ref{eq:xi_frac}).
 Any non-zero $\Delta_\xi$ is attributable entirely to the 0.019
 unit difference in $\Omega_m$ between the two frameworks.
 
@@ -341,7 +338,7 @@ unit difference in $\Omega_m$ between the two frameworks.
 \label{sec:method_xi}
 
 We evaluate $\xi_\mathrm{SH0ES}(z_i)$ and $\xi_\mathrm{Planck}(z_i)$
-at each observed $z_\mathrm{CMB}$ using numerical integration via
+(equation~\ref{eq:xi}) at each observed $z_\mathrm{CMB}$ using numerical integration via
 \textsc{astropy}'s \texttt{FlatLambdaCDM} class
 \citep{astropy2013,astropy2018,astropy2022}.
 We then compute the mean absolute $\xi$-residual as
@@ -390,7 +387,7 @@ inverse-variance-weighted mean
 \end{equation}
 where $\mu_i^\mathrm{Ceph} = \texttt{CEPH\_DIST}_i$ is the Cepheid
 geometric distance modulus and $\sigma_i = \texttt{MU\_SH0ES\_ERR\_DIAG}_i$.
-We find $M_\mathrm{fixed} = +0.0802$~mag.
+Evaluating equation~(\ref{eq:M_fixed}) yields $M_\mathrm{fixed} = +0.0802$~mag.
 This offset captures the mean discrepancy between the SH0ES
 Cepheid distance scale and our reference theoretical prediction
 when using diagonal-only uncertainties; it does not affect the
@@ -436,11 +433,10 @@ The bootstrap mean and standard deviation of the
 $\Delta H_0^{(k)}$ distribution constitute our point estimate
 and $1\sigma$ uncertainty.
 The signal-to-noise ratio is
-\begin{equation}
+\begin{equation*}
   \mathrm{S/N} = \frac{|\overline{\Delta H_0}|}%
                       {\sigma_{\Delta H_0}^\mathrm{boot}}.
-  \label{eq:snr}
-\end{equation}
+\end{equation*}
 
 \subsubsection{$H_0$--$\Omega_m$ sensitivity scan}
 
@@ -506,14 +502,15 @@ geometric sensitivity to $\Omega_m$ is greatest.
 \subsection{Best-fit $H_0$ values}
 
 With $M_\mathrm{fixed} = +0.0802$~mag anchored from the calibrators,
-the best-fit Hubble constants at the two $\Omega_m$ values are:
+the best-fit Hubble constants at the two $\Omega_m$ values
+(equations~\ref{eq:h0_shoes}--\ref{eq:h0_planck}) are:
 \begin{align}
   H_0(\Omega_m = 0.334) &= 75.67\;\text{km\,s}^{-1}\text{\,Mpc}^{-1},
   \label{eq:h0_shoes}\\
   H_0(\Omega_m = 0.315) &= 75.89\;\text{km\,s}^{-1}\text{\,Mpc}^{-1}.
   \label{eq:h0_planck}
 \end{align}
-The difference is
+The difference (equation~\ref{eq:deltaH0_point}) is
 \begin{equation}
   \Delta H_0 = H_0(0.334) - H_0(0.315) = -0.22
     \;\text{km\,s}^{-1}\text{Mpc}^{-1}.
@@ -542,7 +539,8 @@ The bootstrap distribution of $\Delta H_0^{(k)}$ over
 $N = 1{,}000$ resamples is summarised in
 Table~\ref{tab:bootstrap} and shown in
 Fig.~\ref{fig:bootstrap_hist}.
-The distribution is tightly clustered around its mean:
+The distribution is tightly clustered around its mean
+(equation~\ref{eq:bootstrap_result}):
 \begin{equation}
   \overline{\Delta H_0} = -0.218 \;\text{km\,s}^{-1}\text{Mpc}^{-1},
   \quad
@@ -751,11 +749,10 @@ the differential measurement under our data-resampling scheme.
 
 The calibrators lie at $z < 0.017$.
 The theoretical distance modulus at these redshifts,
-\begin{equation}
+\begin{equation*}
   \mu^\mathrm{th}(z;\,H_0,\Omega_m)
   \approx 5\log_{10}\!\left[\frac{cz(1+z/2)}{H_0}\right] + 25,
-  \label{eq:mu_lowz}
-\end{equation}
+\end{equation*}
 is sensitive to $\Omega_m$ only through terms of order
 $(\Omega_m z)^2 \sim 10^{-5}$ at $z = 0.017$.
 Accordingly, $M_\mathrm{fixed}$ is robust to changes in $\Omega_m$
@@ -772,12 +769,11 @@ To assess the sensitivity of $\Delta H_0$ to this uncertainty,
 we compute $H_0(\Omega_m)$ at $0.334 \pm 0.018$ and
 $0.315 \pm 0.007$, propagating through the linear slope
 of equation~(\ref{eq:slope}):
-\begin{equation}
+\begin{equation*}
   \sigma_{\Delta H_0}^{\Omega_m}
     = \sqrt{(11.6 \times 0.018)^2 + (11.6 \times 0.007)^2}
     \approx 0.22\;\text{km\,s}^{-1}\text{Mpc}^{-1}.
-  \label{eq:sigma_omegam}
-\end{equation}
+\end{equation*}
 This uncertainty in $\Delta H_0$ from the $\Omega_m$ measurement
 errors is comparable to $\Delta H_0$ itself ($0.22$
 km\,s$^{-1}$\,Mpc$^{-1}$), but it does not alter the main result:
@@ -827,7 +823,8 @@ Their results should be consistent to the extent that the
 distance-to-$H_0$ conversion is approximately linear in $\Omega_m$.
 
 Both diagnostics give results of the same order of magnitude:
-the $\xi$-space residual is $0.56$\,\% of the mean coordinate value,
+the $\xi$-space residual is $0.56$\,\% of the mean coordinate value
+(equations~\ref{eq:xi_result}--\ref{eq:factor15}),
 while the direct-refit measurement is
 $0.22/75.7 \approx 0.29$\,\% of $H_0$.
 This provides a qualitative consistency check between the two
@@ -839,7 +836,8 @@ shift in the distance--redshift relation.
 
 The principal result of this work is that the $\Omega_m$ prior
 difference between the Planck and SH0ES frameworks contributes
-$3.9$\,\% of the nominal $H_0$ discrepancy.
+$3.9$\,\% of the nominal $H_0$ discrepancy
+(equation~\ref{eq:fraction}).
 This number is small but not negligible in the context of
 precision cosmology; it corresponds to
 $0.22/1.04 \approx 0.21\,\sigma_\mathrm{SH0ES}$,
