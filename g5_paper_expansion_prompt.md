@@ -329,10 +329,39 @@ Key columns: zCMB, MU_SH0ES, MU_SH0ES_ERR_DIAG, CEPH_DIST, IS_CALIBRATOR
 
 ---
 
+## BIBLIOGRAPHY — USE AND VERIFY
+
+A starter `.bib` file (`pantheon_h0_omega_sensitivity.bib`) is included in the repo with 91 BibTeX entries covering:
+- Core dataset (Pantheon+, SH0ES, Brout et al. 2022, Scolnic et al. 2022)
+- Planck 2013/2015/2018, WMAP 9-yr
+- H₀ tension reviews (Verde 2019, Di Valentino 2021, Perivolaropoulos 2022, Abdalla 2022, Shah 2021)
+- SH0ES history (Riess 2011–2024), TRGB/CCHP (Freedman 2019–2024)
+- Alternative H₀ probes (H0LiCOW, TDCOSMO, megamasers, GW standard sirens, SBF)
+- BAO (BOSS DR12, eBOSS, DESI 2024, 6dFGS, SDSS DR7)
+- Weak lensing (DES Y3, KiDS-1000)
+- SN methodology (Phillips 1993, Perlmutter 1999, Riess 1998, SALT2, Conley 2011)
+- H₀–M degeneracy (Cardona 2017, Camarena 2021, Efstathiou 2020/2021)
+- Flat ΛCDM theory (Hogg 1999, Weinberg 2013, Peebles 2003)
+- Software (Astropy 2013/2018/2022, SciPy, NumPy, Matplotlib, pandas)
+- Statistical methods (Efron 1979 bootstrap)
+- Early dark energy (Poulin 2019, Knox 2020, Vagnozzi 2021/2023)
+
+**IMPORTANT — VERIFY ALL SOURCES BEFORE USING:**
+Every reference in `pantheon_h0_omega_sensitivity.bib` must be verified before inclusion in the manuscript. For each entry:
+1. Confirm the paper exists (search ADS, arXiv, or the journal)
+2. Confirm the year, volume, page numbers, and DOI are correct
+3. Remove or correct any entry you cannot verify
+4. Add any important references that are missing from this starter list
+
+Do NOT include any reference you have not independently verified. A wrong citation is worse than a missing one.
+
+---
+
 ## OUTPUT REQUESTED FROM GPT-5
 1. Complete `.tex` file for the full manuscript (pantheon_h0_omega_sensitivity_v7.tex)
-2. Complete `pantheon_h0_omega_sensitivity.bib` BibTeX file with all 75–80 entries
+2. Corrected and verified `pantheon_h0_omega_sensitivity.bib` — fix any errors found during verification, add any missing key references
 3. Python scripts for each new figure (figures 6–15 listed above)
 4. A list of any claims that need further validation before submission
+5. A list of any .bib entries you could not verify (so they can be manually checked)
 
 Please write in a precise, measured scientific tone. Every numerical claim must match the validated results above exactly.
