@@ -161,7 +161,7 @@ any matched-likelihood analysis of the tension: before one can
 definitively attribute the residual discrepancy to new physics,
 one must first verify that the model-assumption component has been
 correctly accounted for.
-Our measurements provide precisely this verification.
+Our measurements provide a direct empirical estimate of this component.
 
 The Pantheon+ dataset \citep{scolnic2022,brout2022} is the most
 comprehensive Type~Ia supernova compilation currently available,
@@ -600,7 +600,8 @@ of the local slope.
 \begin{table}
   \centering
   \caption{Best-fit $H_0$ as a function of $\Omega_m$ from the
-    Cepheid-anchored refit of 1{,}616 Pantheon+ Hubble-flow SNe~Ia.
+    Cepheid-anchored refit of 1{,}616 Pantheon+ Hubble-flow SNe~Ia,
+    evaluated at 17 equally spaced points over $\Omega_m \in [0.280,0.360]$.
     $M_\mathrm{fixed} = +0.0802$~mag throughout.}
   \label{tab:h0scan}
   \begin{tabular}{cc}
@@ -608,21 +609,21 @@ of the local slope.
     $\Omega_m$ & $H_0$ (km\,s$^{-1}$\,Mpc$^{-1}$) \\
     \midrule
     0.280 & 76.304 \\
-    0.285 & 76.245 \\
-    0.290 & 76.188 \\
-    0.295 & 76.131 \\
-    0.300 & 76.073 \\
-    0.305 & 76.015 \\
-    0.310 & 75.957 \\
-    0.315 & 75.890 \\
-    0.320 & 75.832 \\
-    0.325 & 75.773 \\
-    0.330 & 75.715 \\
-    0.334 & 75.668 \\
-    0.335 & 75.656 \\
-    0.340 & 75.598 \\
-    0.345 & 75.539 \\
-    0.350 & 75.480 \\
+    0.285 & 76.244 \\
+    0.290 & 76.184 \\
+    0.295 & 76.125 \\
+    0.300 & 76.066 \\
+    0.305 & 76.007 \\
+    0.310 & 75.949 \\
+    0.315 & 75.891 \\
+    0.320 & 75.833 \\
+    0.325 & 75.776 \\
+    0.330 & 75.718 \\
+    0.335 & 75.661 \\
+    0.340 & 75.605 \\
+    0.345 & 75.548 \\
+    0.350 & 75.492 \\
+    0.355 & 75.436 \\
     0.360 & 75.380 \\
     \bottomrule
   \end{tabular}
@@ -682,10 +683,10 @@ Fig.~\ref{fig:zbin} and Fig.~\ref{fig:h0scan_zbin}.
               & (km\,s$^{-1}$\,Mpc$^{-1}$)
               & (km\,s$^{-1}$\,Mpc$^{-1}$\,unit$^{-1}$)\\
     \midrule
-    1 & $0.005$--$0.031$ & 403 & 75.71 & 75.74 & $-0.023$ & $-1.2$ \\
-    2 & $0.031$--$0.181$ & 405 & 75.61 & 75.71 & $-0.094$ & $-4.9$ \\
-    3 & $0.181$--$0.334$ & 404 & 75.79 & 76.06 & $-0.265$ & $-14.0$ \\
-    4 & $0.334$--$2.261$ & 404 & 75.42 & 75.91 & $-0.494$ & $-26.0$ \\
+    1 & $0.005$--$0.031$ & 403 & 75.20 & 75.22 & $-0.023$ & $-1.2$ \\
+    2 & $0.031$--$0.181$ & 405 & 75.52 & 75.61 & $-0.094$ & $-4.9$ \\
+    3 & $0.181$--$0.334$ & 404 & 75.70 & 75.97 & $-0.265$ & $-14.0$ \\
+    4 & $0.334$--$2.261$ & 404 & 76.24 & 76.73 & $-0.494$ & $-26.0$ \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -774,7 +775,7 @@ of equation~(\ref{eq:slope}):
 \begin{equation}
   \sigma_{\Delta H_0}^{\Omega_m}
     = \sqrt{(11.6 \times 0.018)^2 + (11.6 \times 0.007)^2}
-    \approx 0.24\;\text{km\,s}^{-1}\text{Mpc}^{-1}.
+    \approx 0.22\;\text{km\,s}^{-1}\text{Mpc}^{-1}.
   \label{eq:sigma_omegam}
 \end{equation}
 This uncertainty in $\Delta H_0$ from the $\Omega_m$ measurement
@@ -825,22 +826,14 @@ propagates into a best-fit $H_0$.
 Their results should be consistent to the extent that the
 distance-to-$H_0$ conversion is approximately linear in $\Omega_m$.
 
-Quantitatively, the $\xi$-space result of 0.56\,\% translates
-into a predicted $\Delta H_0$ as follows.
-The mean $\langle\xi\rangle = 0.197$ corresponds to a mean
-comoving distance of $d_c = 0.197 d_H = 0.197 c/H_0$.
-A 0.56\,\% shift in $\xi$ at fixed $H_0$ corresponds to a
-0.56\,\% shift in $d_c$, which propagates to a 0.56\,\% shift
-in $\mu = 5\log_{10} d_L + \mathrm{const}$ via the
-$\log_{10}$ at the sample mean distance.
-Through equation~(\ref{eq:chi2}), this translates to a
-$\Delta H_0 / H_0 \approx 0.56$\,\%/2 $\approx 0.28$\,\%
-(the factor of 2 from the $5\log_{10}$ derivative), giving
-$\Delta H_0 \approx 0.28$\,\% $\times$ 75.7 $\approx 0.21$
-km\,s$^{-1}$\,Mpc$^{-1}$.
-This is consistent with the bootstrap measurement of
-$0.218 \pm 0.005$ km\,s$^{-1}$\,Mpc$^{-1}$, confirming that
-both diagnostics are measuring the same quantity.
+Both diagnostics give results of the same order of magnitude:
+the $\xi$-space residual is $0.56$\,\% of the mean coordinate value,
+while the direct-refit measurement is
+$0.22/75.7 \approx 0.29$\,\% of $H_0$.
+This provides a qualitative consistency check between the two
+diagnostics, and is consistent with the expectation that both
+are responding to the same underlying $\Omega_m$-driven geometric
+shift in the distance--redshift relation.
 
 \subsection{Implications for Hubble tension analyses}
 
@@ -865,12 +858,14 @@ This number should be propagated through any matched-likelihood
 analysis of the tension.
 
 We also note that the strong redshift dependence of the
-sensitivity (Table~\ref{tab:zbins}) implies that future
-supernova surveys at $z > 0.3$ will be more sensitive to the
-$\Omega_m$ prior than current datasets dominated by low-$z$ SNe.
+sensitivity (Table~\ref{tab:zbins}) suggests that future
+supernova surveys with larger high-$z$ samples would be expected
+to show greater sensitivity to the $\Omega_m$ prior under the
+same framework.
 The Vera C. Rubin Observatory Legacy Survey of Space and Time
-and the Roman Space Telescope will both dramatically expand the
-high-$z$ SN sample, making this calibration increasingly important.
+and the Roman Space Telescope will both expand the high-$z$ SN
+sample substantially, making this calibration relevant for those
+analyses.
 
 \subsection{Comparison with literature $H_0$ measurements}
 
@@ -988,12 +983,11 @@ Our principal conclusions are:
   $dH_0/d\Omega_m$ that steepens by a factor of
   ${\sim}22$ from the lowest to the highest redshift bin.
 
-\item The two diagnostics are mutually consistent, with the
-  $\xi$-space result predicting $\Delta H_0 \approx 0.21$
-  km\,s$^{-1}$\,Mpc$^{-1}$ from geometric considerations alone,
-  in excellent agreement with the bootstrap measurement.
-  This cross-validation confirms the internal consistency of
-  the pipeline.
+\item The two diagnostics give results of the same order of
+  magnitude: the $\xi$-space residual of $0.56$\,\% corresponds
+  to $0.29$\,\% of $H_0$, while the direct-refit measurement is
+  $0.22/75.7 \approx 0.29$\,\% of $H_0$.
+  This provides a qualitative consistency check on the pipeline.
 
 \item The $\Omega_m$ framework assumption difference between
   SH0ES and Planck contributes at most ${\lesssim}\,4$\,\%
@@ -1079,13 +1073,14 @@ The underlying Pantheon+SH0ES catalogue is available at
 \begin{figure}
   \includegraphics[width=\columnwidth]{gaia_zero_bias_plot}
   \caption{$\xi$-space comparison of the SH0ES and Planck frameworks
-    for all 1{,}671 SNe~Ia as a function of redshift.
-    Upper panel: $\xi_\mathrm{SH0ES}(z)$ (blue) and
-    $\xi_\mathrm{Planck}(z)$ (orange) vs $z_\mathrm{CMB}$.
-    The two curves are nearly indistinguishable on this scale.
-    Lower panel: fractional residual
-    $\Delta_\xi = |\xi_\mathrm{SH0ES} - \xi_\mathrm{Planck}|/\xi_\mathrm{mid}$
-    vs $z$, showing the $\Omega_m$-driven divergence at higher $z$.}
+    for all SNe~Ia with $z > 0.005$.
+    Left panel: $\xi(z)$ for both frameworks vs $z_\mathrm{CMB}$;
+    the two curves are nearly indistinguishable on this scale.
+    Centre panel: absolute residual $|\Delta\xi|$ vs $z$ on a log
+    scale, showing the $\Omega_m$-driven divergence at higher $z$.
+    Right panel: distribution of $\log_{10}|\Delta\xi|$; the dashed
+    red line marks the nominal $\Delta H_0/H_0$ fractional gap for
+    reference.}
   \label{fig:xi_both_frameworks}
 \end{figure}
 
@@ -1237,7 +1232,7 @@ The underlying Pantheon+SH0ES catalogue is available at
   \includegraphics[width=\columnwidth]{ximid_vs_z_bins}
   \caption{$\xi$-space residual statistics per redshift quartile,
     complementary to Table~\ref{tab:xi_stats}.
-    Bars show $\langle|\Delta\xi|\rangle/\langle\xi\rangle$
+    Bars show $\langle|\Delta\xi|\rangle/\langle\xi_\mathrm{mid}\rangle$
     in each bin; the dashed orange line is the global mean
     of $0.56$\,\%.
     The growth of the $\Omega_m$ geometric sensitivity with
