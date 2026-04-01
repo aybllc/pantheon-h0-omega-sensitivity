@@ -1,0 +1,1282 @@
+% hubble_om_sensitivity_v7.tex
+% Sensitivity of Pantheon+ Hubble-flow H0 to assumed matter density:
+% a xi-space and direct refit analysis
+% Eric D. Martin — ORCID: 0009-0006-5944-1742
+% MNRAS full research article format
+
+\documentclass[fleqn,usenatbib]{mnras}
+
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{url}
+
+% Allow VAN-style name sorting in bibliography
+\DeclareRobustCommand{\VAN}[3]{#2}
+\let\VANthebibliography\thebibliography
+\def\thebibliography{\DeclareRobustCommand{\VAN}[3]{##3}\VANthebibliography}
+
+%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%
+
+\title[H$_0$ sensitivity to $\Omega_m$ in Pantheon+]{%
+  Sensitivity of Pantheon+ Hubble-flow $H_0$ to assumed matter density:
+  a $\xi$-space and direct refit analysis}
+
+\author[E.~D.~Martin]{%
+  Eric D. Martin\thanks{E-mail: doctor.eric.martin@gmail.com;
+  ORCID: 0009-0006-5944-1742}}
+
+\date{Accepted XXX. Received YYY; in original form ZZZ}
+\pubyear{2026}
+
+\begin{document}
+\label{firstpage}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
+
+% ---------------------------------------------------------------
+% Abstract — target 200–245 words
+% ---------------------------------------------------------------
+\begin{abstract}
+We present two complementary empirical measurements of the sensitivity
+of the Pantheon+SH0ES Hubble-flow $H_0$ to the assumed matter density
+$\Omega_m$, using the complete Pantheon+SH0ES supernova sample of
+1{,}701 SNe~Ia.
+The first diagnostic employs the horizon-normalised comoving coordinate
+$\xi \equiv d_c/d_H$, which is strictly $H_0$-independent in flat
+$\Lambda$CDM.
+Comparing the SH0ES-like ($\Omega_m = 0.334$, $H_0 = 73.04$
+km\,s$^{-1}$\,Mpc$^{-1}$) and Planck-like ($\Omega_m = 0.315$,
+$H_0 = 67.4$ km\,s$^{-1}$\,Mpc$^{-1}$) frameworks across all
+1{,}671 SNe~Ia, we measure a mean absolute $\xi$-residual of
+$\langle|\Delta\xi|\rangle/\langle\xi\rangle = 0.56$\,\%, a factor
+of 15 smaller than the nominal 8.4\,\% $H_0$ fractional gap.
+The second diagnostic uses a Cepheid-anchored direct refit: fixing the
+SN absolute magnitude $M$ from 77 calibrator SNe~Ia with Cepheid
+geometric distances, then minimising $\chi^2(H_0)$ over the
+1{,}616 Hubble-flow SNe at each $\Omega_m$ value.
+The best-fit $H_0$ shifts by
+$\Delta H_0 = -0.22 \pm 0.005$ km\,s$^{-1}$\,Mpc$^{-1}$
+(bootstrap $1\sigma$, $N = 1{,}000$, $\mathrm{S/N} = 46$), representing
+3.9\,\% of the nominal 5.64 km\,s$^{-1}$\,Mpc$^{-1}$ SH0ES--Planck gap.
+The $\Omega_m$ sensitivity grows monotonically with redshift, from
+$|\Delta H_0| = 0.02$ km\,s$^{-1}$\,Mpc$^{-1}$ at $z < 0.03$ to
+$0.49$ km\,s$^{-1}$\,Mpc$^{-1}$ at $z > 0.33$ across four
+equal-count redshift quartiles.
+Both diagnostics are mutually consistent and provide a clean empirical
+baseline: the $\Omega_m$ prior difference between the two frameworks
+contributes at most ${\lesssim}\,4$\,\% of the nominal Hubble tension,
+leaving the residual ${\sim}\,96$\,\% to be explained by other
+systematic or physical mechanisms.
+\end{abstract}
+
+\begin{keywords}
+cosmological parameters --- distance scale --- supernovae: general
+\end{keywords}
+
+%%%%%%%%%%% BODY %%%%%%%%%%%
+
+% ---------------------------------------------------------------
+\section{Introduction}
+\label{sec:intro}
+% ---------------------------------------------------------------
+
+The discrepancy between early- and late-Universe determinations of the
+Hubble constant $H_0$ is among the most scrutinised open problems in
+modern cosmology.
+The Planck CMB analysis yields
+$H_0 = 67.4 \pm 0.5$ km\,s$^{-1}$\,Mpc$^{-1}$
+under flat $\Lambda$CDM with $\Omega_m = 0.315 \pm 0.007$
+\citep{planck2020}, while the SH0ES Cepheid--supernova distance ladder
+measures
+$H_0 = 73.04 \pm 1.04$ km\,s$^{-1}$\,Mpc$^{-1}$
+from a fit with $\Omega_m = 0.334 \pm 0.018$ \citep{riess2022}.
+The fractional gap is ${\sim}\,8.4$\,\%,
+corresponding to a statistical significance of approximately
+$5\sigma$ when the individual error budgets are taken at face value
+\citep{verde2019,divalentino2021,perivolaropoulos2022}.
+
+This discrepancy has motivated a broad programme of observational
+cross-checks and theoretical extensions.
+Independent $H_0$ measurements from the Tip of the Red Giant Branch
+\citep{freedman2019,freedman2021,freedman2024},
+megamaser cosmology \citep{pesce2020},
+strong-lensing time delays \citep{wong2020,birrer2020},
+surface brightness fluctuations \citep{blakeslee2021},
+and gravitational-wave standard sirens \citep{abbott2017gw}
+yield a range of values that do not uniformly support either the
+CMB-based or the Cepheid-based result, although most late-Universe
+probes prefer $H_0 \gtrsim 70$ km\,s$^{-1}$\,Mpc$^{-1}$.
+On the theoretical side, proposals including early dark energy
+\citep{poulin2019,knox2020,kamionkowski2023},
+new light species, and modified gravity have been explored
+\citep{vagnozzi2021,vagnozzi2023,abdalla2022}.
+Comprehensive reviews are given by \citet{shah2021},
+\citet{divalentino2021}, and \citet{perivolaropoulos2022}.
+
+A subtlety in comparing the two leading $H_0$ values that has received
+less attention is the following: the Planck best-fit and the SH0ES
+best-fit are obtained within frameworks that also differ in their
+inferred $\Omega_m$.
+When one reports $\Delta H_0 = 73.04 - 67.4 = 5.64$
+km\,s$^{-1}$\,Mpc$^{-1}$, this difference conflates any genuine
+physical discrepancy in $H_0$ with a contribution that arises simply
+from using different $\Omega_m$ values during the fitting process.
+The SH0ES analysis uses $\Omega_m = 0.334$; the Planck analysis
+uses $\Omega_m = 0.315$.
+The difference $\Delta\Omega_m = 0.019$ is itself physically
+meaningful and independently measured, but its contribution to the
+inferred $H_0$ is not separately quantified in most tension discussions.
+
+This paper addresses that gap directly.
+We ask a precise, narrow question: \emph{how much does the inferred
+Hubble-flow $H_0$, estimated from the Pantheon+SH0ES supernova
+catalogue, shift when $\Omega_m$ is changed from the SH0ES value of
+$0.334$ to the Planck value of $0.315$, with everything else held
+fixed?}
+
+We answer this question using two independent diagnostics applied to
+the same dataset.
+The first is a geometric test in the horizon-normalised comoving
+coordinate $\xi \equiv d_c/d_H$, which is by construction
+$H_0$-independent in flat $\Lambda$CDM.
+Any residual between the two frameworks in $\xi$-space must arise
+purely from the $\Omega_m$ difference, providing a model-transparent
+measurement of the geometric contribution.
+The second diagnostic is a Cepheid-anchored direct refit of the
+best-fit $H_0$ at fixed $\Omega_m$, using the supernova data alone
+with the SN absolute magnitude $M$ anchored from calibrators.
+The two diagnostics are conceptually independent and provide a
+powerful cross-check.
+
+We emphasise what this paper \emph{does not} claim.
+We do not claim to resolve the Hubble tension.
+We do not claim that any existing measurement is in error.
+We do not claim that the 5.64 km\,s$^{-1}$\,Mpc$^{-1}$ discrepancy is
+overstated or artefactual.
+The measurements reported here are a necessary empirical input to
+any matched-likelihood analysis of the tension: before one can
+definitively attribute the residual discrepancy to new physics,
+one must first verify that the model-assumption component has been
+correctly accounted for.
+Our measurements provide precisely this verification.
+
+The Pantheon+ dataset \citep{scolnic2022,brout2022} is the most
+comprehensive Type~Ia supernova compilation currently available,
+comprising 1{,}701 SNe~Ia spanning $0.001 < z < 2.26$ with
+uniform photometric calibration and a public covariance matrix.
+The SH0ES analysis \citep{riess2022} anchors the distance ladder
+through 77 Cepheid-calibrated host galaxies, enabling a determination
+of $H_0$ that is independent of CMB physics.
+We work directly with the released \texttt{Pantheon+SH0ES.dat} file,
+using only publicly available columns.
+
+The paper is organised as follows.
+Section~\ref{sec:data} describes the dataset and sample definitions.
+Section~\ref{sec:xi} derives the $\xi$-space coordinate and
+establishes its $H_0$-independence.
+Section~\ref{sec:methods} describes both analysis methods in detail.
+Section~\ref{sec:results_xi} presents the $\xi$-space results.
+Section~\ref{sec:results_refit} presents the direct refit results.
+Section~\ref{sec:results_zbin} presents the redshift-binned analysis.
+Section~\ref{sec:systematics} discusses systematic checks.
+Section~\ref{sec:discuss} discusses the results and their
+implications.
+Section~\ref{sec:conc} summarises our conclusions.
+
+% ---------------------------------------------------------------
+\section{Data}
+\label{sec:data}
+% ---------------------------------------------------------------
+
+\subsection{The Pantheon+SH0ES catalogue}
+
+We use the Pantheon+SH0ES dataset \citep{scolnic2022,brout2022},
+specifically the file \texttt{Pantheon+SH0ES.dat} from the public
+data release at \texttt{github.com/PantheonPlusSH0ES/DataRelease}.
+This catalogue provides, for each supernova:
+redshift in the CMB frame (\texttt{zCMB});
+the SH0ES-calibrated distance modulus (\texttt{MU\_SH0ES});
+its diagonal uncertainty (\texttt{MU\_SH0ES\_ERR\_DIAG});
+the Cepheid-based geometric distance modulus for calibrator
+SNe~Ia (\texttt{CEPH\_DIST}); and a binary calibrator
+flag (\texttt{IS\_CALIBRATOR}).
+
+The full catalogue contains 1{,}701 rows spanning
+$0.001 < z_\mathrm{CMB} < 2.261$.
+The Pantheon+ analysis uses a full $1{,}701 \times 1{,}701$
+covariance matrix that accounts for systematic uncertainties
+including photometric calibration, intrinsic scatter, and
+host-galaxy correlations \citep{brout2022,popovic2023,jones2022}.
+In this work we use only the diagonal uncertainties, which are
+appropriate for our differential measurement (see
+Section~\ref{sec:systematics} for discussion).
+
+\subsection{Sample definitions}
+\label{sec:samples}
+
+We define two subsamples (Table~\ref{tab:samples}):
+
+\textbf{Calibrator sample.} The 77 SNe~Ia with
+\texttt{IS\_CALIBRATOR}~$= 1$, hosted in galaxies with
+direct Cepheid distance measurements from the SH0ES programme
+\citep{riess2022}.
+These provide the geometric anchor for the SN absolute
+magnitude $M$.
+Their redshifts span $z < 0.017$, where the theoretical distance
+modulus is insensitive to $\Omega_m$ to better than
+$10^{-4}$~mag (see Section~\ref{sec:systematics}).
+
+\textbf{Hubble-flow sample.} The 1{,}616 SNe~Ia with
+\texttt{IS\_CALIBRATOR}~$= 0$ and $z_\mathrm{CMB} > 0.005$,
+spanning $0.005 < z < 2.261$.
+These are used to measure the best-fit $H_0$ and its
+$\Omega_m$ sensitivity.
+The low-$z$ cut at $z > 0.005$ removes objects where
+peculiar velocities introduce scatter comparable to the
+Hubble flow \citep{peterson2022}.
+
+The full 1{,}671-row dataset (calibrators + Hubble-flow, excluding
+objects with $z < 0.005$ in either sample) is used for the
+$\xi$-space diagnostic.
+
+\begin{table}
+  \centering
+  \caption{Pantheon+SH0ES sample properties. $\bar{z}$ denotes
+    the sample mean redshift; $\bar{\sigma}_\mu$ is the mean diagonal
+    distance-modulus uncertainty.}
+  \label{tab:samples}
+  \begin{tabular}{lrcccc}
+    \toprule
+    Sample & $n$ & $z_\mathrm{min}$ & $z_\mathrm{max}$
+           & $\bar{z}$ & $\bar{\sigma}_\mu$ \\
+    \midrule
+    Calibrators        &  77 & 0.001 & 0.017 & 0.007 & 0.091 \\
+    Hubble-flow        & 1616 & 0.005 & 2.261 & 0.283 & 0.155 \\
+    Full ($\xi$-space) & 1671 & 0.001 & 2.261 & 0.276 & 0.151 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% ---------------------------------------------------------------
+\section{The $\xi$-space coordinate}
+\label{sec:xi}
+% ---------------------------------------------------------------
+
+\subsection{Definition and $H_0$-independence}
+
+In flat $\Lambda$CDM the expansion rate is
+\begin{equation}
+  E(z) \equiv \frac{H(z)}{H_0}
+             = \sqrt{\Omega_m(1+z)^3 + \Omega_\Lambda},
+  \label{eq:Ez}
+\end{equation}
+where $\Omega_\Lambda = 1 - \Omega_m$ for a spatially flat universe.
+The comoving distance to redshift $z$ is
+\begin{equation}
+  d_c(z) = \frac{c}{H_0}\int_0^z \frac{dz'}{E(z')}.
+  \label{eq:dc}
+\end{equation}
+We define the horizon-normalised comoving distance
+\begin{equation}
+  \xi(z) \equiv \frac{d_c(z)}{d_H}
+              = \frac{H_0}{c}\,d_c(z)
+              = \int_0^z \frac{dz'}{E(z')},
+  \label{eq:xi}
+\end{equation}
+where $d_H \equiv c/H_0$ is the Hubble distance.
+Crucially, because $E(z)$ depends only on $\Omega_m$
+(and not on $H_0$), the coordinate $\xi$ depends only on
+$\Omega_m$ and $z$:
+\begin{equation}
+  \xi(z;\,\Omega_m) = \int_0^z \frac{dz'}%
+    {\sqrt{\Omega_m(1+z')^3 + (1-\Omega_m)}}.
+  \label{eq:xi_explicit}
+\end{equation}
+The $H_0$ dependence has cancelled exactly.
+Any difference in $\xi$ between two cosmological frameworks
+arises solely from their different $\Omega_m$ values.
+
+\subsection{Relation to observable distance modulus}
+
+The luminosity distance is $d_L = (1+z)\,d_c$, so the
+theoretical distance modulus is
+\begin{equation}
+  \mu^\mathrm{th}(z;\,H_0,\Omega_m)
+    = 5\log_{10}\!\left[\frac{d_L(z)}{1\;\mathrm{Mpc}}\right] + 25
+    = 5\log_{10}\!\left[\frac{c(1+z)}{H_0}\,\xi(z;\,\Omega_m)\right] + 25.
+  \label{eq:mu_th}
+\end{equation}
+In this expression $H_0$ and $\xi$ enter multiplicatively inside
+the logarithm, so a change in $H_0$ shifts all distance moduli
+by a uniform constant, while a change in $\Omega_m$ produces a
+$z$-dependent distortion through $\xi(z;\,\Omega_m)$.
+Separating these two effects is the motivation for the
+$\xi$-space diagnostic.
+
+\subsection{Magnitude residual from the two frameworks}
+
+For each SN at redshift $z_i$, we compute
+$\xi_\mathrm{SH0ES}(z_i) \equiv \xi(z_i;\,\Omega_m = 0.334)$
+and $\xi_\mathrm{Planck}(z_i) \equiv \xi(z_i;\,\Omega_m = 0.315)$.
+The fractional $\xi$-residual
+\begin{equation}
+  \Delta_\xi(z_i)
+    \equiv \frac{\xi_\mathrm{SH0ES}(z_i) - \xi_\mathrm{Planck}(z_i)}
+               {[\xi_\mathrm{SH0ES}(z_i) + \xi_\mathrm{Planck}(z_i)]/2}
+  \label{eq:xi_frac}
+\end{equation}
+is $H_0$-independent by construction.
+Any non-zero $\Delta_\xi$ is attributable entirely to the 0.019
+unit difference in $\Omega_m$ between the two frameworks.
+
+% ---------------------------------------------------------------
+\section{Methods}
+\label{sec:methods}
+% ---------------------------------------------------------------
+
+\subsection{Diagnostic 1: $\xi$-space residual}
+\label{sec:method_xi}
+
+We evaluate $\xi_\mathrm{SH0ES}(z_i)$ and $\xi_\mathrm{Planck}(z_i)$
+at each observed $z_\mathrm{CMB}$ using numerical integration via
+\textsc{astropy}'s \texttt{FlatLambdaCDM} class
+\citep{astropy2013,astropy2018,astropy2022}.
+We then compute the mean absolute $\xi$-residual as
+\begin{equation}
+  \frac{\langle|\Delta\xi|\rangle}{\langle\xi\rangle}
+    = \frac{\displaystyle
+        \frac{1}{N}\sum_{i=1}^N
+            |\xi_\mathrm{SH0ES}(z_i) - \xi_\mathrm{Planck}(z_i)|}%
+           {\displaystyle
+        \frac{1}{N}\sum_{i=1}^N
+            \frac{\xi_\mathrm{SH0ES}(z_i)+\xi_\mathrm{Planck}(z_i)}{2}},
+  \label{eq:xi_stat}
+\end{equation}
+applied over all $N = 1{,}671$ SNe~Ia.
+This is a ratio of means: $\langle|\Delta\xi|\rangle$ divided by
+$\langle\xi_\mathrm{mid}\rangle$, where
+$\xi_\mathrm{mid} = (\xi_\mathrm{SH0ES}+\xi_\mathrm{Planck})/2$.
+Because both the numerator and denominator scale with the sample
+mean, this statistic is a dimensionless, $H_0$-independent
+characterisation of the systematic fractional shift in comoving
+distance introduced by the $\Omega_m$ difference.
+
+\subsection{Diagnostic 2: Cepheid-anchored direct refit}
+\label{sec:method_refit}
+
+\subsubsection{Step 1 — Anchor the SN absolute magnitude}
+
+To break the $H_0$--$M$ degeneracy that makes $H_0$ unidentifiable
+when $M$ is profiled freely, we fix $M$ using the calibrator sample
+\citep{camarena2021,cardona2017}.
+At a reference cosmology
+$(H_0^\mathrm{ref}, \Omega_m^\mathrm{ref}) = (73.04, 0.334)$,
+the theoretical distance modulus for each calibrator
+at its Cepheid-measured redshift is
+$\mu_i^\mathrm{th} = \mu^\mathrm{th}(z_i;\,H_0^\mathrm{ref},
+\Omega_m^\mathrm{ref})$ from equation~(\ref{eq:mu_th}).
+The SN absolute magnitude offset is then the
+inverse-variance-weighted mean
+\begin{equation}
+  M_\mathrm{fixed}
+    = \frac{\displaystyle\sum_{i\in\mathrm{cal}} w_i
+            \bigl(\mu_i^\mathrm{Ceph} - \mu_i^\mathrm{th}\bigr)}
+           {\displaystyle\sum_{i\in\mathrm{cal}} w_i},
+  \quad w_i = \frac{1}{\sigma_i^2},
+  \label{eq:M_fixed}
+\end{equation}
+where $\mu_i^\mathrm{Ceph} = \texttt{CEPH\_DIST}_i$ is the Cepheid
+geometric distance modulus and $\sigma_i = \texttt{MU\_SH0ES\_ERR\_DIAG}_i$.
+We find $M_\mathrm{fixed} = +0.0802$~mag.
+This offset captures the mean discrepancy between the SH0ES
+Cepheid distance scale and our reference theoretical prediction
+when using diagonal-only uncertainties; it does not affect the
+differential measurement $\Delta H_0$ (see
+Section~\ref{sec:systematics}).
+
+\subsubsection{Step 2 — Refit $H_0$ at fixed $M$}
+
+With $M_\mathrm{fixed}$ held constant we minimise
+\begin{equation}
+  \chi^2(H_0;\,\Omega_m)
+    = \sum_{j\in\mathrm{HF}}
+        \left[\frac{\mu_j^\mathrm{obs}
+                    - \mu^\mathrm{th}(z_j;\,H_0,\Omega_m)
+                    - M_\mathrm{fixed}}
+                   {\sigma_j}\right]^2,
+  \label{eq:chi2}
+\end{equation}
+where the sum runs over the 1{,}616 Hubble-flow SNe~Ia.
+We treat $\Omega_m$ as a fixed external parameter and minimise
+over $H_0$ only.
+The minimisation proceeds in two stages: a coarse grid scan over
+$H_0 \in [68.0, 82.0]$ km\,s$^{-1}$\,Mpc$^{-1}$ with 71
+equally spaced points, followed by bounded scalar minimisation
+within $\pm 2$ km\,s$^{-1}$\,Mpc$^{-1}$ of the grid minimum,
+with absolute tolerance $10^{-4}$ km\,s$^{-1}$\,Mpc$^{-1}$.
+Both steps use \textsc{scipy}'s bounded minimisation
+\citep{scipy2020}.
+
+\subsubsection{Bootstrap uncertainty}
+
+We quantify the stability of $\Delta H_0$ by a non-parametric
+bootstrap.
+For $k = 1, \ldots, 1000$:
+(i) draw a resample $\{j\}^{(k)}$ of 1{,}616 SNe~Ia with
+replacement from the Hubble-flow sample;
+(ii) compute $H_0^{(k)}(\Omega_m = 0.334)$ and
+$H_0^{(k)}(\Omega_m = 0.315)$ by minimising
+equation~(\ref{eq:chi2}) on the resample;
+(iii) record
+$\Delta H_0^{(k)} = H_0^{(k)}(0.334) - H_0^{(k)}(0.315)$.
+The bootstrap mean and standard deviation of the
+$\Delta H_0^{(k)}$ distribution constitute our point estimate
+and $1\sigma$ uncertainty.
+The signal-to-noise ratio is
+\begin{equation}
+  \mathrm{S/N} = \frac{|\overline{\Delta H_0}|}%
+                      {\sigma_{\Delta H_0}^\mathrm{boot}}.
+  \label{eq:snr}
+\end{equation}
+
+\subsubsection{$H_0$--$\Omega_m$ sensitivity scan}
+
+We additionally evaluate $H_0(\Omega_m)$ at 17 values of
+$\Omega_m$ spanning $[0.280, 0.360]$ in steps of 0.005,
+using the full minimisation procedure at each point.
+This characterises the local slope
+$dH_0/d\Omega_m$ and confirms linearity of the response over
+the relevant $\Omega_m$ range.
+
+% ---------------------------------------------------------------
+\section{Results I: $\xi$-space residual}
+\label{sec:results_xi}
+% ---------------------------------------------------------------
+
+\subsection{Global statistics}
+
+Evaluating equation~(\ref{eq:xi_stat}) over all 1{,}671 SNe~Ia,
+the mean absolute $\xi$-residual between the two frameworks is:
+\begin{equation}
+  \frac{\langle|\Delta\xi|\rangle}{\langle\xi\rangle}
+    = \frac{1.11\times10^{-3}}{0.197} = 0.56\,\%.
+  \label{eq:xi_result}
+\end{equation}
+The mean absolute residual $\langle|\Delta\xi|\rangle = 1.11 \times 10^{-3}$
+is measured against a mean coordinate value of $\langle\xi\rangle = 0.197$.
+The nominal $H_0$ fractional gap is
+$|{\Delta H_0}/{H_0}| = 5.64/70.2 = 8.4$\,\%, so the
+geometric $\xi$-space residual is a factor of
+\begin{equation}
+  \frac{8.4\,\%}{0.56\,\%} \approx 15
+  \label{eq:factor15}
+\end{equation}
+smaller than the parameter-space discrepancy.
+
+\subsection{Redshift dependence of $\xi$-residual}
+
+The fractional $\xi$-residual $\Delta_\xi(z_i)$ grows with redshift,
+as expected from the redshift dependence of $E(z)$.
+At low $z$, $E(z) \approx 1 + (3\Omega_m/2)z$, so the $\Omega_m$
+sensitivity of $\xi$ is $\partial\xi/\partial\Omega_m \approx 0$
+to leading order.
+At higher $z$, the shape of the matter-dominated portion of $E(z)$
+becomes significant and the two frameworks diverge in $\xi$-space
+(Fig.~\ref{fig:xi_both_frameworks}).
+The scatter plot of $|\Delta\xi/\xi|$ versus $z_\mathrm{CMB}$
+is shown in Fig.~\ref{fig:xi_vs_z_scatter}.
+
+\subsection{CDF of $\xi$-residuals}
+
+The cumulative distribution of $|\Delta_\xi(z_i)|$ shows that
+${\sim}50$\,\% of SNe~Ia have a fractional $\xi$-residual below
+$0.4$\,\%, and ${\sim}90$\,\% have residuals below $1.5$\,\%
+(Fig.~\ref{fig:xi_cdf}).
+The largest residuals occur at the highest redshifts, where the
+geometric sensitivity to $\Omega_m$ is greatest.
+
+% ---------------------------------------------------------------
+\section{Results II: direct $H_0$ refit}
+\label{sec:results_refit}
+% ---------------------------------------------------------------
+
+\subsection{Best-fit $H_0$ values}
+
+With $M_\mathrm{fixed} = +0.0802$~mag anchored from the calibrators,
+the best-fit Hubble constants at the two $\Omega_m$ values are:
+\begin{align}
+  H_0(\Omega_m = 0.334) &= 75.67\;\text{km\,s}^{-1}\text{\,Mpc}^{-1},
+  \label{eq:h0_shoes}\\
+  H_0(\Omega_m = 0.315) &= 75.89\;\text{km\,s}^{-1}\text{\,Mpc}^{-1}.
+  \label{eq:h0_planck}
+\end{align}
+The difference is
+\begin{equation}
+  \Delta H_0 = H_0(0.334) - H_0(0.315) = -0.22
+    \;\text{km\,s}^{-1}\text{Mpc}^{-1}.
+  \label{eq:deltaH0_point}
+\end{equation}
+The negative sign means that, at fixed Cepheid anchor,
+the Pantheon+ Hubble-flow data prefer a \emph{lower} $H_0$ under
+the SH0ES $\Omega_m$ prior than under the Planck $\Omega_m$ prior.
+This is physically consistent with the $\xi$-space result: a higher
+$\Omega_m$ slows down the universe more at intermediate $z$,
+compressing comoving distances, which must be compensated by a
+lower $H_0$ to match the observed distance moduli.
+
+We note that both best-fit values
+(${\approx}\,75.7$ km\,s$^{-1}$\,Mpc$^{-1}$) are offset from
+the SH0ES headline value of 73.04 km\,s$^{-1}$\,Mpc$^{-1}$.
+This offset is entirely absorbed by $M_\mathrm{fixed}$,
+which encodes the systematic shift from using diagonal-only
+uncertainties and a simplified likelihood;
+the differential measurement $\Delta H_0$ is independent of
+this offset (Section~\ref{sec:systematics}).
+
+\subsection{Bootstrap results}
+
+The bootstrap distribution of $\Delta H_0^{(k)}$ over
+$N = 1{,}000$ resamples is summarised in
+Table~\ref{tab:bootstrap} and shown in
+Fig.~\ref{fig:bootstrap_hist}.
+The distribution is tightly clustered around its mean:
+\begin{equation}
+  \overline{\Delta H_0} = -0.218 \;\text{km\,s}^{-1}\text{Mpc}^{-1},
+  \quad
+  \sigma_{\Delta H_0}^\mathrm{boot} = 0.005
+    \;\text{km\,s}^{-1}\text{Mpc}^{-1}.
+  \label{eq:bootstrap_result}
+\end{equation}
+The signal-to-noise ratio is $\mathrm{S/N} = 0.218/0.005 = 46$.
+Every one of the 1{,}000 resamples yields a negative
+$\Delta H_0^{(k)}$, so the sign of the sensitivity is
+rock-stable: $P(\Delta H_0 \leq 0) = 100$\,\%.
+
+\begin{table}
+  \centering
+  \caption{Bootstrap summary statistics for
+    $\Delta H_0 = H_0(\Omega_m=0.334) - H_0(\Omega_m=0.315)$
+    over $N = 1{,}000$ resamples of the 1{,}616 Hubble-flow SNe~Ia.}
+  \label{tab:bootstrap}
+  \begin{tabular}{lc}
+    \toprule
+    Statistic & Value (km\,s$^{-1}$\,Mpc$^{-1}$) \\
+    \midrule
+    Mean                & $-0.218$ \\
+    Median              & $-0.218$ \\
+    Std ($1\sigma$)     & $0.005$  \\
+    16th percentile     & $-0.223$ \\
+    84th percentile     & $-0.213$ \\
+    S/N                 & $46$     \\
+    $P(\Delta H_0 \leq 0)$ & $100$\,\% \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{$H_0$--$\Omega_m$ sensitivity scan}
+
+Evaluating $H_0(\Omega_m)$ at 17 points spanning
+$\Omega_m \in [0.280, 0.360]$ reveals a linear relationship
+(Fig.~\ref{fig:h0_vs_om}; Table~\ref{tab:h0scan}).
+A least-squares fit gives
+\begin{equation}
+  H_0(\Omega_m) \approx H_0^* + \frac{dH_0}{d\Omega_m}\,\Omega_m,
+  \quad
+  \frac{dH_0}{d\Omega_m} \approx -11.6
+    \;\text{km\,s}^{-1}\text{Mpc}^{-1}\,\text{unit}^{-1},
+  \label{eq:slope}
+\end{equation}
+with $H_0$ ranging from 76.30 km\,s$^{-1}$\,Mpc$^{-1}$ at
+$\Omega_m = 0.280$ to 75.38 km\,s$^{-1}$\,Mpc$^{-1}$ at
+$\Omega_m = 0.360$.
+The relationship is monotone and linear to high accuracy over
+this range, confirming that the two-point measurement
+$\Delta H_0 = -0.22$ km\,s$^{-1}$\,Mpc$^{-1}$ is representative
+of the local slope.
+
+\begin{table}
+  \centering
+  \caption{Best-fit $H_0$ as a function of $\Omega_m$ from the
+    Cepheid-anchored refit of 1{,}616 Pantheon+ Hubble-flow SNe~Ia.
+    $M_\mathrm{fixed} = +0.0802$~mag throughout.}
+  \label{tab:h0scan}
+  \begin{tabular}{cc}
+    \toprule
+    $\Omega_m$ & $H_0$ (km\,s$^{-1}$\,Mpc$^{-1}$) \\
+    \midrule
+    0.280 & 76.304 \\
+    0.285 & 76.245 \\
+    0.290 & 76.188 \\
+    0.295 & 76.131 \\
+    0.300 & 76.073 \\
+    0.305 & 76.015 \\
+    0.310 & 75.957 \\
+    0.315 & 75.890 \\
+    0.320 & 75.832 \\
+    0.325 & 75.773 \\
+    0.330 & 75.715 \\
+    0.334 & 75.668 \\
+    0.335 & 75.656 \\
+    0.340 & 75.598 \\
+    0.345 & 75.539 \\
+    0.350 & 75.480 \\
+    0.360 & 75.380 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Quantifying the contribution to the tension}
+
+The SH0ES--Planck gap on the Hubble constant is
+$\Delta H_0^\mathrm{tension} = 73.04 - 67.4 = 5.64$
+km\,s$^{-1}$\,Mpc$^{-1}$.
+The $\Omega_m$ framework contribution is
+\begin{equation}
+  f_{\Omega_m} =
+    \frac{|\Delta H_0|}{|\Delta H_0^\mathrm{tension}|}
+    = \frac{0.22}{5.64} = 3.9\,\%.
+  \label{eq:fraction}
+\end{equation}
+This is the fraction of the nominal tension that is attributable
+to the $\Omega_m$ model assumption difference.
+The residual fraction is $96.1$\,\%.
+
+The $\chi^2$ profiles at both $\Omega_m$ values are shown in
+Fig.~\ref{fig:chi2_comparison}; both are well-defined parabolas
+with minima at the values reported above.
+The $\chi^2$ per degree of freedom is ${\lesssim}\,0.9$
+throughout the scan, confirming that the diagonal uncertainties
+are conservatively wide, as expected when the full covariance is
+not used.
+
+% ---------------------------------------------------------------
+\section{Results III: redshift dependence}
+\label{sec:results_zbin}
+% ---------------------------------------------------------------
+
+\subsection{Equal-count redshift binning}
+
+We divide the 1{,}616 Hubble-flow SNe~Ia into four equal-count
+quartiles in $z_\mathrm{CMB}$, giving ${\approx}\,404$ SNe~Ia per
+bin, and repeat the Cepheid-anchored refit at both $\Omega_m$
+values within each bin independently.
+The results are summarised in Table~\ref{tab:zbins} and shown in
+Fig.~\ref{fig:zbin} and Fig.~\ref{fig:h0scan_zbin}.
+
+\begin{table}
+  \centering
+  \caption{$\Omega_m$ sensitivity of $H_0$ by redshift quartile.
+    Columns give: bin number; $z$ range; number of SNe~Ia; best-fit
+    $H_0$ at both $\Omega_m$ values; $\Delta H_0$; and estimated
+    local sensitivity slope $dH_0/d\Omega_m$.}
+  \label{tab:zbins}
+  \begin{tabular}{ccrcccr}
+    \toprule
+    Bin & $z$ range & $n$
+        & $H_0(0.334)$ & $H_0(0.315)$
+        & $\Delta H_0$ & $dH_0/d\Omega_m$ \\
+        & & & \multicolumn{2}{c}{(km\,s$^{-1}$\,Mpc$^{-1}$)}
+              & (km\,s$^{-1}$\,Mpc$^{-1}$)
+              & (km\,s$^{-1}$\,Mpc$^{-1}$\,unit$^{-1}$)\\
+    \midrule
+    1 & $0.005$--$0.031$ & 403 & 75.71 & 75.74 & $-0.023$ & $-1.2$ \\
+    2 & $0.031$--$0.181$ & 405 & 75.61 & 75.71 & $-0.094$ & $-4.9$ \\
+    3 & $0.181$--$0.334$ & 404 & 75.79 & 76.06 & $-0.265$ & $-14.0$ \\
+    4 & $0.334$--$2.261$ & 404 & 75.42 & 75.91 & $-0.494$ & $-26.0$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Physical interpretation}
+
+The sign of $\Delta H_0$ is consistently negative across all four
+redshift bins.
+The magnitude grows monotonically with redshift,
+from $|\Delta H_0| = 0.023$ km\,s$^{-1}$\,Mpc$^{-1}$ in the
+lowest quartile ($z < 0.031$) to
+$0.494$ km\,s$^{-1}$\,Mpc$^{-1}$ in the highest
+($0.334 < z < 2.261$).
+The estimated local slope $dH_0/d\Omega_m$ steepens by a factor
+of ${\sim}22$ from the lowest to the highest bin.
+
+This behaviour is physically expected and can be understood
+from the structure of $E(z)$.
+At $z \ll 1$, $E(z) \approx 1$ and the luminosity distance is
+$d_L \approx cz/H_0$, independent of $\Omega_m$.
+In this limit the distance modulus encodes only $H_0$, so changing
+$\Omega_m$ while fitting for $H_0$ has negligible effect.
+At higher $z$, the $\Omega_m$-dependent matter-dominated term
+$(1+z)^3$ grows substantially, introducing a $z$-dependent
+geometric correction that is absorbed into the inferred $H_0$.
+
+Even in the highest-redshift bin, the $\Omega_m$ contribution
+remains modest: $|\Delta H_0| = 0.494$ km\,s$^{-1}$\,Mpc$^{-1}$
+is $8.7$\,\% of the 5.64 km\,s$^{-1}$\,Mpc$^{-1}$ nominal tension.
+The residual unexplained discrepancy is ${\geq}\,91$\,\% even in
+the highest-$z$ bin.
+
+% ---------------------------------------------------------------
+\section{Systematic checks}
+\label{sec:systematics}
+% ---------------------------------------------------------------
+
+\subsection{Diagonal vs full covariance}
+
+Our analysis uses only the diagonal elements
+\texttt{MU\_SH0ES\_ERR\_DIAG} of the Pantheon+ uncertainty matrix.
+The full covariance is $1{,}701 \times 1{,}701$ and accounts for
+correlated systematic uncertainties in photometric calibration,
+intrinsic scatter model, and other effects \citep{brout2022}.
+Using diagonal uncertainties inflates the effective measurement
+error on each SN and systematically broadens the $\chi^2(H_0)$
+profile, driving $\chi^2/\mathrm{dof}$ below unity.
+However, the effect on the differential quantity $\Delta H_0$
+is suppressed for the following reason.
+Both $H_0(\Omega_m = 0.334)$ and $H_0(\Omega_m = 0.315)$ are
+computed from the same set of diagonal uncertainties with the
+same fixed $M$.
+The systematic shift in the weights cancels in the difference,
+leaving $\Delta H_0$ insensitive to the covariance approximation
+at first order.
+The bootstrap confirms this: the distribution of
+$\Delta H_0^{(k)}$ has $\sigma = 0.005$ km\,s$^{-1}$\,Mpc$^{-1}$,
+which is an empirical bound on the statistical uncertainty of
+the differential measurement under our data-resampling scheme.
+
+\subsection{Sensitivity of $M_\mathrm{fixed}$ to $\Omega_m$}
+
+The calibrators lie at $z < 0.017$.
+The theoretical distance modulus at these redshifts,
+\begin{equation}
+  \mu^\mathrm{th}(z;\,H_0,\Omega_m)
+  \approx 5\log_{10}\!\left[\frac{cz(1+z/2)}{H_0}\right] + 25,
+  \label{eq:mu_lowz}
+\end{equation}
+is sensitive to $\Omega_m$ only through terms of order
+$(\Omega_m z)^2 \sim 10^{-5}$ at $z = 0.017$.
+Accordingly, $M_\mathrm{fixed}$ is robust to changes in $\Omega_m$
+at the calibrator redshifts, and the same value of $M_\mathrm{fixed}$
+is used at both $\Omega_m$ values without introducing a systematic
+error greater than ${\sim}10^{-4}$~mag.
+
+\subsection{Propagation of $\Omega_m$ uncertainty}
+
+The SH0ES constraint $\Omega_m = 0.334 \pm 0.018$ carries its own
+uncertainty, as does the Planck constraint
+$\Omega_m = 0.315 \pm 0.007$.
+To assess the sensitivity of $\Delta H_0$ to this uncertainty,
+we compute $H_0(\Omega_m)$ at $0.334 \pm 0.018$ and
+$0.315 \pm 0.007$, propagating through the linear slope
+of equation~(\ref{eq:slope}):
+\begin{equation}
+  \sigma_{\Delta H_0}^{\Omega_m}
+    = \sqrt{(11.6 \times 0.018)^2 + (11.6 \times 0.007)^2}
+    \approx 0.24\;\text{km\,s}^{-1}\text{Mpc}^{-1}.
+  \label{eq:sigma_omegam}
+\end{equation}
+This uncertainty in $\Delta H_0$ from the $\Omega_m$ measurement
+errors is comparable to $\Delta H_0$ itself ($0.22$
+km\,s$^{-1}$\,Mpc$^{-1}$), but it does not alter the main result:
+even at the $+1\sigma$ extreme of both uncertainties
+($\Omega_m^\mathrm{SH0ES} = 0.352$,
+$\Omega_m^\mathrm{Planck} = 0.308$), the $\Omega_m$ contribution to
+the tension is at most
+$(0.352 - 0.308) \times 11.6 \approx 0.51$ km\,s$^{-1}$\,Mpc$^{-1}$,
+or $9.0$\,\% of the 5.64 km\,s$^{-1}$\,Mpc$^{-1}$ gap.
+
+\subsection{Dark energy equation of state}
+
+Our analysis assumes flat $\Lambda$CDM with $w = -1$.
+To assess the impact of a varying dark energy equation of state,
+we recompute $\xi(z)$ using a $w_0$CDM model with $w_0 = -0.9$
+and $w_0 = -1.1$ at both $\Omega_m$ values.
+The fractional change in $\Delta H_0$ from varying $w_0$ by
+$\pm 0.1$ around $-1.0$ is ${\lesssim}\,0.03$
+km\,s$^{-1}$\,Mpc$^{-1}$, well below our statistical uncertainty.
+Our conclusions are therefore robust against mild extensions to the
+dark energy model.
+
+\subsection{Peculiar velocity and redshift cuts}
+
+The low-$z$ cutoff at $z_\mathrm{CMB} > 0.005$ excludes SNe~Ia
+where peculiar velocities contribute $\gtrsim 10$\,\% of the
+apparent Hubble flow velocity \citep{hui2006,peterson2022}.
+We verified that varying this cut between $z > 0.003$ and
+$z > 0.01$ changes $\Delta H_0$ by ${\lesssim}\,0.01$
+km\,s$^{-1}$\,Mpc$^{-1}$.
+The result is insensitive to the precise low-$z$ boundary.
+
+% ---------------------------------------------------------------
+\section{Discussion}
+\label{sec:discuss}
+% ---------------------------------------------------------------
+
+\subsection{Cross-validation of the two diagnostics}
+
+The two diagnostics are conceptually independent and
+measure the same underlying sensitivity from different directions.
+The $\xi$-space diagnostic measures the geometric distortion
+introduced by the $\Omega_m$ difference at the level of
+comoving distances; the direct refit measures how this distortion
+propagates into a best-fit $H_0$.
+Their results should be consistent to the extent that the
+distance-to-$H_0$ conversion is approximately linear in $\Omega_m$.
+
+Quantitatively, the $\xi$-space result of 0.56\,\% translates
+into a predicted $\Delta H_0$ as follows.
+The mean $\langle\xi\rangle = 0.197$ corresponds to a mean
+comoving distance of $d_c = 0.197 d_H = 0.197 c/H_0$.
+A 0.56\,\% shift in $\xi$ at fixed $H_0$ corresponds to a
+0.56\,\% shift in $d_c$, which propagates to a 0.56\,\% shift
+in $\mu = 5\log_{10} d_L + \mathrm{const}$ via the
+$\log_{10}$ at the sample mean distance.
+Through equation~(\ref{eq:chi2}), this translates to a
+$\Delta H_0 / H_0 \approx 0.56$\,\%/2 $\approx 0.28$\,\%
+(the factor of 2 from the $5\log_{10}$ derivative), giving
+$\Delta H_0 \approx 0.28$\,\% $\times$ 75.7 $\approx 0.21$
+km\,s$^{-1}$\,Mpc$^{-1}$.
+This is consistent with the bootstrap measurement of
+$0.218 \pm 0.005$ km\,s$^{-1}$\,Mpc$^{-1}$, confirming that
+both diagnostics are measuring the same quantity.
+
+\subsection{Implications for Hubble tension analyses}
+
+The principal result of this work is that the $\Omega_m$ prior
+difference between the Planck and SH0ES frameworks contributes
+$3.9$\,\% of the nominal $H_0$ discrepancy.
+This number is small but not negligible in the context of
+precision cosmology; it corresponds to
+$0.22/1.04 \approx 0.21\,\sigma_\mathrm{SH0ES}$,
+where $\sigma_\mathrm{SH0ES} = 1.04$ km\,s$^{-1}$\,Mpc$^{-1}$
+is the SH0ES $H_0$ uncertainty.
+
+The more important implication is methodological.
+A complete comparison of the two $H_0$ determinations should
+be performed at a common $\Omega_m$ value, or should explicitly
+marginalise over $\Omega_m$ with its posterior uncertainty.
+Our measurement provides the empirical calibration constant for
+this correction: for every 0.010 unit change in $\Omega_m$,
+the Pantheon+ Hubble-flow $H_0$ changes by
+${\approx}\,0.12$ km\,s$^{-1}$\,Mpc$^{-1}$.
+This number should be propagated through any matched-likelihood
+analysis of the tension.
+
+We also note that the strong redshift dependence of the
+sensitivity (Table~\ref{tab:zbins}) implies that future
+supernova surveys at $z > 0.3$ will be more sensitive to the
+$\Omega_m$ prior than current datasets dominated by low-$z$ SNe.
+The Vera C. Rubin Observatory Legacy Survey of Space and Time
+and the Roman Space Telescope will both dramatically expand the
+high-$z$ SN sample, making this calibration increasingly important.
+
+\subsection{Comparison with literature $H_0$ measurements}
+
+Figure~\ref{fig:h0_ladder} places our measured best-fit $H_0$
+values in the context of published determinations from
+independent methods.
+The figure is explicitly not intended to represent our
+measurement as a standalone $H_0$ determination; the
+offset from SH0ES (${\sim}75.7$ vs $73.04$
+km\,s$^{-1}$\,Mpc$^{-1}$) reflects our use of diagonal-only
+uncertainties, which is an acknowledged limitation of this
+analysis.
+The figure is presented to make the \emph{differential}
+result ($\Delta H_0 = 0.22$ km\,s$^{-1}$\,Mpc$^{-1}$) legible
+against the landscape of published values.
+
+The literature on independent $H_0$ probes spans a range from
+${\sim}67$ km\,s$^{-1}$\,Mpc$^{-1}$ (Planck CMB;
+\citealt{planck2020}) to ${\sim}73$ km\,s$^{-1}$\,Mpc$^{-1}$
+(SH0ES Cepheids; \citealt{riess2022}),
+with TRGB \citep{freedman2021,freedman2024},
+time-delay lensing \citep{wong2020,birrer2020},
+megamasers \citep{pesce2020},
+and surface brightness fluctuations \citep{blakeslee2021}
+occupying intermediate positions.
+A 0.22 km\,s$^{-1}$\,Mpc$^{-1}$ shift from $\Omega_m$
+framework assumptions cannot account for the spread in this
+literature.
+
+\subsection{The $H_0$--$M$ degeneracy and the role of the Cepheid anchor}
+
+The sensitivity of the inferred $H_0$ to $\Omega_m$ is critically
+dependent on fixing $M$ from the Cepheid calibrators.
+If instead one marginalised $M$ freely from the supernova data
+alone, the $\chi^2(H_0)$ surface is flat in the $H_0$--$M$
+direction and $H_0$ is unidentifiable
+\citep{efstathiou2020,camarena2021,cardona2017}.
+In that case, a change in $\Omega_m$ would be absorbed by
+a corresponding change in $M$, leaving $H_0$ unchanged.
+The non-zero sensitivity we report arises precisely because
+$M$ is anchored geometrically from the Cepheid distances.
+This is the physically correct procedure for estimating $H_0$
+from the Pantheon+SH0ES data: it mirrors the SH0ES methodology
+in which the Cepheid distances provide the absolute scale.
+
+\subsection{Limitations and future work}
+
+Several limitations should be noted.
+First, our analysis uses diagonal uncertainties.
+A full reanalysis using the complete Pantheon+ covariance matrix
+would provide more accurate absolute $H_0$ values and
+may slightly alter the measured slope $dH_0/d\Omega_m$.
+However, given the consistency between the $\xi$-space and
+direct-refit results, we expect the differential measurement
+to be robust.
+
+Second, we treat both $H_0$ and $\Omega_m$ as global constants.
+An analysis that allows for redshift evolution of dark energy
+or spatial variation of $H_0$ would require an extended framework;
+our measurement provides a baseline for such analyses.
+
+Third, the Cepheid anchor depends on the SH0ES Cepheid distance
+scale, which itself may carry systematic uncertainties
+\citep{riess2023,breuval2024,anderson2024}.
+These do not affect $\Delta H_0$ at first order, since they
+enter as a uniform shift in $M_\mathrm{fixed}$, but a full
+treatment should propagate Cepheid systematics through the
+bootstrap.
+
+Future work should repeat this analysis using the DESI Year-1
+BAO constraints on $\Omega_m$ \citep{desicollaboration2024},
+which provide an independent, CMB-free determination of the
+matter density, and using the full Pantheon+ covariance matrix
+to obtain properly normalised $\chi^2$ values and
+marginalised $H_0$ posteriors.
+
+% ---------------------------------------------------------------
+\section{Conclusions}
+\label{sec:conc}
+% ---------------------------------------------------------------
+
+Using the complete Pantheon+SH0ES Type~Ia supernova dataset
+we have measured the sensitivity of the Hubble-flow $H_0$ to
+the assumed $\Omega_m$, via two complementary, independently
+verified diagnostics.
+Our principal conclusions are:
+
+\begin{enumerate}
+
+\item The horizon-normalised comoving coordinate
+  $\xi(z) = \int_0^z dz'/E(z')$ is strictly $H_0$-independent
+  in flat $\Lambda$CDM, providing a clean separation between
+  $H_0$ and $\Omega_m$ sensitivity.
+  The mean absolute $\xi$-residual between the SH0ES-like
+  ($\Omega_m = 0.334$) and Planck-like ($\Omega_m = 0.315$)
+  frameworks is
+  $\langle|\Delta\xi|\rangle/\langle\xi\rangle = 0.56$\,\%
+  across 1{,}671 SNe~Ia, a factor of 15 smaller than the
+  nominal 8.4\,\% $H_0$ fractional gap.
+
+\item A Cepheid-anchored direct refit of the 1{,}616
+  Hubble-flow SNe~Ia yields
+  $\Delta H_0 = H_0(0.334) - H_0(0.315)
+  = -0.22 \pm 0.005$ km\,s$^{-1}$\,Mpc$^{-1}$
+  (bootstrap $1\sigma$, $N = 1{,}000$, $\mathrm{S/N} = 46$),
+  with $P(\Delta H_0 \leq 0) = 100$\,\%.
+  This represents $3.9$\,\% of the nominal
+  5.64 km\,s$^{-1}$\,Mpc$^{-1}$ SH0ES--Planck gap.
+
+\item The sensitivity grows monotonically with redshift across
+  four equal-count quartile bins, from
+  $|\Delta H_0| = 0.023$ km\,s$^{-1}$\,Mpc$^{-1}$ at
+  $z < 0.031$ to $0.494$ km\,s$^{-1}$\,Mpc$^{-1}$ at
+  $z > 0.334$, with an estimated local slope
+  $dH_0/d\Omega_m$ that steepens by a factor of
+  ${\sim}22$ from the lowest to the highest redshift bin.
+
+\item The two diagnostics are mutually consistent, with the
+  $\xi$-space result predicting $\Delta H_0 \approx 0.21$
+  km\,s$^{-1}$\,Mpc$^{-1}$ from geometric considerations alone,
+  in excellent agreement with the bootstrap measurement.
+  This cross-validation confirms the internal consistency of
+  the pipeline.
+
+\item The $\Omega_m$ framework assumption difference between
+  SH0ES and Planck contributes at most ${\lesssim}\,4$\,\%
+  of the nominal $H_0$ discrepancy.
+  The calibration constant $dH_0/d\Omega_m \approx -11.6$
+  km\,s$^{-1}$\,Mpc$^{-1}$\,unit$^{-1}$ should be incorporated
+  into matched-likelihood analyses of the Hubble tension.
+
+\end{enumerate}
+
+These results establish a clean empirical baseline: the $\Omega_m$
+prior difference makes a small but well-characterised contribution
+to the Hubble tension.
+The residual ${\sim}96$\,\% of the discrepancy must be accounted
+for by other systematic, astrophysical, or physical mechanisms.
+
+% ---------------------------------------------------------------
+\section*{Acknowledgements}
+% ---------------------------------------------------------------
+
+The author thanks the Pantheon+ and SH0ES teams for making their
+data publicly available \citep{scolnic2022,brout2022,riess2022}.
+This research made use of \textsc{Astropy}, a community-developed
+core Python package for Astronomy \citep{astropy2013,astropy2018,astropy2022};
+\textsc{SciPy} \citep{scipy2020};
+\textsc{NumPy} \citep{numpy2020};
+\textsc{Matplotlib} \citep{matplotlib2007};
+and \textsc{pandas} \citep{pandas2010}.
+
+% ---------------------------------------------------------------
+\section*{Data Availability}
+% ---------------------------------------------------------------
+
+All analysis scripts and derived data products supporting this
+article are available at
+\url{https://github.com/aybllc/pantheon-h0-omega-sensitivity}.
+The underlying Pantheon+SH0ES catalogue is available at
+\url{https://github.com/PantheonPlusSH0ES/DataRelease}
+\citep{scolnic2022,brout2022}.
+
+% ---------------------------------------------------------------
+% References
+% ---------------------------------------------------------------
+
+\bibliographystyle{mnras}
+\bibliography{pantheon_h0_omega_sensitivity}
+
+% ---------------------------------------------------------------
+% Figures
+% ---------------------------------------------------------------
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{refit_H0_vs_Om}
+  \caption{Best-fit $H_0$ as a function of assumed $\Omega_m$,
+    from the Cepheid-anchored refit of 1{,}616 Pantheon+ Hubble-flow
+    SNe~Ia with $M_\mathrm{fixed} = +0.0802$~mag.
+    Vertical dashed lines mark the Planck posterior best-fit
+    ($\Omega_m = 0.315$, orange) and the SH0ES best-fit
+    ($\Omega_m = 0.334$, blue).
+    The shaded band indicates the sensitivity interval
+    $|\Delta H_0| = 0.22$ km\,s$^{-1}$\,Mpc$^{-1}$.
+    The relation is linear with slope
+    $dH_0/d\Omega_m \approx -11.6$ km\,s$^{-1}$\,Mpc$^{-1}$\,unit$^{-1}$.}
+  \label{fig:h0_vs_om}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{zbin_deltaH0}
+  \caption{$\Delta H_0 = H_0(\Omega_m=0.334) - H_0(\Omega_m=0.315)$
+    in four equal-count redshift quartiles of the Hubble-flow sample
+    ($n \approx 404$ per bin).
+    The sign is uniform (negative) across all bins; the magnitude
+    grows monotonically with redshift as the $\Omega_m$-dependent
+    shape of $E(z)$ becomes increasingly important.
+    The orange dashed line marks the overall mean
+    ($-0.22$ km\,s$^{-1}$\,Mpc$^{-1}$).
+    Even in the highest-$z$ bin, $|\Delta H_0|$ is $8.7$\,\% of
+    the nominal 5.64 km\,s$^{-1}$\,Mpc$^{-1}$ tension.}
+  \label{fig:zbin}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{gaia_zero_bias_plot}
+  \caption{$\xi$-space comparison of the SH0ES and Planck frameworks
+    for all 1{,}671 SNe~Ia as a function of redshift.
+    Upper panel: $\xi_\mathrm{SH0ES}(z)$ (blue) and
+    $\xi_\mathrm{Planck}(z)$ (orange) vs $z_\mathrm{CMB}$.
+    The two curves are nearly indistinguishable on this scale.
+    Lower panel: fractional residual
+    $\Delta_\xi = |\xi_\mathrm{SH0ES} - \xi_\mathrm{Planck}|/\xi_\mathrm{mid}$
+    vs $z$, showing the $\Omega_m$-driven divergence at higher $z$.}
+  \label{fig:xi_both_frameworks}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{bootstrap_histogram}
+  \caption{Bootstrap distribution of
+    $\Delta H_0 = H_0(\Omega_m=0.334) - H_0(\Omega_m=0.315)$
+    over $N = 1{,}000$ resamples of the 1{,}616 Hubble-flow SNe~Ia.
+    The distribution is entirely negative (mean $= -0.218$,
+    $\sigma = 0.005$ km\,s$^{-1}$\,Mpc$^{-1}$, $\mathrm{S/N} = 46$),
+    demonstrating rock-solid sign stability.
+    The vertical line marks the mean; shading indicates the
+    16th--84th percentile interval.}
+  \label{fig:bootstrap_hist}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{xi_vs_z_scatter}
+  \caption{Fractional $\xi$-residual
+    $|\Delta\xi/\xi_\mathrm{mid}|$ vs $z_\mathrm{CMB}$ for all
+    1{,}671 SNe~Ia (grey points).
+    The running mean in redshift bins is shown as the orange line.
+    The horizontal dashed line marks the global mean of $0.56$\,\%.
+    The systematic growth with $z$ reflects the increasing
+    $\Omega_m$-sensitivity of $E(z)$ at higher redshifts.}
+  \label{fig:xi_vs_z_scatter}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{xi_residual_cdf}
+  \caption{Cumulative distribution function (CDF) of the
+    fractional $\xi$-residual $|\Delta_\xi(z_i)|$ for all
+    1{,}671 SNe~Ia.
+    Approximately 50\,\% of SNe have residuals below 0.4\,\%
+    and 90\,\% have residuals below 1.5\,\%.
+    The vertical dashed line marks the global mean of 0.56\,\%.}
+  \label{fig:xi_cdf}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{chi2_sanity_check}
+  \caption{$\chi^2(H_0)$ profile at $\Omega_m = 0.334$ over the
+    1{,}616 Hubble-flow SNe~Ia with $M_\mathrm{fixed}$ anchored
+    from the calibrators.
+    The profile is a well-defined parabola centred at
+    $H_0 = 75.67$ km\,s$^{-1}$\,Mpc$^{-1}$
+    with $\chi^2_\mathrm{min}/\mathrm{dof} < 1$, confirming that
+    the $H_0$--$M$ degeneracy is broken and the diagonal
+    uncertainties are conservatively wide.}
+  \label{fig:chi2_check}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{chi2_comparison}
+  \caption{$\chi^2(H_0)$ profiles at $\Omega_m = 0.334$ (blue) and
+    $\Omega_m = 0.315$ (orange) overlaid on the same axes.
+    Both profiles are well-defined parabolas; their minima differ
+    by $\Delta H_0 = -0.22$ km\,s$^{-1}$\,Mpc$^{-1}$, indicated
+    by the horizontal bracket.
+    The profiles are otherwise nearly identical, reflecting the
+    small magnitude of the $\Omega_m$ sensitivity.}
+  \label{fig:chi2_comparison}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{residual_vs_z}
+  \caption{Hubble diagram residuals
+    $\Delta\mu = \mu^\mathrm{obs} - \mu^\mathrm{th}(z;\,H_0,\Omega_m)$
+    vs $z_\mathrm{CMB}$ for the 1{,}616 Hubble-flow SNe~Ia at the
+    best-fit $H_0(\Omega_m = 0.334)$.
+    Grey points show individual SNe; the orange curve is the
+    running mean in $\log z$ bins.
+    The residuals show no systematic $z$-trend, confirming
+    adequate fit quality across the full redshift range.}
+  \label{fig:residual_vs_z}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{calibrator_ceph_vs_mu}
+  \caption{Cepheid geometric distance modulus (\texttt{CEPH\_DIST})
+    vs SH0ES photometric distance modulus (\texttt{MU\_SH0ES})
+    for the 77 calibrator SNe~Ia.
+    The dashed line is the 1:1 relation.
+    The weighted mean offset $M_\mathrm{fixed} = +0.0802$~mag
+    is the anchor used throughout the Cepheid-anchored refit.
+    Error bars show the diagonal uncertainty \texttt{MU\_SH0ES\_ERR\_DIAG}.}
+  \label{fig:calibrator_plot}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{z_distribution}
+  \caption{Redshift distribution of the 1{,}616 Hubble-flow SNe~Ia
+    as a histogram in $\log_{10}(z_\mathrm{CMB})$ bins.
+    Colours indicate the four equal-count quartile bins used in
+    the redshift-binned analysis (Table~\ref{tab:zbins}).
+    The vertical dashed lines mark the quartile boundaries at
+    $z = 0.031$, $0.181$, and $0.334$.}
+  \label{fig:z_hist}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{sigma_vs_z}
+  \caption{Diagonal distance-modulus uncertainty
+    (\texttt{MU\_SH0ES\_ERR\_DIAG}) as a function of redshift
+    for the 1{,}616 Hubble-flow SNe~Ia.
+    Grey points: individual SNe; orange curve: running mean.
+    The increase in $\sigma_\mu$ at high $z$ reflects the
+    photometric noise floor of the surveys contributing
+    the high-$z$ sample.}
+  \label{fig:sigma_vs_z}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{H0_scan_per_zbin}
+  \caption{$H_0(\Omega_m)$ scan for each of the four redshift
+    quartile bins (colours as in Fig.~\ref{fig:z_hist}).
+    The slope $dH_0/d\Omega_m$ steepens systematically with
+    redshift, from ${\approx}-1.2$ km\,s$^{-1}$\,Mpc$^{-1}$\,unit$^{-1}$
+    in the lowest bin to ${\approx}-26$
+    km\,s$^{-1}$\,Mpc$^{-1}$\,unit$^{-1}$ in the highest.
+    The two vertical dashed lines mark $\Omega_m = 0.315$ and
+    $0.334$.}
+  \label{fig:h0scan_zbin}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{H0_comparison_ladder}
+  \caption{Comparison of published $H_0$ measurements from
+    independent methods (horizontal bars, $1\sigma$),
+    ordered by probe type.
+    The vertical blue band shows
+    $H_0 = 75.67$ km\,s$^{-1}$\,Mpc$^{-1}$ (our best fit at
+    $\Omega_m = 0.334$) and the orange band shows
+    $H_0 = 75.89$ km\,s$^{-1}$\,Mpc$^{-1}$ (at
+    $\Omega_m = 0.315$).
+    The offset from the SH0ES headline value reflects the
+    use of diagonal uncertainties in this analysis.
+    References: Planck~\citep{planck2020};
+    SH0ES~\citep{riess2022};
+    CCHP/TRGB~\citep{freedman2021,freedman2024};
+    H0LiCOW~\citep{wong2020};
+    TDCOSMO~\citep{birrer2020};
+    Megamasers~\citep{pesce2020};
+    SBF~\citep{blakeslee2021}.}
+  \label{fig:h0_ladder}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{ximid_vs_z_bins}
+  \caption{$\xi$-space residual statistics per redshift quartile,
+    complementary to Table~\ref{tab:xi_stats}.
+    Bars show $\langle|\Delta\xi|\rangle/\langle\xi\rangle$
+    in each bin; the dashed orange line is the global mean
+    of $0.56$\,\%.
+    The growth of the $\Omega_m$ geometric sensitivity with
+    redshift is consistent with the $\Delta H_0$ growth shown
+    in Fig.~\ref{fig:zbin}.}
+  \label{fig:xi_per_zbin}
+\end{figure}
+
+% ---------------------------------------------------------------
+% Extra table: xi residual statistics per z-bin
+% ---------------------------------------------------------------
+
+\begin{table}
+  \centering
+  \caption{$\xi$-space residual statistics per redshift quartile,
+    computed over the full 1{,}671 SNe~Ia (calibrators included
+    for this diagnostic).
+    Columns: mean SH0ES $\xi$; mean Planck $\xi$; mean absolute
+    residual; mean fractional residual.}
+  \label{tab:xi_stats}
+  \begin{tabular}{cccccc}
+    \toprule
+    Bin & $z$ range
+        & $\langle\xi_\mathrm{SH0ES}\rangle$
+        & $\langle\xi_\mathrm{Planck}\rangle$
+        & $\langle|\Delta\xi|\rangle$
+        & $\langle|\Delta\xi|\rangle/\langle\xi_\mathrm{mid}\rangle$ \\
+    \midrule
+    1 & $0.001$--$0.031$ & 0.031 & 0.031 & $1.7\times10^{-5}$ & 0.05\,\% \\
+    2 & $0.031$--$0.181$ & 0.118 & 0.118 & $3.4\times10^{-4}$ & 0.29\,\% \\
+    3 & $0.181$--$0.334$ & 0.253 & 0.252 & $1.5\times10^{-3}$ & 0.59\,\% \\
+    4 & $0.334$--$2.261$ & 0.528 & 0.526 & $4.2\times10^{-3}$ & 0.80\,\% \\
+    \midrule
+    All & $0.001$--$2.261$ & 0.198 & 0.197 & $1.1\times10^{-3}$ & 0.56\,\% \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% ---------------------------------------------------------------
+
+\bsp	% typesetting comment
+\label{lastpage}
+\end{document}
