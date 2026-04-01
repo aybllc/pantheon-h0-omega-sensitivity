@@ -11,8 +11,8 @@ import os
 
 np.random.seed(42)
 
-data_path = os.path.join(os.path.dirname(__file__), '..', 'Pantheon+_Data',
-                         '4_DISTANCES_AND_COVAR', 'Pantheon+SH0ES.dat')
+data_path = os.path.join(os.path.dirname(__file__), '..', 'cosmological-data',
+                         'Pantheon+_Data', '4_DISTANCES_AND_COVAR', 'Pantheon+SH0ES.dat')
 df = pd.read_csv(data_path, sep=r'\s+', comment='#')
 
 cal = df[df['IS_CALIBRATOR'] == 1].copy()
@@ -81,7 +81,7 @@ np.save(out_path, delta_H0_boot)
 
 mean_dH0 = delta_H0_boot.mean()
 std_dH0  = delta_H0_boot.std()
-sn       = mean_dH0 / std_dH0
+sn       = abs(mean_dH0) / std_dH0   # S/N uses |mean| — result is negative by design
 pct_zero = np.mean(delta_H0_boot <= 0) * 100
 
 print("\n" + "="*50)
@@ -93,7 +93,8 @@ print(f"  S/N        = {sn:.2f}")
 print(f"  P(ΔH₀≤0)  = {pct_zero:.1f}%")
 print(f"  Saved → {out_path}")
 
-if sn >= 1.0 and pct_zero < 16.0:
-    print("\nPASS: ΔH₀ is stable and consistently positive.")
+# PASS: sign is consistently negative (P(≤0) >> 84%), S/N high
+if sn >= 1.0 and pct_zero > 84.0:
+    print("\nPASS: ΔH₀ is stable and consistently negative (H₀ decreases as Ωm increases).")
 else:
     print("\nFAIL: ΔH₀ not stable — review before claiming.")

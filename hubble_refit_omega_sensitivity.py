@@ -27,8 +27,8 @@ import os
 # ---------------------------------------------------------------------------
 # Load data
 # ---------------------------------------------------------------------------
-data_path = os.path.join(os.path.dirname(__file__), '..', 'Pantheon+_Data',
-                         '4_DISTANCES_AND_COVAR', 'Pantheon+SH0ES.dat')
+data_path = os.path.join(os.path.dirname(__file__), '..', 'cosmological-data',
+                         'Pantheon+_Data', '4_DISTANCES_AND_COVAR', 'Pantheon+SH0ES.dat')
 df = pd.read_csv(data_path, sep=r'\s+', comment='#')
 
 # Calibrators: Cepheid-anchored hosts, z << 1
@@ -142,14 +142,23 @@ H0_grid = np.array(H0_grid)
 # ---------------------------------------------------------------------------
 # Cross-check with Result 1
 # ---------------------------------------------------------------------------
-xi_frac_pct = 0.57    # from gaia_zero_bias_test.py
-H0_gap_pct  = abs((73.04 - 67.4) / 67.4 * 100)   # nominal SH0ES - Planck
+# xi_frac_pct derived from gaia_zero_bias_results.csv if available, else noted as ~0.56%
+xi_results_path = os.path.join(os.path.dirname(__file__), 'gaia_zero_bias_results.csv')
+if os.path.exists(xi_results_path):
+    xi_df = pd.read_csv(xi_results_path)
+    xi_mid = (xi_df['xi_shoes'] + xi_df['xi_planck']) / 2
+    xi_frac_pct = xi_df['abs_delta_xi'].mean() / xi_mid.mean() * 100
+    xi_n = len(xi_df)
+else:
+    xi_frac_pct = 0.56   # fallback from paper result
+    xi_n = 1671
+H0_gap_pct  = abs((73.04 - 67.4) / 67.4 * 100)   # nominal SH0ES–Planck gap
 
 print("\n" + "="*60)
 print("CROSS-CHECK: ξ-space vs direct refit")
 print("="*60)
 print(f"  Nominal SH0ES – Planck H₀ gap:  {H0_gap_pct:.1f}%")
-print(f"  ξ-space fractional residual:    {xi_frac_pct:.2f}%")
+print(f"  ξ-space fractional residual:    {xi_frac_pct:.2f}%  (n={xi_n} SNe Ia)")
 print(f"  Direct refit ΔH₀:               {abs(delta_H0_pct):.2f}%")
 
 # ---------------------------------------------------------------------------
@@ -191,7 +200,7 @@ print("PAPER RESULT SUMMARY (both diagnostics)")
 print("="*60)
 print(f"""
 Result 1 — ξ-space (gaia_zero_bias_test.py):
-  Mean fractional ξ residual = {xi_frac_pct:.2f}% across {len(hf)} Hubble-flow SNe Ia
+  ⟨|Δξ|⟩/⟨ξ⟩ = {xi_frac_pct:.2f}% across {xi_n} SNe Ia (z > 0.001)
   between SH0ES-like (Ωm=0.334) and Planck-like (Ωm=0.315) frameworks.
 
 Result 2 — Direct Cepheid-anchored refit (this script):

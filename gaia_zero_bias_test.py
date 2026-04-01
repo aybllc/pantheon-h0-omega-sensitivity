@@ -16,8 +16,9 @@ different Ω_m values (0.334 vs 0.315), not from H₀.
 
 Data: Pantheon+SH0ES.dat — 1,701 SNe Ia with zCMB, MU_SH0ES, IS_CALIBRATOR
 
-UHA claim: most of the 5σ Hubble tension was a coordinate-frame artifact.
-This test measures what fraction survives in ξ space.
+This script measures the geometric (Ωm-driven) residual in ξ-space between
+the SH0ES-like and Planck-like frameworks. The Ωm difference (0.334 vs 0.315)
+is the sole source of any |Δξ| residual; H₀ cancels exactly in d_c/d_H.
 """
 
 import numpy as np
@@ -46,8 +47,8 @@ d_H_PLANCK = c_kms / PLANCK['H0']  # Mpc
 # ---------------------------------------------------------------------------
 # Load data
 # ---------------------------------------------------------------------------
-data_path = os.path.join(os.path.dirname(__file__), '..', 'Pantheon+_Data',
-                         '4_DISTANCES_AND_COVAR', 'Pantheon+SH0ES.dat')
+data_path = os.path.join(os.path.dirname(__file__), '..', 'cosmological-data',
+                         'Pantheon+_Data', '4_DISTANCES_AND_COVAR', 'Pantheon+SH0ES.dat')
 df = pd.read_csv(data_path, sep=r'\s+', comment='#')
 
 print(f"Loaded {len(df)} rows from Pantheon+SH0ES.dat")
@@ -111,13 +112,13 @@ print(f"  Std:      {abs_delta.std():.2e}")
 print(f"\nFraction with |Δξ| < 1e-2: {(abs_delta < 1e-2).mean()*100:.1f}%")
 print(f"Fraction with |Δξ| < 1e-3: {(abs_delta < 1e-3).mean()*100:.1f}%")
 
-# Relative tension removed
+# ξ-space residual as fraction of H₀ gap
 raw_tension = abs(SH0ES['H0'] - PLANCK['H0']) / PLANCK['H0']
 xi_tension  = abs_delta.mean() / np.mean((xi_shoes + xi_planck) / 2)
-tension_removed = (1 - xi_tension / raw_tension) * 100
-print(f"\nH₀ fractional tension (raw):    {raw_tension*100:.1f}%")
-print(f"ξ fractional residual (mean):   {xi_tension*100:.4f}%")
-print(f"Tension removed by ξ:           {tension_removed:.1f}%")
+xi_fraction_of_gap = xi_tension / raw_tension * 100
+print(f"\nH₀ fractional gap (SH0ES–Planck):     {raw_tension*100:.1f}%")
+print(f"ξ fractional residual (ratio-of-means): {xi_tension*100:.4f}%")
+print(f"ξ residual as fraction of H₀ gap:      {xi_fraction_of_gap:.1f}%")
 
 # ---------------------------------------------------------------------------
 # Low-z limit: ξ ≈ z (pure invariance regime)
@@ -140,17 +141,20 @@ print(f"\n" + "="*60)
 print("Interpretation")
 print("="*60)
 print(f"""
-The H₀ tension (8.6%) maps to a ξ residual of ~{xi_tension*100:.3f}% (mean).
-In ξ space, {tension_removed:.0f}% of the apparent tension dissolves because
-the H₀ factor cancels in d_c/d_H.
+The nominal H₀ fractional gap (SH0ES–Planck) is {raw_tension*100:.1f}%.
+The ξ-space residual attributable to the Ωm difference (0.334 vs 0.315)
+is {xi_tension*100:.3f}% (ratio-of-means: ⟨|Δξ|⟩ / ⟨ξ_mid⟩).
 
-What remains is the Ω_m residual (0.334 vs 0.315), which is a real
-physical parameter difference — not a coordinate artifact.
+This represents {xi_fraction_of_gap:.1f}% of the nominal H₀ gap.
+The remainder reflects other physical or systematic sources and is
+not quantified by this diagnostic.
 
-UHA claim validation:
-  Expected: |Δξ| << H₀ fractional tension
-  Observed: |Δξ_mean| = {abs_delta.mean():.2e} vs ΔH₀/H₀ = {raw_tension:.4f}
-  Ratio:    {xi_tension/raw_tension:.4f}  (1.0 = no reduction, 0.0 = perfect)
+ξ-space diagnostic:
+  ⟨|Δξ|⟩     = {abs_delta.mean():.2e}
+  ⟨ξ_mid⟩    = {np.mean((xi_shoes+xi_planck)/2):.4f}
+  ratio       = {xi_tension*100:.4f}%
+  H₀ gap      = {raw_tension*100:.1f}%
+  fraction    = {xi_fraction_of_gap:.1f}%
 """)
 
 # ---------------------------------------------------------------------------
