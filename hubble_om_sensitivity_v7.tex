@@ -232,7 +232,7 @@ Section~\ref{sec:systematics} for discussion).
 The diagonal uncertainty (MU\_SH0ES\_ERR\_DIAG) increases with redshift as the photometric noise floor of the high-$z$ surveys grows (Fig.~\ref{fig:sigma_vs_z}).
 
 \begin{figure}
-  \includegraphics[width=\columnwidth]{sigma_vs_z}
+  \includegraphics[width=\columnwidth, alt={Scatter plot of distance-modulus uncertainty versus redshift for 1616 Hubble-flow Type Ia supernovae. Grey points show individual supernovae; orange curve shows the running mean. Uncertainty increases at high redshift, reflecting the photometric noise floor of high-z surveys.}]{sigma_vs_z}
   \caption{Diagonal distance-modulus uncertainty
     (MU\_SH0ES\_ERR\_DIAG) as a function of redshift
     for the 1{,}616 Hubble-flow SNe~Ia.
@@ -269,7 +269,7 @@ Hubble flow \citep{peterson2022}.
 The redshift distribution of the Hubble-flow sample is shown in Fig.~\ref{fig:z_hist}.
 
 \begin{figure}
-  \includegraphics[width=\columnwidth]{z_distribution}
+  \includegraphics[width=\columnwidth, alt={Histogram of the redshift distribution of 1616 Hubble-flow Type Ia supernovae in log10(z_CMB) bins. Four colours indicate equal-count quartile bins. Vertical dashed lines mark quartile boundaries at z equals 0.031, 0.181, and 0.334.}]{z_distribution}
   \caption{Redshift distribution of the 1{,}616 Hubble-flow SNe~Ia
     as a histogram in $\log_{10}(z_\mathrm{CMB})$ bins.
     Colours indicate the four equal-count quartile bins used in
@@ -440,7 +440,7 @@ differential measurement $\Delta H_0$ (see
 Section~\ref{sec:systematics}).
 
 \begin{figure}
-  \includegraphics[width=\columnwidth]{calibrator_ceph_vs_mu}
+  \includegraphics[width=\columnwidth, alt={Scatter plot comparing Cepheid geometric distance modulus versus SH0ES photometric distance modulus for 77 calibrator Type Ia supernovae. Dashed line shows the 1:1 relation. The weighted mean vertical offset gives M_fixed equals +0.0802 mag. Error bars show diagonal distance-modulus uncertainty.}]{calibrator_ceph_vs_mu}
   \caption{Cepheid geometric distance modulus (CEPH\_DIST)
     vs SH0ES photometric distance modulus (MU\_SH0ES)
     for the 77 calibrator SNe~Ia.
@@ -548,7 +548,7 @@ is shown in Fig.~\ref{fig:xi_vs_z_scatter}.
 The per-quartile $\xi$-residual statistics are summarised in Table~\ref{tab:xi_stats} and Fig.~\ref{fig:xi_per_zbin}.
 
 \begin{figure}
-  \includegraphics[width=\columnwidth]{ximid_vs_z_bins}
+  \includegraphics[width=\columnwidth, alt={Bar chart of mean absolute fractional xi-residual in four redshift quartile bins. Bars show the Omega_m geometric sensitivity per bin; dashed orange line marks the global mean of 0.56 per cent. The residual grows monotonically from the lowest to the highest redshift bin.}]{ximid_vs_z_bins}
   \caption{$\xi$-space residual statistics per redshift quartile,
     complementary to Table~\ref{tab:xi_stats}.
     Bars show $\langle|\Delta\xi|\rangle/\langle\xi_\mathrm{mid}\rangle$
@@ -587,7 +587,7 @@ The per-quartile $\xi$-residual statistics are summarised in Table~\ref{tab:xi_s
 \end{table}
 
 \begin{figure}
-  \includegraphics[width=\columnwidth]{xi_vs_z_scatter}
+  \includegraphics[width=\columnwidth, alt={Scatter plot of fractional xi-residual magnitude versus redshift for all 1671 Pantheon+ Type Ia supernovae, shown as grey points with an orange running mean. Horizontal dashed line marks the global mean of 0.56 per cent. Residuals grow systematically with redshift, reflecting increasing Omega_m sensitivity of the comoving integrand at higher z.}]{xi_vs_z_scatter}
   \caption{Fractional $\xi$-residual
     $|\Delta\xi/\xi_\mathrm{mid}|$ vs $z_\mathrm{CMB}$ for all
     1{,}671 SNe~Ia (grey points).
@@ -599,7 +599,7 @@ The per-quartile $\xi$-residual statistics are summarised in Table~\ref{tab:xi_s
 \end{figure}
 
 \begin{figure}
-  \includegraphics[width=\columnwidth]{gaia_zero_bias_plot}
+  \includegraphics[width=\columnwidth, alt={Three-panel figure comparing xi-space comoving coordinates under SH0ES and Planck frameworks. Left panel: xi versus redshift for both frameworks, nearly indistinguishable. Centre panel: absolute xi-residual on a log scale showing divergence at higher z. Right panel: histogram of log10 of absolute xi-residual; dashed red line marks the nominal delta-H0 over H0 fractional gap for reference.}]{gaia_zero_bias_plot}
   \caption{$\xi$-space comparison of the SH0ES and Planck frameworks
     for all SNe~Ia with $z > 0.005$.
     Left panel: $\xi(z)$ for both frameworks vs $z_\mathrm{CMB}$;
@@ -622,7 +622,7 @@ The largest residuals occur at the highest redshifts, where the
 geometric sensitivity to $\Omega_m$ is greatest.
 
 \begin{figure}
-  \includegraphics[width=\columnwidth]{xi_residual_cdf}
+  \includegraphics[width=\columnwidth, alt={Cumulative distribution function of the fractional xi-residual for all 1671 Pantheon+ Type Ia supernovae. Approximately 50 per cent of supernovae have residuals below 0.4 per cent and 90 per cent have residuals below 1.5 per cent. Vertical dashed line marks the global mean of 0.56 per cent.}]{xi_residual_cdf}
   \caption{Cumulative distribution function (CDF) of the
     fractional $\xi$-residual $|\Delta_\xi(z_i)|$ for all
     1{,}671 SNe~Ia.
@@ -696,7 +696,7 @@ does not include uncertainty associated with covariance modelling,
 nuisance treatment, or alternative likelihood choices.
 
 \begin{figure}
-  \includegraphics[width=\columnwidth]{bootstrap_histogram}
+  \includegraphics[width=\columnwidth, alt={Histogram of the bootstrap distribution of delta-H0 equals H0(Omega_m=0.334) minus H0(Omega_m=0.315) over 1000 resamples of 1616 Hubble-flow Type Ia supernovae. The distribution is entirely negative, with mean minus 0.218 and standard deviation 0.005 km per second per megaparsec. Vertical line marks the mean; shading indicates the 16th to 84th percentile interval.}]{bootstrap_histogram}
   \caption{Bootstrap distribution of
     $\Delta H_0 = H_0(\Omega_m=0.334) - H_0(\Omega_m=0.315)$
     over $N = 1{,}000$ resamples of the 1{,}616 Hubble-flow SNe~Ia.
@@ -750,7 +750,7 @@ indicating that, within the sampled range, the two-point estimate
 is consistent with a nearly linear local response.
 
 \begin{figure}
-  \includegraphics[width=\columnwidth]{refit_H0_vs_Om}
+  \includegraphics[width=\columnwidth, alt={Line plot of best-fit H0 in km per second per megaparsec versus assumed matter density Omega_m, from the Cepheid-anchored refit of 1616 Pantheon+ Hubble-flow supernovae. The relation is linear with slope approximately minus 11.6 km per second per megaparsec per unit Omega_m. Vertical dashed lines mark Omega_m=0.315 (Planck, orange) and 0.334 (SH0ES, blue). Shaded band shows the delta-H0=0.22 sensitivity interval.}]{refit_H0_vs_Om}
   \caption{Best-fit $H_0$ as a function of assumed $\Omega_m$,
     from the Cepheid-anchored refit of 1{,}616 Pantheon+ Hubble-flow
     SNe~Ia with $M_\mathrm{fixed} = +0.0802$~mag.
@@ -828,7 +828,7 @@ are conservatively wide, as expected when the full covariance is
 not used.
 
 \begin{figure}
-  \includegraphics[width=\columnwidth]{chi2_sanity_check}
+  \includegraphics[width=\columnwidth, alt={Chi-squared profile as a function of H0 at fixed Omega_m=0.334, fitted to 1616 Hubble-flow supernovae. The profile is a well-defined parabola centred at H0=75.67 km per second per megaparsec with chi-squared minimum per degree of freedom less than 1, confirming the H0-M degeneracy is broken and diagonal uncertainties are conservatively wide.}]{chi2_sanity_check}
   \caption{$\chi^2(H_0)$ profile at $\Omega_m = 0.334$ over the
     1{,}616 Hubble-flow SNe~Ia with $M_\mathrm{fixed}$ anchored
     from the calibrators.
@@ -841,7 +841,7 @@ not used.
 \end{figure}
 
 \begin{figure}
-  \includegraphics[width=\columnwidth]{chi2_comparison}
+  \includegraphics[width=\columnwidth, alt={Overlaid chi-squared profiles as functions of H0 at Omega_m=0.334 (blue) and Omega_m=0.315 (orange). Both profiles are well-defined parabolas whose minima differ by delta-H0=minus 0.22 km per second per megaparsec, indicated by a horizontal bracket. The profiles are otherwise nearly identical, reflecting the small magnitude of the Omega_m sensitivity.}]{chi2_comparison}
   \caption{$\chi^2(H_0)$ profiles at $\Omega_m = 0.334$ (blue) and
     $\Omega_m = 0.315$ (orange) overlaid on the same axes.
     Both profiles are well-defined parabolas; their minima differ
@@ -867,7 +867,7 @@ The results are summarised in Table~\ref{tab:zbins} and shown in
 Fig.~\ref{fig:zbin} and Fig.~\ref{fig:h0scan_zbin}.
 
 \begin{figure}
-  \includegraphics[width=\columnwidth]{H0_scan_per_zbin}
+  \includegraphics[width=\columnwidth, alt={Four-panel line plot of H0 versus Omega_m for each of the four redshift quartile bins, colour-coded to match the redshift histogram. The slope dH0/dOmega_m steepens from approximately minus 1.2 in the lowest bin to approximately minus 26 km per second per megaparsec per unit Omega_m in the highest bin. Vertical dashed lines mark Omega_m=0.315 and 0.334.}]{H0_scan_per_zbin}
   \caption{$H_0(\Omega_m)$ scan for each of the four redshift
     quartile bins (colours as in Fig.~\ref{fig:z_hist}).
     The slope $dH_0/d\Omega_m$ steepens systematically with
@@ -880,7 +880,7 @@ Fig.~\ref{fig:zbin} and Fig.~\ref{fig:h0scan_zbin}.
 \end{figure}
 
 \begin{figure}
-  \includegraphics[width=\columnwidth]{zbin_deltaH0}
+  \includegraphics[width=\columnwidth, alt={Bar chart of delta-H0 equals H0(Omega_m=0.334) minus H0(Omega_m=0.315) in four equal-count redshift quartile bins of approximately 404 supernovae each. All bars are negative and the magnitude grows monotonically with redshift. Orange dashed line marks the overall mean of minus 0.22 km per second per megaparsec. Even in the highest-z bin, the shift represents only 8.7 per cent of the nominal SH0ES-Planck tension.}]{zbin_deltaH0}
   \caption{$\Delta H_0 = H_0(\Omega_m=0.334) - H_0(\Omega_m=0.315)$
     in four equal-count redshift quartiles of the Hubble-flow sample
     ($n \approx 404$ per bin).
@@ -971,7 +971,7 @@ is not affected by this limitation.
 Residuals of the best-fit distance moduli show no systematic redshift trend (Fig.~\ref{fig:residual_vs_z}), confirming adequate fit quality across the full redshift range.
 
 \begin{figure}
-  \includegraphics[width=\columnwidth]{residual_vs_z}
+  \includegraphics[width=\columnwidth, alt={Scatter plot of Hubble diagram residuals (observed minus theoretical distance modulus) versus redshift for 1616 Hubble-flow Type Ia supernovae at the best-fit H0 for Omega_m=0.334. Grey points show individual supernovae; orange curve shows the running mean in log-z bins. No systematic redshift trend is visible, confirming adequate fit quality across the full redshift range.}]{residual_vs_z}
   \caption{Hubble diagram residuals
     $\Delta\mu = \mu^\mathrm{obs} - \mu^\mathrm{th}(z;\,H_0,\Omega_m)$
     vs $z_\mathrm{CMB}$ for the 1{,}616 Hubble-flow SNe~Ia at the
@@ -1140,7 +1140,7 @@ values (${\approx}\,75.7$ km\,s$^{-1}$\,Mpc$^{-1}$) should not
 be interpreted as standalone competitive $H_0$ determinations.
 
 \begin{figure}
-  \includegraphics[width=\columnwidth]{H0_comparison_ladder}
+  \includegraphics[width=\columnwidth, alt={Ladder diagram comparing published H0 measurements in km per second per megaparsec from seven independent methods: Planck CMB, SH0ES distance ladder, CCHP TRGB, H0LiCOW time delays, TDCOSMO, Megamasers, and surface brightness fluctuations. Horizontal bars show 1-sigma intervals, ordered by probe type. Vertical blue band marks this work's best-fit of 75.67 at Omega_m=0.334; orange band marks 75.89 at Omega_m=0.315.}]{H0_comparison_ladder}
   \caption{Comparison of published $H_0$ measurements from
     independent methods (horizontal bars, $1\sigma$),
     ordered by probe type.
