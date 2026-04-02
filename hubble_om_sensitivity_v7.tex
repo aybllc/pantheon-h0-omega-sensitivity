@@ -4,7 +4,7 @@
 % Eric D. Martin — ORCID: 0009-0006-5944-1742
 % MNRAS full research article format
 
-\documentclass[fleqn,usenatbib]{mnras}
+\documentclass[fleqn,usenatbib,useAMS]{mnras}
 
 \usepackage[T1]{fontenc}
 \usepackage{newtxtext,newtxmath}
@@ -13,8 +13,8 @@
 % booktabs removed — MNRAS requires \hline style tables
 \usepackage{url}
 
-% Match published MNRAS style: only citation links in blue
-\hypersetup{linkcolor=black,urlcolor=black,citecolor=blue}
+% Match published MNRAS style: all links blue, author names not separately linked
+\hypersetup{linkcolor=blue,urlcolor=blue,citecolor=blue}
 
 % Allow VAN-style name sorting in bibliography
 \DeclareRobustCommand{\VAN}[3]{#2}
@@ -84,7 +84,7 @@ both experiments.
 \end{abstract}
 
 \begin{keywords}
-cosmological parameters -- distance scale -- supernovae: general
+cosmological parameters -- distance scale -- supernovae: general -- dark energy -- cosmology: observations
 \end{keywords}
 
 %%%%%%%%%%% BODY %%%%%%%%%%%
@@ -379,7 +379,7 @@ unit difference in $\Omega_m$ between the two frameworks.
 
 We evaluate $\xi_\mathrm{SH0ES}(z_i)$ and $\xi_\mathrm{Planck}(z_i)$
 (equation~\ref{eq:xi}) at each observed $z_\mathrm{CMB}$ using numerical integration via
-astropy's FlatLambdaCDM class
+\textsc{astropy}'s \textsc{FlatLambdaCDM} class
 \citep{astropy2013,astropy2018,astropy2022}.
 We then compute the mean absolute $\xi$-residual as
 \begin{equation}
@@ -466,7 +466,7 @@ $H_0 \in [68.0, 82.0]$ km\,s$^{-1}$\,Mpc$^{-1}$ with 71
 equally spaced points, followed by bounded scalar minimisation
 within $\pm 2$ km\,s$^{-1}$\,Mpc$^{-1}$ of the grid minimum,
 with absolute tolerance $10^{-4}$ km\,s$^{-1}$\,Mpc$^{-1}$.
-Both steps use SciPy's bounded minimisation
+Both steps use \textsc{SciPy}'s bounded minimisation
 \citep{scipy2020}.
 
 \subsubsection{Bootstrap uncertainty}
@@ -554,6 +554,32 @@ The per-quartile $\xi$-residual statistics are summarised in Table~\ref{tab:xi_s
     in Fig.~\ref{fig:zbin}.}
   \label{fig:xi_per_zbin}
 \end{figure}
+
+\begin{table}
+  \centering
+  \caption{$\xi$-space residual statistics per redshift quartile,
+    computed over the full 1{,}671 SNe~Ia (calibrators included
+    for this diagnostic).
+    Columns: mean SH0ES $\xi$; mean Planck $\xi$; mean absolute
+    residual; mean fractional residual.}
+  \label{tab:xi_stats}
+  \begin{tabular}{cccccc}
+    \hline
+    Bin & $z$ range
+        & $\langle\xi_\mathrm{SH0ES}\rangle$
+        & $\langle\xi_\mathrm{Planck}\rangle$
+        & $\langle|\Delta\xi|\rangle$
+        & $\langle|\Delta\xi|\rangle/\langle\xi_\mathrm{mid}\rangle$ \\
+    \hline
+    1 & $0.001$--$0.031$ & 0.031 & 0.031 & $1.7\times10^{-5}$ & 0.05\,\% \\
+    2 & $0.031$--$0.181$ & 0.118 & 0.118 & $3.4\times10^{-4}$ & 0.29\,\% \\
+    3 & $0.181$--$0.334$ & 0.253 & 0.252 & $1.5\times10^{-3}$ & 0.59\,\% \\
+    4 & $0.334$--$2.261$ & 0.528 & 0.526 & $4.2\times10^{-3}$ & 0.80\,\% \\
+    \hline
+    All & $0.001$--$2.261$ & 0.198 & 0.197 & $1.1\times10^{-3}$ & 0.56\,\% \\
+    \hline
+  \end{tabular}
+\end{table}
 
 \begin{figure}
   \includegraphics[width=\columnwidth]{xi_vs_z_scatter}
@@ -1264,12 +1290,12 @@ The author declares no conflicts of interest.
 
 The author thanks the Pantheon+ and SH0ES teams for making their
 data publicly available \citep{scolnic2022,brout2022,riess2022}.
-This research made use of astropy, a community-developed
-core Python package for Astronomy \citep{astropy2013,astropy2018,astropy2022};
-SciPy \citep{scipy2020};
-NumPy \citep{numpy2020};
-Matplotlib \citep{matplotlib2007};
-and pandas \citep{pandas2010}.
+This research made use of \textsc{astropy}, a community-developed
+core \textsc{Python} package for Astronomy \citep{astropy2013,astropy2018,astropy2022};
+\textsc{SciPy} \citep{scipy2020};
+\textsc{NumPy} \citep{numpy2020};
+\textsc{Matplotlib} \citep{matplotlib2007};
+and \textsc{pandas} \citep{pandas2010}.
 
 % ---------------------------------------------------------------
 \section*{Data Availability}
@@ -1288,38 +1314,6 @@ The underlying Pantheon+SH0ES catalogue is available at
 
 \bibliographystyle{mnras}
 \bibliography{pantheon_h0_omega_sensitivity}
-
-% ---------------------------------------------------------------
-% Extra table: xi residual statistics per z-bin
-% ---------------------------------------------------------------
-
-\begin{table}
-  \centering
-  \caption{$\xi$-space residual statistics per redshift quartile,
-    computed over the full 1{,}671 SNe~Ia (calibrators included
-    for this diagnostic).
-    Columns: mean SH0ES $\xi$; mean Planck $\xi$; mean absolute
-    residual; mean fractional residual.}
-  \label{tab:xi_stats}
-  \begin{tabular}{cccccc}
-    \hline
-    Bin & $z$ range
-        & $\langle\xi_\mathrm{SH0ES}\rangle$
-        & $\langle\xi_\mathrm{Planck}\rangle$
-        & $\langle|\Delta\xi|\rangle$
-        & $\langle|\Delta\xi|\rangle/\langle\xi_\mathrm{mid}\rangle$ \\
-    \hline
-    1 & $0.001$--$0.031$ & 0.031 & 0.031 & $1.7\times10^{-5}$ & 0.05\,\% \\
-    2 & $0.031$--$0.181$ & 0.118 & 0.118 & $3.4\times10^{-4}$ & 0.29\,\% \\
-    3 & $0.181$--$0.334$ & 0.253 & 0.252 & $1.5\times10^{-3}$ & 0.59\,\% \\
-    4 & $0.334$--$2.261$ & 0.528 & 0.526 & $4.2\times10^{-3}$ & 0.80\,\% \\
-    \hline
-    All & $0.001$--$2.261$ & 0.198 & 0.197 & $1.1\times10^{-3}$ & 0.56\,\% \\
-    \hline
-  \end{tabular}
-\end{table}
-
-% ---------------------------------------------------------------
 
 \bsp	% typesetting comment
 \label{lastpage}
