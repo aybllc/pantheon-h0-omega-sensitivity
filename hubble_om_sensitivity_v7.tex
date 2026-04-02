@@ -50,7 +50,7 @@ Comparing the SH0ES-like ($\Omega_m = 0.334$, $H_0 = 73.04$
 km\,s$^{-1}$\,Mpc$^{-1}$) and Planck-like ($\Omega_m = 0.315$,
 $H_0 = 67.4$ km\,s$^{-1}$\,Mpc$^{-1}$) frameworks across all
 1{,}671 SNe~Ia, we measure a mean absolute $\xi$-residual of
-$\langle|\Delta\xi|\rangle/\langle\xi\rangle = 0.56$\,\%, a factor
+$\langle|\Delta\xi|\rangle/\langle\xi_\mathrm{mid}\rangle = 0.56$\,\%, a factor
 of 15 smaller than the nominal 8.4\,\% $H_0$ fractional gap.
 The second diagnostic uses a Cepheid-anchored direct refit: fixing the
 SN absolute magnitude $M$ from 77 calibrator SNe~Ia with Cepheid
@@ -343,7 +343,7 @@ We evaluate $\xi_\mathrm{SH0ES}(z_i)$ and $\xi_\mathrm{Planck}(z_i)$
 \citep{astropy2013,astropy2018,astropy2022}.
 We then compute the mean absolute $\xi$-residual as
 \begin{equation}
-  \frac{\langle|\Delta\xi|\rangle}{\langle\xi\rangle}
+  \frac{\langle|\Delta\xi|\rangle}{\langle\xi_\mathrm{mid}\rangle}
     = \frac{\displaystyle
         \frac{1}{N}\sum_{i=1}^N
             |\xi_\mathrm{SH0ES}(z_i) - \xi_\mathrm{Planck}(z_i)|}%
@@ -457,12 +457,12 @@ the relevant $\Omega_m$ range.
 Evaluating equation~(\ref{eq:xi_stat}) over all 1{,}671 SNe~Ia,
 the mean absolute $\xi$-residual between the two frameworks is:
 \begin{equation}
-  \frac{\langle|\Delta\xi|\rangle}{\langle\xi\rangle}
+  \frac{\langle|\Delta\xi|\rangle}{\langle\xi_\mathrm{mid}\rangle}
     = \frac{1.11\times10^{-3}}{0.197} = 0.56\,\%.
   \label{eq:xi_result}
 \end{equation}
 The mean absolute residual $\langle|\Delta\xi|\rangle = 1.11 \times 10^{-3}$
-is measured against a mean coordinate value of $\langle\xi\rangle = 0.197$.
+is measured against a mean coordinate value of $\langle\xi_\mathrm{mid}\rangle = 0.197$.
 The nominal $H_0$ fractional gap is
 $|{\Delta H_0}/{H_0}| = 5.64/70.2 = 8.4$\,\%, so the
 geometric $\xi$-space residual is a factor of
@@ -960,7 +960,7 @@ Our principal conclusions are:
   The mean absolute $\xi$-residual between the SH0ES-like
   ($\Omega_m = 0.334$) and Planck-like ($\Omega_m = 0.315$)
   frameworks is
-  $\langle|\Delta\xi|\rangle/\langle\xi\rangle = 0.56$\,\%
+  $\langle|\Delta\xi|\rangle/\langle\xi_\mathrm{mid}\rangle = 0.56$\,\%
   across 1{,}671 SNe~Ia, a factor of 15 smaller than the
   nominal 8.4\,\% $H_0$ fractional gap.
 
