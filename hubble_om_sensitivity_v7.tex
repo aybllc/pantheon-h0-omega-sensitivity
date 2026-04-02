@@ -10,7 +10,7 @@
 \usepackage{newtxtext,newtxmath}
 \usepackage{amsmath}
 \usepackage{graphicx}
-\usepackage{booktabs}
+% booktabs removed — MNRAS requires \hline style tables
 \usepackage{url}
 
 % Match published MNRAS style: only citation links in blue
@@ -260,14 +260,14 @@ $\xi$-space diagnostic.
     distance-modulus uncertainty.}
   \label{tab:samples}
   \begin{tabular}{lrcccc}
-    \toprule
+    \hline
     Sample & $n$ & $z_\mathrm{min}$ & $z_\mathrm{max}$
            & $\bar{z}$ & $\bar{\sigma}_\mu$ \\
-    \midrule
+    \hline
     Calibrators        &  77 & 0.001 & 0.017 & 0.007 & 0.091 \\
     Hubble-flow        & 1616 & 0.005 & 2.261 & 0.283 & 0.155 \\
     Full ($\xi$-space) & 1671 & 0.001 & 2.261 & 0.276 & 0.151 \\
-    \bottomrule
+    \hline
   \end{tabular}
 \end{table}
 
@@ -583,9 +583,9 @@ nuisance treatment, or alternative likelihood choices.
     over $N = 1{,}000$ resamples of the 1{,}616 Hubble-flow SNe~Ia.}
   \label{tab:bootstrap}
   \begin{tabular}{lc}
-    \toprule
+    \hline
     Statistic & Value (km\,s$^{-1}$\,Mpc$^{-1}$) \\
-    \midrule
+    \hline
     Mean                & $-0.218$ \\
     Median              & $-0.218$ \\
     Std ($1\sigma$)     & $0.005$  \\
@@ -593,7 +593,7 @@ nuisance treatment, or alternative likelihood choices.
     84th percentile     & $-0.213$ \\
     S/N                 & $46$     \\
     $P(\Delta H_0 \leq 0)$ & $100$\,\% \\
-    \bottomrule
+    \hline
   \end{tabular}
 \end{table}
 
@@ -625,9 +625,9 @@ is consistent with a nearly linear local response.
     $M_\mathrm{fixed} = +0.0802$~mag throughout.}
   \label{tab:h0scan}
   \begin{tabular}{cc}
-    \toprule
+    \hline
     $\Omega_m$ & $H_0$ (km\,s$^{-1}$\,Mpc$^{-1}$) \\
-    \midrule
+    \hline
     0.280 & 76.304 \\
     0.285 & 76.244 \\
     0.290 & 76.184 \\
@@ -645,7 +645,7 @@ is consistent with a nearly linear local response.
     0.350 & 75.492 \\
     0.355 & 75.436 \\
     0.360 & 75.380 \\
-    \bottomrule
+    \hline
   \end{tabular}
 \end{table}
 
@@ -701,19 +701,19 @@ Fig.~\ref{fig:zbin} and Fig.~\ref{fig:h0scan_zbin}.
     local sensitivity slope $dH_0/d\Omega_m$.}
   \label{tab:zbins}
   \begin{tabular}{ccrcccr}
-    \toprule
+    \hline
     Bin & $z$ range & $n$
         & $H_0(0.334)$ & $H_0(0.315)$
         & $\Delta H_0$ & $dH_0/d\Omega_m$ \\
         & & & \multicolumn{2}{c}{(km\,s$^{-1}$\,Mpc$^{-1}$)}
               & (km\,s$^{-1}$\,Mpc$^{-1}$)
               & (km\,s$^{-1}$\,Mpc$^{-1}$\,unit$^{-1}$)\\
-    \midrule
+    \hline
     1 & $0.005$--$0.031$ & 403 & 75.20 & 75.22 & $-0.023$ & $-1.2$ \\
     2 & $0.031$--$0.181$ & 405 & 75.52 & 75.61 & $-0.094$ & $-4.9$ \\
     3 & $0.181$--$0.334$ & 404 & 75.70 & 75.97 & $-0.265$ & $-14.0$ \\
     4 & $0.334$--$2.261$ & 404 & 76.24 & 76.73 & $-0.494$ & $-26.0$ \\
-    \bottomrule
+    \hline
   \end{tabular}
 \end{table}
 
@@ -1301,20 +1301,20 @@ The underlying Pantheon+SH0ES catalogue is available at
     residual; mean fractional residual.}
   \label{tab:xi_stats}
   \begin{tabular}{cccccc}
-    \toprule
+    \hline
     Bin & $z$ range
         & $\langle\xi_\mathrm{SH0ES}\rangle$
         & $\langle\xi_\mathrm{Planck}\rangle$
         & $\langle|\Delta\xi|\rangle$
         & $\langle|\Delta\xi|\rangle/\langle\xi_\mathrm{mid}\rangle$ \\
-    \midrule
+    \hline
     1 & $0.001$--$0.031$ & 0.031 & 0.031 & $1.7\times10^{-5}$ & 0.05\,\% \\
     2 & $0.031$--$0.181$ & 0.118 & 0.118 & $3.4\times10^{-4}$ & 0.29\,\% \\
     3 & $0.181$--$0.334$ & 0.253 & 0.252 & $1.5\times10^{-3}$ & 0.59\,\% \\
     4 & $0.334$--$2.261$ & 0.528 & 0.526 & $4.2\times10^{-3}$ & 0.80\,\% \\
-    \midrule
+    \hline
     All & $0.001$--$2.261$ & 0.198 & 0.197 & $1.1\times10^{-3}$ & 0.56\,\% \\
-    \bottomrule
+    \hline
   \end{tabular}
 \end{table}
 
