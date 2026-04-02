@@ -345,7 +345,7 @@ unit difference in $\Omega_m$ between the two frameworks.
 
 We evaluate $\xi_\mathrm{SH0ES}(z_i)$ and $\xi_\mathrm{Planck}(z_i)$
 (equation~\ref{eq:xi}) at each observed $z_\mathrm{CMB}$ using numerical integration via
-\textsc{astropy}'s \texttt{FlatLambdaCDM} class
+astropy's \texttt{FlatLambdaCDM} class
 \citep{astropy2013,astropy2018,astropy2022}.
 We then compute the mean absolute $\xi$-residual as
 \begin{equation}
@@ -420,7 +420,7 @@ $H_0 \in [68.0, 82.0]$ km\,s$^{-1}$\,Mpc$^{-1}$ with 71
 equally spaced points, followed by bounded scalar minimisation
 within $\pm 2$ km\,s$^{-1}$\,Mpc$^{-1}$ of the grid minimum,
 with absolute tolerance $10^{-4}$ km\,s$^{-1}$\,Mpc$^{-1}$.
-Both steps use \textsc{scipy}'s bounded minimisation
+Both steps use SciPy's bounded minimisation
 \citep{scipy2020}.
 
 \subsubsection{Bootstrap uncertainty}
@@ -1042,12 +1042,12 @@ of both experiments.
 
 The author thanks the Pantheon+ and SH0ES teams for making their
 data publicly available \citep{scolnic2022,brout2022,riess2022}.
-This research made use of \textsc{Astropy}, a community-developed
+This research made use of astropy, a community-developed
 core Python package for Astronomy \citep{astropy2013,astropy2018,astropy2022};
-\textsc{SciPy} \citep{scipy2020};
-\textsc{NumPy} \citep{numpy2020};
-\textsc{Matplotlib} \citep{matplotlib2007};
-and \textsc{pandas} \citep{pandas2010}.
+SciPy \citep{scipy2020};
+NumPy \citep{numpy2020};
+Matplotlib \citep{matplotlib2007};
+and pandas \citep{pandas2010}.
 
 % ---------------------------------------------------------------
 \section*{Data Availability}
