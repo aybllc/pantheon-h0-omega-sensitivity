@@ -176,7 +176,7 @@ uniform photometric calibration and a public covariance matrix.
 The SH0ES analysis \citep{riess2022} anchors the distance ladder
 through 77 Cepheid-calibrated host galaxies, enabling a determination
 of $H_0$ that is independent of CMB physics.
-We work directly with the released \texttt{Pantheon+SH0ES.dat} file,
+We work directly with the released Pantheon+SH0ES.dat file,
 using only publicly available columns.
 
 The paper is organised as follows.
@@ -200,15 +200,15 @@ Section~\ref{sec:conc} summarises our conclusions.
 \subsection{The Pantheon+SH0ES catalogue}
 
 We use the Pantheon+SH0ES dataset \citep{scolnic2022,brout2022},
-specifically the file \texttt{Pantheon+SH0ES.dat} from the public
-data release at \texttt{github.com/PantheonPlusSH0ES/DataRelease}.
+specifically the file Pantheon+SH0ES.dat from the public
+data release at github.com/PantheonPlusSH0ES/DataRelease.
 This catalogue provides, for each supernova:
-redshift in the CMB frame (\texttt{zCMB});
-the SH0ES-calibrated distance modulus (\texttt{MU\_SH0ES});
-its diagonal uncertainty (\texttt{MU\_SH0ES\_ERR\_DIAG});
+redshift in the CMB frame (zCMB);
+the SH0ES-calibrated distance modulus (MU\_SH0ES);
+its diagonal uncertainty (MU\_SH0ES\_ERR\_DIAG);
 the Cepheid-based geometric distance modulus for calibrator
-SNe~Ia (\texttt{CEPH\_DIST}); and a binary calibrator
-flag (\texttt{IS\_CALIBRATOR}).
+SNe~Ia (CEPH\_DIST); and a binary calibrator
+flag (IS\_CALIBRATOR).
 
 The full catalogue contains 1{,}701 rows spanning
 $0.001 < z_\mathrm{CMB} < 2.261$.
@@ -226,7 +226,7 @@ Section~\ref{sec:systematics} for discussion).
 We define two subsamples (Table~\ref{tab:samples}):
 
 \textbf{Calibrator sample.} The 77 SNe~Ia with
-\texttt{IS\_CALIBRATOR}~$= 1$, hosted in galaxies with
+IS\_CALIBRATOR~$= 1$, hosted in galaxies with
 direct Cepheid distance measurements from the SH0ES programme
 \citep{riess2022}.
 These provide the geometric anchor for the SN absolute
@@ -236,7 +236,7 @@ modulus is insensitive to $\Omega_m$ to better than
 $10^{-4}$~mag (see Section~\ref{sec:systematics}).
 
 \textbf{Hubble-flow sample.} The 1{,}616 SNe~Ia with
-\texttt{IS\_CALIBRATOR}~$= 0$ and $z_\mathrm{CMB} > 0.005$,
+IS\_CALIBRATOR~$= 0$ and $z_\mathrm{CMB} > 0.005$,
 spanning $0.005 < z < 2.261$.
 These are used to measure the best-fit $H_0$ and its
 $\Omega_m$ sensitivity.
@@ -345,7 +345,7 @@ unit difference in $\Omega_m$ between the two frameworks.
 
 We evaluate $\xi_\mathrm{SH0ES}(z_i)$ and $\xi_\mathrm{Planck}(z_i)$
 (equation~\ref{eq:xi}) at each observed $z_\mathrm{CMB}$ using numerical integration via
-astropy's \texttt{FlatLambdaCDM} class
+astropy's FlatLambdaCDM class
 \citep{astropy2013,astropy2018,astropy2022}.
 We then compute the mean absolute $\xi$-residual as
 \begin{equation}
@@ -391,8 +391,8 @@ inverse-variance-weighted mean
   \quad w_i = \frac{1}{\sigma_i^2},
   \label{eq:M_fixed}
 \end{equation}
-where $\mu_i^\mathrm{Ceph} = \texttt{CEPH\_DIST}_i$ is the Cepheid
-geometric distance modulus and $\sigma_i = \texttt{MU\_SH0ES\_ERR\_DIAG}_i$.
+where $\mu_i^\mathrm{Ceph} = CEPH\_DIST_i$ is the Cepheid
+geometric distance modulus and $\sigma_i = MU\_SH0ES\_ERR\_DIAG_i$.
 Evaluating equation~(\ref{eq:M_fixed}) yields $M_\mathrm{fixed} = +0.0802$~mag.
 This offset captures the mean discrepancy between the SH0ES
 Cepheid distance scale and our reference theoretical prediction
@@ -739,7 +739,7 @@ compared with the nominal SH0ES--Planck central-value gap.
 \subsection{Diagonal vs full covariance}
 
 Our direct-refit analysis uses only the diagonal elements
-\texttt{MU\_SH0ES\_ERR\_DIAG} of the Pantheon+ uncertainty matrix
+MU\_SH0ES\_ERR\_DIAG of the Pantheon+ uncertainty matrix
 rather than the full $1{,}701 \times 1{,}701$ covariance
 \citep{brout2022}.
 This simplification is sufficient for a transparent sensitivity
@@ -1191,13 +1191,13 @@ The underlying Pantheon+SH0ES catalogue is available at
 
 \begin{figure}
   \includegraphics[width=\columnwidth]{calibrator_ceph_vs_mu}
-  \caption{Cepheid geometric distance modulus (\texttt{CEPH\_DIST})
-    vs SH0ES photometric distance modulus (\texttt{MU\_SH0ES})
+  \caption{Cepheid geometric distance modulus (CEPH\_DIST)
+    vs SH0ES photometric distance modulus (MU\_SH0ES)
     for the 77 calibrator SNe~Ia.
     The dashed line is the 1:1 relation.
     The weighted mean offset $M_\mathrm{fixed} = +0.0802$~mag
     is the anchor used throughout the Cepheid-anchored refit.
-    Error bars show the diagonal uncertainty \texttt{MU\_SH0ES\_ERR\_DIAG}.}
+    Error bars show the diagonal uncertainty MU\_SH0ES\_ERR\_DIAG.}
   \label{fig:calibrator_plot}
 \end{figure}
 
@@ -1215,7 +1215,7 @@ The underlying Pantheon+SH0ES catalogue is available at
 \begin{figure}
   \includegraphics[width=\columnwidth]{sigma_vs_z}
   \caption{Diagonal distance-modulus uncertainty
-    (\texttt{MU\_SH0ES\_ERR\_DIAG}) as a function of redshift
+    (MU\_SH0ES\_ERR\_DIAG) as a function of redshift
     for the 1{,}616 Hubble-flow SNe~Ia.
     Grey points: individual SNe; orange curve: running mean.
     The increase in $\sigma_\mu$ at high $z$ reflects the
