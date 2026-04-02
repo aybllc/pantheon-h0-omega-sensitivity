@@ -224,6 +224,19 @@ host-galaxy correlations \citep{brout2022,popovic2023,jones2022}.
 In this work we use only the diagonal uncertainties, which are
 appropriate for our differential measurement (see
 Section~\ref{sec:systematics} for discussion).
+The diagonal uncertainty (MU\_SH0ES\_ERR\_DIAG) increases with redshift as the photometric noise floor of the high-$z$ surveys grows (Fig.~\ref{fig:sigma_vs_z}).
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{sigma_vs_z}
+  \caption{Diagonal distance-modulus uncertainty
+    (MU\_SH0ES\_ERR\_DIAG) as a function of redshift
+    for the 1{,}616 Hubble-flow SNe~Ia.
+    Grey points: individual SNe; orange curve: running mean.
+    The increase in $\sigma_\mu$ at high $z$ reflects the
+    photometric noise floor of the surveys contributing
+    the high-$z$ sample.}
+  \label{fig:sigma_vs_z}
+\end{figure}
 
 \subsection{Sample definitions}
 \label{sec:samples}
@@ -248,6 +261,18 @@ $\Omega_m$ sensitivity.
 The low-$z$ cut at $z > 0.005$ removes objects where
 peculiar velocities introduce scatter comparable to the
 Hubble flow \citep{peterson2022}.
+The redshift distribution of the Hubble-flow sample is shown in Fig.~\ref{fig:z_hist}.
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{z_distribution}
+  \caption{Redshift distribution of the 1{,}616 Hubble-flow SNe~Ia
+    as a histogram in $\log_{10}(z_\mathrm{CMB})$ bins.
+    Colours indicate the four equal-count quartile bins used in
+    the redshift-binned analysis (Table~\ref{tab:zbins}).
+    The vertical dashed lines mark the quartile boundaries at
+    $z = 0.031$, $0.181$, and $0.334$.}
+  \label{fig:z_hist}
+\end{figure}
 
 The full 1{,}671-row dataset (calibrators + Hubble-flow, excluding
 objects with $z < 0.005$ in either sample) is used for the
@@ -402,12 +427,24 @@ inverse-variance-weighted mean
 \end{equation}
 where $\mu_i^\mathrm{Ceph} = CEPH\_DIST_i$ is the Cepheid
 geometric distance modulus and $\sigma_i = MU\_SH0ES\_ERR\_DIAG_i$.
-Evaluating equation~(\ref{eq:M_fixed}) yields $M_\mathrm{fixed} = +0.0802$~mag.
+Evaluating equation~(\ref{eq:M_fixed}) yields $M_\mathrm{fixed} = +0.0802$~mag (Fig.~\ref{fig:calibrator_plot}).
 This offset captures the mean discrepancy between the SH0ES
 Cepheid distance scale and our reference theoretical prediction
 when using diagonal-only uncertainties; it does not affect the
 differential measurement $\Delta H_0$ (see
 Section~\ref{sec:systematics}).
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{calibrator_ceph_vs_mu}
+  \caption{Cepheid geometric distance modulus (CEPH\_DIST)
+    vs SH0ES photometric distance modulus (MU\_SH0ES)
+    for the 77 calibrator SNe~Ia.
+    The dashed line is the 1:1 relation.
+    The weighted mean offset $M_\mathrm{fixed} = +0.0802$~mag
+    is the anchor used throughout the Cepheid-anchored refit.
+    Error bars show the diagonal uncertainty MU\_SH0ES\_ERR\_DIAG.}
+  \label{fig:calibrator_plot}
+\end{figure}
 
 \subsubsection{Step 2 — Refit $H_0$ at fixed $M$}
 
@@ -503,6 +540,46 @@ becomes significant and the two frameworks diverge in $\xi$-space
 (Fig.~\ref{fig:xi_both_frameworks}).
 The scatter plot of $|\Delta\xi/\xi|$ versus $z_\mathrm{CMB}$
 is shown in Fig.~\ref{fig:xi_vs_z_scatter}.
+The per-quartile $\xi$-residual statistics are summarised in Table~\ref{tab:xi_stats} and Fig.~\ref{fig:xi_per_zbin}.
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{ximid_vs_z_bins}
+  \caption{$\xi$-space residual statistics per redshift quartile,
+    complementary to Table~\ref{tab:xi_stats}.
+    Bars show $\langle|\Delta\xi|\rangle/\langle\xi_\mathrm{mid}\rangle$
+    in each bin; the dashed orange line is the global mean
+    of $0.56$\,\%.
+    The growth of the $\Omega_m$ geometric sensitivity with
+    redshift is consistent with the $\Delta H_0$ growth shown
+    in Fig.~\ref{fig:zbin}.}
+  \label{fig:xi_per_zbin}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{xi_vs_z_scatter}
+  \caption{Fractional $\xi$-residual
+    $|\Delta\xi/\xi_\mathrm{mid}|$ vs $z_\mathrm{CMB}$ for all
+    1{,}671 SNe~Ia (grey points).
+    The running mean in redshift bins is shown as the orange line.
+    The horizontal dashed line marks the global mean of $0.56$\,\%.
+    The systematic growth with $z$ reflects the increasing
+    $\Omega_m$-sensitivity of $E(z)$ at higher redshifts.}
+  \label{fig:xi_vs_z_scatter}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{gaia_zero_bias_plot}
+  \caption{$\xi$-space comparison of the SH0ES and Planck frameworks
+    for all SNe~Ia with $z > 0.005$.
+    Left panel: $\xi(z)$ for both frameworks vs $z_\mathrm{CMB}$;
+    the two curves are nearly indistinguishable on this scale.
+    Centre panel: absolute residual $|\Delta\xi|$ vs $z$ on a log
+    scale, showing the $\Omega_m$-driven divergence at higher $z$.
+    Right panel: distribution of $\log_{10}|\Delta\xi|$; the dashed
+    red line marks the nominal $\Delta H_0/H_0$ fractional gap for
+    reference.}
+  \label{fig:xi_both_frameworks}
+\end{figure}
 
 \subsection{CDF of $\xi$-residuals}
 
@@ -512,6 +589,17 @@ $0.4$\,\%, and ${\sim}90$\,\% have residuals below $1.5$\,\%
 (Fig.~\ref{fig:xi_cdf}).
 The largest residuals occur at the highest redshifts, where the
 geometric sensitivity to $\Omega_m$ is greatest.
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{xi_residual_cdf}
+  \caption{Cumulative distribution function (CDF) of the
+    fractional $\xi$-residual $|\Delta_\xi(z_i)|$ for all
+    1{,}671 SNe~Ia.
+    Approximately 50\,\% of SNe have residuals below 0.4\,\%
+    and 90\,\% have residuals below 1.5\,\%.
+    The vertical dashed line marks the global mean of 0.56\,\%.}
+  \label{fig:xi_cdf}
+\end{figure}
 
 % ---------------------------------------------------------------
 \section{Results II: direct $H_0$ refit}
@@ -576,6 +664,19 @@ This bootstrap result quantifies internal resampling stability; it
 does not include uncertainty associated with covariance modelling,
 nuisance treatment, or alternative likelihood choices.
 
+\begin{figure}
+  \includegraphics[width=\columnwidth]{bootstrap_histogram}
+  \caption{Bootstrap distribution of
+    $\Delta H_0 = H_0(\Omega_m=0.334) - H_0(\Omega_m=0.315)$
+    over $N = 1{,}000$ resamples of the 1{,}616 Hubble-flow SNe~Ia.
+    The distribution is entirely negative (mean $= -0.218$,
+    $\sigma = 0.005$ km\,s$^{-1}$\,Mpc$^{-1}$, $\mathrm{S/N} = 46$),
+    demonstrating rock-solid sign stability.
+    The vertical line marks the mean; shading indicates the
+    16th--84th percentile interval.}
+  \label{fig:bootstrap_hist}
+\end{figure}
+
 \begin{table}
   \centering
   \caption{Bootstrap summary statistics for
@@ -616,6 +717,21 @@ $\Omega_m = 0.360$.
 The relationship is monotone and linear over this range,
 indicating that, within the sampled range, the two-point estimate
 is consistent with a nearly linear local response.
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{refit_H0_vs_Om}
+  \caption{Best-fit $H_0$ as a function of assumed $\Omega_m$,
+    from the Cepheid-anchored refit of 1{,}616 Pantheon+ Hubble-flow
+    SNe~Ia with $M_\mathrm{fixed} = +0.0802$~mag.
+    Vertical dashed lines mark the Planck posterior best-fit
+    ($\Omega_m = 0.315$, orange) and the SH0ES best-fit
+    ($\Omega_m = 0.334$, blue).
+    The shaded band indicates the sensitivity interval
+    $|\Delta H_0| = 0.22$ km\,s$^{-1}$\,Mpc$^{-1}$.
+    The relation is linear with slope
+    $dH_0/d\Omega_m \approx -11.6$ km\,s$^{-1}$\,Mpc$^{-1}$\,unit$^{-1}$.}
+  \label{fig:h0_vs_om}
+\end{figure}
 
 \begin{table}
   \centering
@@ -671,6 +787,7 @@ of the Hubble tension.
 The complementary fraction of the nominal gap lies outside
 the component measured here.
 
+The $\chi^2(H_0)$ profile at the fiducial $\Omega_m = 0.334$ is a well-defined parabola (Fig.~\ref{fig:chi2_check}).
 The $\chi^2$ profiles at both $\Omega_m$ values are shown in
 Fig.~\ref{fig:chi2_comparison}; both are well-defined parabolas
 with minima at the values reported above.
@@ -678,6 +795,31 @@ The $\chi^2$ per degree of freedom is ${\lesssim}\,0.9$
 throughout the scan, confirming that the diagonal uncertainties
 are conservatively wide, as expected when the full covariance is
 not used.
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{chi2_sanity_check}
+  \caption{$\chi^2(H_0)$ profile at $\Omega_m = 0.334$ over the
+    1{,}616 Hubble-flow SNe~Ia with $M_\mathrm{fixed}$ anchored
+    from the calibrators.
+    The profile is a well-defined parabola centred at
+    $H_0 = 75.67$ km\,s$^{-1}$\,Mpc$^{-1}$
+    with $\chi^2_\mathrm{min}/\mathrm{dof} < 1$, confirming that
+    the $H_0$--$M$ degeneracy is broken and the diagonal
+    uncertainties are conservatively wide.}
+  \label{fig:chi2_check}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{chi2_comparison}
+  \caption{$\chi^2(H_0)$ profiles at $\Omega_m = 0.334$ (blue) and
+    $\Omega_m = 0.315$ (orange) overlaid on the same axes.
+    Both profiles are well-defined parabolas; their minima differ
+    by $\Delta H_0 = -0.22$ km\,s$^{-1}$\,Mpc$^{-1}$, indicated
+    by the horizontal bracket.
+    The profiles are otherwise nearly identical, reflecting the
+    small magnitude of the $\Omega_m$ sensitivity.}
+  \label{fig:chi2_comparison}
+\end{figure}
 
 % ---------------------------------------------------------------
 \section{Results III: redshift dependence}
@@ -692,6 +834,34 @@ bin, and repeat the Cepheid-anchored refit at both $\Omega_m$
 values within each bin independently.
 The results are summarised in Table~\ref{tab:zbins} and shown in
 Fig.~\ref{fig:zbin} and Fig.~\ref{fig:h0scan_zbin}.
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{H0_scan_per_zbin}
+  \caption{$H_0(\Omega_m)$ scan for each of the four redshift
+    quartile bins (colours as in Fig.~\ref{fig:z_hist}).
+    The slope $dH_0/d\Omega_m$ steepens systematically with
+    redshift, from ${\approx}-1.2$ km\,s$^{-1}$\,Mpc$^{-1}$\,unit$^{-1}$
+    in the lowest bin to ${\approx}-26$
+    km\,s$^{-1}$\,Mpc$^{-1}$\,unit$^{-1}$ in the highest.
+    The two vertical dashed lines mark $\Omega_m = 0.315$ and
+    $0.334$.}
+  \label{fig:h0scan_zbin}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{zbin_deltaH0}
+  \caption{$\Delta H_0 = H_0(\Omega_m=0.334) - H_0(\Omega_m=0.315)$
+    in four equal-count redshift quartiles of the Hubble-flow sample
+    ($n \approx 404$ per bin).
+    The sign is uniform (negative) across all bins; the magnitude
+    grows monotonically with redshift as the $\Omega_m$-dependent
+    shape of $E(z)$ becomes increasingly important.
+    The orange dashed line marks the overall mean
+    ($-0.22$ km\,s$^{-1}$\,Mpc$^{-1}$).
+    Even in the highest-$z$ bin, $|\Delta H_0|$ is $8.7$\,\% of
+    the nominal 5.64 km\,s$^{-1}$\,Mpc$^{-1}$ tension.}
+  \label{fig:zbin}
+\end{figure}
 
 \begin{table}
   \centering
@@ -767,6 +937,20 @@ We therefore interpret the direct-refit result as a diagnostic
 estimate within a simplified pipeline.
 The $\xi$-space result does not depend on this approximation and
 is not affected by this limitation.
+Residuals of the best-fit distance moduli show no systematic redshift trend (Fig.~\ref{fig:residual_vs_z}), confirming adequate fit quality across the full redshift range.
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{residual_vs_z}
+  \caption{Hubble diagram residuals
+    $\Delta\mu = \mu^\mathrm{obs} - \mu^\mathrm{th}(z;\,H_0,\Omega_m)$
+    vs $z_\mathrm{CMB}$ for the 1{,}616 Hubble-flow SNe~Ia at the
+    best-fit $H_0(\Omega_m = 0.334)$.
+    Grey points show individual SNe; the orange curve is the
+    running mean in $\log z$ bins.
+    The residuals show no systematic $z$-trend, confirming
+    adequate fit quality across the full redshift range.}
+  \label{fig:residual_vs_z}
+\end{figure}
 
 \subsection{Sensitivity of $M_\mathrm{fixed}$ to $\Omega_m$}
 
@@ -923,6 +1107,28 @@ Because the present pipeline is intentionally simplified and does
 not reproduce the full Pantheon+/SH0ES likelihood, the absolute
 values (${\approx}\,75.7$ km\,s$^{-1}$\,Mpc$^{-1}$) should not
 be interpreted as standalone competitive $H_0$ determinations.
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{H0_comparison_ladder}
+  \caption{Comparison of published $H_0$ measurements from
+    independent methods (horizontal bars, $1\sigma$),
+    ordered by probe type.
+    The vertical blue band shows
+    $H_0 = 75.67$ km\,s$^{-1}$\,Mpc$^{-1}$ (our best fit at
+    $\Omega_m = 0.334$) and the orange band shows
+    $H_0 = 75.89$ km\,s$^{-1}$\,Mpc$^{-1}$ (at
+    $\Omega_m = 0.315$).
+    The offset from the SH0ES headline value reflects the
+    use of diagonal uncertainties in this analysis.
+    References: Planck~\citep{planck2020};
+    SH0ES~\citep{riess2022};
+    CCHP/TRGB~\citep{freedman2021,freedman2024};
+    H0LiCOW~\citep{wong2020};
+    TDCOSMO~\citep{birrer2020};
+    Megamasers~\citep{pesce2020};
+    SBF~\citep{blakeslee2021}.}
+  \label{fig:h0_ladder}
+\end{figure}
 
 The literature on independent $H_0$ probes spans a range from
 ${\sim}67$ km\,s$^{-1}$\,Mpc$^{-1}$ (Planck CMB;
@@ -1082,211 +1288,6 @@ The underlying Pantheon+SH0ES catalogue is available at
 
 \bibliographystyle{mnras}
 \bibliography{pantheon_h0_omega_sensitivity}
-
-% ---------------------------------------------------------------
-% Figures
-% ---------------------------------------------------------------
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{refit_H0_vs_Om}
-  \caption{Best-fit $H_0$ as a function of assumed $\Omega_m$,
-    from the Cepheid-anchored refit of 1{,}616 Pantheon+ Hubble-flow
-    SNe~Ia with $M_\mathrm{fixed} = +0.0802$~mag.
-    Vertical dashed lines mark the Planck posterior best-fit
-    ($\Omega_m = 0.315$, orange) and the SH0ES best-fit
-    ($\Omega_m = 0.334$, blue).
-    The shaded band indicates the sensitivity interval
-    $|\Delta H_0| = 0.22$ km\,s$^{-1}$\,Mpc$^{-1}$.
-    The relation is linear with slope
-    $dH_0/d\Omega_m \approx -11.6$ km\,s$^{-1}$\,Mpc$^{-1}$\,unit$^{-1}$.}
-  \label{fig:h0_vs_om}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{zbin_deltaH0}
-  \caption{$\Delta H_0 = H_0(\Omega_m=0.334) - H_0(\Omega_m=0.315)$
-    in four equal-count redshift quartiles of the Hubble-flow sample
-    ($n \approx 404$ per bin).
-    The sign is uniform (negative) across all bins; the magnitude
-    grows monotonically with redshift as the $\Omega_m$-dependent
-    shape of $E(z)$ becomes increasingly important.
-    The orange dashed line marks the overall mean
-    ($-0.22$ km\,s$^{-1}$\,Mpc$^{-1}$).
-    Even in the highest-$z$ bin, $|\Delta H_0|$ is $8.7$\,\% of
-    the nominal 5.64 km\,s$^{-1}$\,Mpc$^{-1}$ tension.}
-  \label{fig:zbin}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{gaia_zero_bias_plot}
-  \caption{$\xi$-space comparison of the SH0ES and Planck frameworks
-    for all SNe~Ia with $z > 0.005$.
-    Left panel: $\xi(z)$ for both frameworks vs $z_\mathrm{CMB}$;
-    the two curves are nearly indistinguishable on this scale.
-    Centre panel: absolute residual $|\Delta\xi|$ vs $z$ on a log
-    scale, showing the $\Omega_m$-driven divergence at higher $z$.
-    Right panel: distribution of $\log_{10}|\Delta\xi|$; the dashed
-    red line marks the nominal $\Delta H_0/H_0$ fractional gap for
-    reference.}
-  \label{fig:xi_both_frameworks}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{bootstrap_histogram}
-  \caption{Bootstrap distribution of
-    $\Delta H_0 = H_0(\Omega_m=0.334) - H_0(\Omega_m=0.315)$
-    over $N = 1{,}000$ resamples of the 1{,}616 Hubble-flow SNe~Ia.
-    The distribution is entirely negative (mean $= -0.218$,
-    $\sigma = 0.005$ km\,s$^{-1}$\,Mpc$^{-1}$, $\mathrm{S/N} = 46$),
-    demonstrating rock-solid sign stability.
-    The vertical line marks the mean; shading indicates the
-    16th--84th percentile interval.}
-  \label{fig:bootstrap_hist}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{xi_vs_z_scatter}
-  \caption{Fractional $\xi$-residual
-    $|\Delta\xi/\xi_\mathrm{mid}|$ vs $z_\mathrm{CMB}$ for all
-    1{,}671 SNe~Ia (grey points).
-    The running mean in redshift bins is shown as the orange line.
-    The horizontal dashed line marks the global mean of $0.56$\,\%.
-    The systematic growth with $z$ reflects the increasing
-    $\Omega_m$-sensitivity of $E(z)$ at higher redshifts.}
-  \label{fig:xi_vs_z_scatter}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{xi_residual_cdf}
-  \caption{Cumulative distribution function (CDF) of the
-    fractional $\xi$-residual $|\Delta_\xi(z_i)|$ for all
-    1{,}671 SNe~Ia.
-    Approximately 50\,\% of SNe have residuals below 0.4\,\%
-    and 90\,\% have residuals below 1.5\,\%.
-    The vertical dashed line marks the global mean of 0.56\,\%.}
-  \label{fig:xi_cdf}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{chi2_sanity_check}
-  \caption{$\chi^2(H_0)$ profile at $\Omega_m = 0.334$ over the
-    1{,}616 Hubble-flow SNe~Ia with $M_\mathrm{fixed}$ anchored
-    from the calibrators.
-    The profile is a well-defined parabola centred at
-    $H_0 = 75.67$ km\,s$^{-1}$\,Mpc$^{-1}$
-    with $\chi^2_\mathrm{min}/\mathrm{dof} < 1$, confirming that
-    the $H_0$--$M$ degeneracy is broken and the diagonal
-    uncertainties are conservatively wide.}
-  \label{fig:chi2_check}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{chi2_comparison}
-  \caption{$\chi^2(H_0)$ profiles at $\Omega_m = 0.334$ (blue) and
-    $\Omega_m = 0.315$ (orange) overlaid on the same axes.
-    Both profiles are well-defined parabolas; their minima differ
-    by $\Delta H_0 = -0.22$ km\,s$^{-1}$\,Mpc$^{-1}$, indicated
-    by the horizontal bracket.
-    The profiles are otherwise nearly identical, reflecting the
-    small magnitude of the $\Omega_m$ sensitivity.}
-  \label{fig:chi2_comparison}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{residual_vs_z}
-  \caption{Hubble diagram residuals
-    $\Delta\mu = \mu^\mathrm{obs} - \mu^\mathrm{th}(z;\,H_0,\Omega_m)$
-    vs $z_\mathrm{CMB}$ for the 1{,}616 Hubble-flow SNe~Ia at the
-    best-fit $H_0(\Omega_m = 0.334)$.
-    Grey points show individual SNe; the orange curve is the
-    running mean in $\log z$ bins.
-    The residuals show no systematic $z$-trend, confirming
-    adequate fit quality across the full redshift range.}
-  \label{fig:residual_vs_z}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{calibrator_ceph_vs_mu}
-  \caption{Cepheid geometric distance modulus (CEPH\_DIST)
-    vs SH0ES photometric distance modulus (MU\_SH0ES)
-    for the 77 calibrator SNe~Ia.
-    The dashed line is the 1:1 relation.
-    The weighted mean offset $M_\mathrm{fixed} = +0.0802$~mag
-    is the anchor used throughout the Cepheid-anchored refit.
-    Error bars show the diagonal uncertainty MU\_SH0ES\_ERR\_DIAG.}
-  \label{fig:calibrator_plot}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{z_distribution}
-  \caption{Redshift distribution of the 1{,}616 Hubble-flow SNe~Ia
-    as a histogram in $\log_{10}(z_\mathrm{CMB})$ bins.
-    Colours indicate the four equal-count quartile bins used in
-    the redshift-binned analysis (Table~\ref{tab:zbins}).
-    The vertical dashed lines mark the quartile boundaries at
-    $z = 0.031$, $0.181$, and $0.334$.}
-  \label{fig:z_hist}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{sigma_vs_z}
-  \caption{Diagonal distance-modulus uncertainty
-    (MU\_SH0ES\_ERR\_DIAG) as a function of redshift
-    for the 1{,}616 Hubble-flow SNe~Ia.
-    Grey points: individual SNe; orange curve: running mean.
-    The increase in $\sigma_\mu$ at high $z$ reflects the
-    photometric noise floor of the surveys contributing
-    the high-$z$ sample.}
-  \label{fig:sigma_vs_z}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{H0_scan_per_zbin}
-  \caption{$H_0(\Omega_m)$ scan for each of the four redshift
-    quartile bins (colours as in Fig.~\ref{fig:z_hist}).
-    The slope $dH_0/d\Omega_m$ steepens systematically with
-    redshift, from ${\approx}-1.2$ km\,s$^{-1}$\,Mpc$^{-1}$\,unit$^{-1}$
-    in the lowest bin to ${\approx}-26$
-    km\,s$^{-1}$\,Mpc$^{-1}$\,unit$^{-1}$ in the highest.
-    The two vertical dashed lines mark $\Omega_m = 0.315$ and
-    $0.334$.}
-  \label{fig:h0scan_zbin}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{H0_comparison_ladder}
-  \caption{Comparison of published $H_0$ measurements from
-    independent methods (horizontal bars, $1\sigma$),
-    ordered by probe type.
-    The vertical blue band shows
-    $H_0 = 75.67$ km\,s$^{-1}$\,Mpc$^{-1}$ (our best fit at
-    $\Omega_m = 0.334$) and the orange band shows
-    $H_0 = 75.89$ km\,s$^{-1}$\,Mpc$^{-1}$ (at
-    $\Omega_m = 0.315$).
-    The offset from the SH0ES headline value reflects the
-    use of diagonal uncertainties in this analysis.
-    References: Planck~\citep{planck2020};
-    SH0ES~\citep{riess2022};
-    CCHP/TRGB~\citep{freedman2021,freedman2024};
-    H0LiCOW~\citep{wong2020};
-    TDCOSMO~\citep{birrer2020};
-    Megamasers~\citep{pesce2020};
-    SBF~\citep{blakeslee2021}.}
-  \label{fig:h0_ladder}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{ximid_vs_z_bins}
-  \caption{$\xi$-space residual statistics per redshift quartile,
-    complementary to Table~\ref{tab:xi_stats}.
-    Bars show $\langle|\Delta\xi|\rangle/\langle\xi_\mathrm{mid}\rangle$
-    in each bin; the dashed orange line is the global mean
-    of $0.56$\,\%.
-    The growth of the $\Omega_m$ geometric sensitivity with
-    redshift is consistent with the $\Delta H_0$ growth shown
-    in Fig.~\ref{fig:zbin}.}
-  \label{fig:xi_per_zbin}
-\end{figure}
 
 % ---------------------------------------------------------------
 % Extra table: xi residual statistics per z-bin
