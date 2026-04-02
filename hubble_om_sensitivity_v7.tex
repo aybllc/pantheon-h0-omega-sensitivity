@@ -174,7 +174,12 @@ one must first verify that the model-assumption component has been
 correctly accounted for.
 Our measurements provide a direct empirical estimate of this component.
 
-The Pantheon+ dataset \citep{scolnic2022,brout2022} is the most
+Type~Ia supernovae are standardisable candles via the luminosity--decline
+relation \citep{phillips1993} and its two-parameter stretch--colour
+extension \citep{tripp1998}, first used as cosmological distance
+indicators by \citet{riess1998} and \citet{perlmutter1999}.
+The Pantheon+ dataset \citep{scolnic2022,brout2022}, building on the
+original Pantheon compilation \citep{scolnic2018}, is the most
 comprehensive Type~Ia supernova compilation currently available,
 comprising 1{,}701 SNe~Ia spanning $0.001 < z < 2.26$ with
 uniform photometric calibration and a public covariance matrix.
@@ -220,7 +225,7 @@ $0.001 < z_\mathrm{CMB} < 2.261$.
 The Pantheon+ analysis uses a full $1{,}701 \times 1{,}701$
 covariance matrix that accounts for systematic uncertainties
 including photometric calibration, intrinsic scatter, and
-host-galaxy correlations \citep{brout2022,popovic2023,jones2022}.
+host-galaxy correlations \citep{brout2022,popovic2023,jones2022,carr2022}.
 In this work we use only the diagonal uncertainties, which are
 appropriate for our differential measurement (see
 Section~\ref{sec:systematics} for discussion).
@@ -323,7 +328,7 @@ We define the horizon-normalised comoving distance
               = \int_0^z \frac{dz'}{E(z')},
   \label{eq:xi}
 \end{equation}
-where $d_H \equiv c/H_0$ is the Hubble distance.
+where $d_H \equiv c/H_0$ is the Hubble distance \citep{hogg1999}.
 Crucially, because $E(z)$ depends only on $\Omega_m$
 (and not on $H_0$), the coordinate $\xi$ depends only on
 $\Omega_m$ and $z$:
@@ -472,7 +477,7 @@ Both steps use \textsc{SciPy}'s bounded minimisation
 \subsubsection{Bootstrap uncertainty}
 
 We quantify the stability of $\Delta H_0$ by a non-parametric
-bootstrap.
+bootstrap \citep{efron1979}.
 For $k = 1, \ldots, 1000$:
 (i) draw a resample $\{j\}^{(k)}$ of 1{,}616 SNe~Ia with
 replacement from the Hubble-flow sample;
