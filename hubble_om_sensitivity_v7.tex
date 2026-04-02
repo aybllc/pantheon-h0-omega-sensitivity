@@ -40,9 +40,11 @@
 % Abstract — target 200–245 words
 % ---------------------------------------------------------------
 \begin{abstract}
-We present two complementary empirical measurements of the sensitivity
-of the Pantheon+SH0ES Hubble-flow $H_0$ to the assumed matter density
-$\Omega_m$, drawn from the Pantheon+SH0ES catalogue of 1{,}701 SNe~Ia.
+We investigate how much the inferred Pantheon+SH0ES Hubble-flow $H_0$
+changes when the assumed matter density is shifted from the SH0ES-like
+value $\Omega_m = 0.334$ to the Planck-like value $\Omega_m = 0.315$,
+using the public Pantheon+SH0ES catalogue of 1{,}701 SNe~Ia.
+We apply two complementary diagnostics.
 The first diagnostic employs the horizon-normalised comoving coordinate
 $\xi \equiv d_c/d_H$, which is strictly $H_0$-independent in flat
 $\Lambda$CDM.
@@ -52,24 +54,28 @@ $H_0 = 67.4$ km\,s$^{-1}$\,Mpc$^{-1}$) frameworks across all
 1{,}671 SNe~Ia, we measure a mean absolute $\xi$-residual of
 $\langle|\Delta\xi|\rangle/\langle\xi_\mathrm{mid}\rangle = 0.56$\,\%, a factor
 of 15 smaller than the nominal 8.4\,\% $H_0$ fractional gap.
-The second diagnostic uses a Cepheid-anchored direct refit: fixing the
-SN absolute magnitude $M$ from 77 calibrator SNe~Ia with Cepheid
-geometric distances, then minimising $\chi^2(H_0)$ over the
-1{,}616 Hubble-flow SNe at each $\Omega_m$ value.
-The best-fit $H_0$ shifts by
+Second, we perform a simplified Cepheid-anchored direct refit in which
+the SN absolute magnitude $M$ is fixed from 77 calibrator SNe~Ia with
+Cepheid geometric distances, and $H_0$ is re-optimised over
+1{,}616 Hubble-flow SNe at fixed $\Omega_m$, using diagonal
+distance-modulus uncertainties.
+Under this diagnostic, the best-fit $H_0$ shifts by
 $\Delta H_0 = -0.22 \pm 0.005$ km\,s$^{-1}$\,Mpc$^{-1}$
-(bootstrap $1\sigma$, $N = 1{,}000$, $\mathrm{S/N} = 46$), representing
-3.9\,\% of the nominal 5.64 km\,s$^{-1}$\,Mpc$^{-1}$ SH0ES--Planck gap.
+(bootstrap $1\sigma$, $N = 1{,}000$, $\mathrm{S/N} = 46$),
+corresponding to 3.9\,\% of the nominal 5.64 km\,s$^{-1}$\,Mpc$^{-1}$
+SH0ES--Planck central-value gap.
 The $\Omega_m$ sensitivity grows monotonically with redshift, from
 $|\Delta H_0| = 0.02$ km\,s$^{-1}$\,Mpc$^{-1}$ at $z < 0.03$ to
 $0.49$ km\,s$^{-1}$\,Mpc$^{-1}$ at $z > 0.33$ across four
 equal-count redshift quartiles.
-Both diagnostics are mutually consistent.
-Under this diagnostic, the $\Omega_m$ prior difference between the
-two frameworks contributes ${\lesssim}\,4$\,\% of the nominal
-SH0ES--Planck gap; the remaining discrepancy lies outside the
-component measured here and requires matched-likelihood analyses
-with the full covariance matrices of both experiments.
+Both diagnostics indicate that changing $\Omega_m$ across the
+SH0ES--Planck range induces only a modest shift in Pantheon+-based
+Hubble-flow $H_0$ relative to the nominal central-value gap.
+Under this diagnostic framework, the $\Omega_m$ prior difference
+contributes ${\lesssim}\,4$\,\% of that gap; the remaining
+discrepancy lies outside the component measured here and requires
+matched-likelihood analyses with the full covariance matrices of
+both experiments.
 \end{abstract}
 
 \begin{keywords}
@@ -517,13 +523,13 @@ The difference (equation~\ref{eq:deltaH0_point}) is
     \;\text{km\,s}^{-1}\text{Mpc}^{-1}.
   \label{eq:deltaH0_point}
 \end{equation}
-The negative sign means that, at fixed Cepheid anchor,
-the Pantheon+ Hubble-flow data prefer a \emph{lower} $H_0$ under
-the SH0ES $\Omega_m$ prior than under the Planck $\Omega_m$ prior.
-This is physically consistent with the $\xi$-space result: a higher
-$\Omega_m$ slows down the universe more at intermediate $z$,
-compressing comoving distances, which must be compensated by a
-lower $H_0$ to match the observed distance moduli.
+The negative sign indicates that, within the anchored refit adopted
+here, the best-fit $H_0$ is slightly lower at $\Omega_m = 0.334$
+than at $\Omega_m = 0.315$.
+This sign is consistent with the direction suggested by the
+$\xi$-space diagnostic: a higher $\Omega_m$ reduces comoving
+distances at intermediate $z$, and the anchored refit compensates
+through a small downward shift in best-fit $H_0$.
 
 We note that both best-fit values
 (${\approx}\,75.7$ km\,s$^{-1}$\,Mpc$^{-1}$) are offset from
@@ -531,8 +537,9 @@ the SH0ES headline value of 73.04 km\,s$^{-1}$\,Mpc$^{-1}$.
 This offset is entirely absorbed by $M_\mathrm{fixed}$,
 which encodes the systematic shift from using diagonal-only
 uncertainties and a simplified likelihood;
-the differential measurement $\Delta H_0$ is independent of
-this offset (Section~\ref{sec:systematics}).
+the main quantity of interest is the differential shift $\Delta H_0$,
+which is expected to be less sensitive to that common-mode offset
+(Section~\ref{sec:systematics}).
 
 \subsection{Bootstrap results}
 
@@ -550,9 +557,12 @@ The distribution is tightly clustered around its mean
   \label{eq:bootstrap_result}
 \end{equation}
 The signal-to-noise ratio is $\mathrm{S/N} = 0.218/0.005 = 46$.
-Every one of the 1{,}000 resamples yields a negative
-$\Delta H_0^{(k)}$, so the sign of the sensitivity is
-rock-stable: $P(\Delta H_0 \leq 0) = 100$\,\%.
+All 1{,}000 bootstrap resamples yield negative $\Delta H_0^{(k)}$
+values within the adopted pipeline:
+$P(\Delta H_0 \leq 0) = 100$\,\%.
+This bootstrap result quantifies internal resampling stability; it
+does not include uncertainty associated with covariance modelling,
+nuisance treatment, or alternative likelihood choices.
 
 \begin{table}
   \centering
@@ -591,10 +601,9 @@ A least-squares fit gives
 with $H_0$ ranging from 76.30 km\,s$^{-1}$\,Mpc$^{-1}$ at
 $\Omega_m = 0.280$ to 75.38 km\,s$^{-1}$\,Mpc$^{-1}$ at
 $\Omega_m = 0.360$.
-The relationship is monotone and linear to high accuracy over
-this range, confirming that the two-point measurement
-$\Delta H_0 = -0.22$ km\,s$^{-1}$\,Mpc$^{-1}$ is representative
-of the local slope.
+The relationship is monotone and linear over this range,
+indicating that, within the sampled range, the two-point estimate
+is consistent with a nearly linear local response.
 
 \begin{table}
   \centering
@@ -628,20 +637,25 @@ of the local slope.
   \end{tabular}
 \end{table}
 
-\subsection{Quantifying the contribution to the tension}
+\subsection{Comparison with the nominal SH0ES--Planck central-value gap}
 
 The SH0ES--Planck gap on the Hubble constant is
 $\Delta H_0^\mathrm{tension} = 73.04 - 67.4 = 5.64$
 km\,s$^{-1}$\,Mpc$^{-1}$.
-The $\Omega_m$ framework contribution is
+Expressed relative to this central-value gap:
 \begin{equation}
   f_{\Omega_m} =
     \frac{|\Delta H_0|}{|\Delta H_0^\mathrm{tension}|}
     = \frac{0.22}{5.64} = 3.9\,\%.
   \label{eq:fraction}
 \end{equation}
-This is the fraction of the nominal tension attributable
-to the $\Omega_m$ model assumption difference under this diagnostic.
+Within the present simplified Pantheon+SH0ES refit, this indicates
+that changing $\Omega_m$ from 0.334 to 0.315 induces only a modest
+movement in the SN-inferred Hubble-flow $H_0$ relative to the
+published central-value gap.
+This percentage should be interpreted as a diagnostic comparison to
+that central-value gap, not as a full matched-likelihood partition
+of the Hubble tension.
 The complementary fraction of the nominal gap lies outside
 the component measured here.
 
@@ -703,8 +717,8 @@ $0.494$ km\,s$^{-1}$\,Mpc$^{-1}$ in the highest
 The estimated local slope $dH_0/d\Omega_m$ steepens by a factor
 of ${\sim}22$ from the lowest to the highest bin.
 
-This behaviour is physically expected and can be understood
-from the structure of $E(z)$.
+This trend is qualitatively consistent with the redshift dependence
+of $E(z)$.
 At $z \ll 1$, $E(z) \approx 1$ and the luminosity distance is
 $d_L \approx cz/H_0$, independent of $\Omega_m$.
 In this limit the distance modulus encodes only $H_0$, so changing
@@ -713,11 +727,9 @@ At higher $z$, the $\Omega_m$-dependent matter-dominated term
 $(1+z)^3$ grows substantially, introducing a $z$-dependent
 geometric correction that is absorbed into the inferred $H_0$.
 
-Even in the highest-redshift bin, the $\Omega_m$ contribution
-remains modest: $|\Delta H_0| = 0.494$ km\,s$^{-1}$\,Mpc$^{-1}$
-is $8.7$\,\% of the 5.64 km\,s$^{-1}$\,Mpc$^{-1}$ nominal tension.
-The residual unexplained discrepancy is ${\geq}\,91$\,\% even in
-the highest-$z$ bin.
+Even in the highest-redshift quartile, the measured shift
+$|\Delta H_0| = 0.494$ km\,s$^{-1}$\,Mpc$^{-1}$ remains small
+compared with the nominal SH0ES--Planck central-value gap.
 
 % ---------------------------------------------------------------
 \section{Systematic checks}
@@ -726,77 +738,77 @@ the highest-$z$ bin.
 
 \subsection{Diagonal vs full covariance}
 
-Our analysis uses only the diagonal elements
-\texttt{MU\_SH0ES\_ERR\_DIAG} of the Pantheon+ uncertainty matrix.
-The full covariance is $1{,}701 \times 1{,}701$ and accounts for
-correlated systematic uncertainties in photometric calibration,
-intrinsic scatter model, and other effects \citep{brout2022}.
-Using diagonal uncertainties inflates the effective measurement
-error on each SN and systematically broadens the $\chi^2(H_0)$
-profile, driving $\chi^2/\mathrm{dof}$ below unity.
-However, the effect on the differential quantity $\Delta H_0$
-is suppressed for the following reason.
-Both $H_0(\Omega_m = 0.334)$ and $H_0(\Omega_m = 0.315)$ are
-computed from the same set of diagonal uncertainties with the
-same fixed $M$.
-The systematic shift in the weights cancels in the difference,
-leaving $\Delta H_0$ insensitive to the covariance approximation
-at first order.
-The bootstrap confirms this: the distribution of
-$\Delta H_0^{(k)}$ has $\sigma = 0.005$ km\,s$^{-1}$\,Mpc$^{-1}$,
-which is an empirical bound on the statistical uncertainty of
-the differential measurement under our data-resampling scheme.
+Our direct-refit analysis uses only the diagonal elements
+\texttt{MU\_SH0ES\_ERR\_DIAG} of the Pantheon+ uncertainty matrix
+rather than the full $1{,}701 \times 1{,}701$ covariance
+\citep{brout2022}.
+This simplification is sufficient for a transparent sensitivity
+test, but it does not reproduce the full Pantheon+ likelihood.
+In particular, correlated systematics can alter the effective
+weighting of supernovae across redshift and may shift the
+absolute best-fit $H_0$ and the detailed curvature of $\chi^2(H_0)$.
+The extent to which such effects cancel in the differential quantity
+$\Delta H_0 = H_0(0.334) - H_0(0.315)$ is plausible, given that
+both values are computed from the same weighting scheme, but is not
+demonstrated exactly here.
+We therefore interpret the direct-refit result as a diagnostic
+estimate within a simplified pipeline.
+The $\xi$-space result does not depend on this approximation and
+is not affected by this limitation.
 
 \subsection{Sensitivity of $M_\mathrm{fixed}$ to $\Omega_m$}
 
-The calibrators lie at $z < 0.017$.
-The theoretical distance modulus at these redshifts,
+The calibrator supernovae lie at $z < 0.017$, where the theoretical
+distance modulus,
 \begin{equation*}
   \mu^\mathrm{th}(z;\,H_0,\Omega_m)
   \approx 5\log_{10}\!\left[\frac{cz(1+z/2)}{H_0}\right] + 25,
 \end{equation*}
 is sensitive to $\Omega_m$ only through terms of order
 $(\Omega_m z)^2 \sim 10^{-5}$ at $z = 0.017$.
-Accordingly, $M_\mathrm{fixed}$ is robust to changes in $\Omega_m$
-at the calibrator redshifts, and the same value of $M_\mathrm{fixed}$
-is used at both $\Omega_m$ values without introducing a systematic
-error greater than ${\sim}10^{-4}$~mag.
+This motivates our use of a common $M_\mathrm{fixed}$ across the
+$\Omega_m$ scan: any residual $\Omega_m$-dependence of the anchor
+is expected to be subdominant relative to the Hubble-flow
+sensitivity being measured.
+Nevertheless, because $M_\mathrm{fixed}$ is estimated within the
+same simplified weighting scheme used in the refit, a fully
+self-consistent treatment would propagate the anchor uncertainty
+and covariance structure jointly.
 
 \subsection{Propagation of $\Omega_m$ uncertainty}
 
-The SH0ES constraint $\Omega_m = 0.334 \pm 0.018$ carries its own
-uncertainty, as does the Planck constraint
-$\Omega_m = 0.315 \pm 0.007$.
-To assess the sensitivity of $\Delta H_0$ to this uncertainty,
-we compute $H_0(\Omega_m)$ at $0.334 \pm 0.018$ and
-$0.315 \pm 0.007$, propagating through the linear slope
-of equation~(\ref{eq:slope}):
+The shift $\Delta H_0$ is evaluated at the central values
+$\Omega_m = 0.334$ and $0.315$.
+Propagating the quoted observational uncertainties
+($\pm 0.018$ for SH0ES, $\pm 0.007$ for Planck) through the
+locally fitted slope of equation~(\ref{eq:slope}) gives
 \begin{equation*}
   \sigma_{\Delta H_0}^{\Omega_m}
     = \sqrt{(11.6 \times 0.018)^2 + (11.6 \times 0.007)^2}
     \approx 0.22\;\text{km\,s}^{-1}\text{Mpc}^{-1}.
 \end{equation*}
-This uncertainty in $\Delta H_0$ from the $\Omega_m$ measurement
-errors is comparable to $\Delta H_0$ itself ($0.22$
-km\,s$^{-1}$\,Mpc$^{-1}$), but it does not alter the main result:
-even at the $+1\sigma$ extreme of both uncertainties
-($\Omega_m^\mathrm{SH0ES} = 0.352$,
-$\Omega_m^\mathrm{Planck} = 0.308$), the $\Omega_m$ contribution to
-the tension is at most
-$(0.352 - 0.308) \times 11.6 \approx 0.51$ km\,s$^{-1}$\,Mpc$^{-1}$,
-or $9.0$\,\% of the 5.64 km\,s$^{-1}$\,Mpc$^{-1}$ gap.
+This broadens the allowed range of the $\Omega_m$-driven contribution
+but does not alter the qualitative conclusion that the effect
+remains small compared with the nominal SH0ES--Planck central-value
+difference.
+Under the present linearised sensitivity estimate, even an extreme
+$+1\sigma$ combination ($\Omega_m^\mathrm{SH0ES} = 0.352$,
+$\Omega_m^\mathrm{Planck} = 0.308$) yields an induced shift of at
+most $(0.352 - 0.308) \times 11.6 \approx 0.51$
+km\,s$^{-1}$\,Mpc$^{-1}$, or $9.0$\,\% of the 5.64
+km\,s$^{-1}$\,Mpc$^{-1}$ gap.
 
 \subsection{Dark energy equation of state}
 
 Our analysis assumes flat $\Lambda$CDM with $w = -1$.
-To assess the impact of a varying dark energy equation of state,
-we recompute $\xi(z)$ using a $w_0$CDM model with $w_0 = -0.9$
+As a limited extension, we recomputed the geometric $\xi$-space
+diagnostic using a $w_0$CDM model with $w_0 = -0.9$
 and $w_0 = -1.1$ at both $\Omega_m$ values.
-The fractional change in $\Delta H_0$ from varying $w_0$ by
-$\pm 0.1$ around $-1.0$ is ${\lesssim}\,0.03$
-km\,s$^{-1}$\,Mpc$^{-1}$, well below our statistical uncertainty.
-Our conclusions are therefore robust against mild extensions to the
-dark energy model.
+Within this restricted variation, the induced change in $\Delta H_0$
+is ${\lesssim}\,0.03$ km\,s$^{-1}$\,Mpc$^{-1}$, suggesting that
+mild departures from $w = -1$ do not qualitatively alter the
+conclusion, although broader model-space tests would require a
+dedicated analysis.
 
 \subsection{Peculiar velocity and redshift cuts}
 
@@ -805,8 +817,24 @@ where peculiar velocities contribute $\gtrsim 10$\,\% of the
 apparent Hubble flow velocity \citep{hui2006,peterson2022}.
 We verified that varying this cut between $z > 0.003$ and
 $z > 0.01$ changes $\Delta H_0$ by ${\lesssim}\,0.01$
-km\,s$^{-1}$\,Mpc$^{-1}$.
-The result is insensitive to the precise low-$z$ boundary.
+km\,s$^{-1}$\,Mpc$^{-1}$, indicating that the main result is not
+driven by the precise treatment of the lowest-redshift objects,
+although a full peculiar-velocity covariance treatment would be
+needed for a complete error budget.
+
+\subsection{Scope of robustness claims}
+
+The checks in this section assess whether the measured
+$\Omega_m$-induced shift is qualitatively stable within the adopted
+simplified pipeline.
+They do not constitute a full systematic error budget for SH0ES or
+Pantheon+, nor do they replace a matched-likelihood analysis using
+the full covariance structure and nuisance parameter treatment of
+the underlying experiments.
+The numerical value $\Delta H_0 = -0.22$ km\,s$^{-1}$\,Mpc$^{-1}$
+should therefore be interpreted as a bounded diagnostic estimate
+rather than a final experiment-level correction to the published
+SH0ES--Planck discrepancy.
 
 % ---------------------------------------------------------------
 \section{Discussion}
@@ -815,47 +843,50 @@ The result is insensitive to the precise low-$z$ boundary.
 
 \subsection{Cross-validation of the two diagnostics}
 
-The two diagnostics are conceptually independent and
-measure the same underlying sensitivity from different directions.
-The $\xi$-space diagnostic measures the geometric distortion
-introduced by the $\Omega_m$ difference at the level of
-comoving distances; the direct refit measures how this distortion
-propagates into a best-fit $H_0$.
-Their results should be consistent to the extent that the
-distance-to-$H_0$ conversion is approximately linear in $\Omega_m$.
+The two diagnostics probe the same qualitative question from
+different angles.
+The $\xi$-space diagnostic isolates the geometric effect of
+changing $\Omega_m$ in a way that is independent of $H_0$; the
+anchored direct refit shows how a related geometric shift propagates
+into best-fit $H_0$ within the adopted simplified likelihood.
+If the dominant effect is the same $\Omega_m$-driven geometric shift,
+the two diagnostics would be expected to show qualitatively similar
+behaviour.
 
-Both diagnostics give results of the same order of magnitude:
+Both give results of the same order of magnitude:
 the $\xi$-space residual is $0.56$\,\% of the mean mid-coordinate value
 (equations~\ref{eq:xi_result}--\ref{eq:factor15}),
 while the direct-refit measurement is
 $0.22/75.7 \approx 0.29$\,\% of $H_0$.
-This provides a qualitative consistency check between the two
-diagnostics, and is consistent with the expectation that both
-are responding to the same underlying $\Omega_m$-driven geometric
-shift in the distance--redshift relation.
+Taken together, the two diagnostics provide qualitative convergence
+on the conclusion that the $\Omega_m$ shift considered here produces
+only a modest effect in Pantheon+-based Hubble-flow inference.
 
 \subsection{Implications for Hubble tension analyses}
 
-The principal result of this work is that the $\Omega_m$ prior
-difference between the Planck and SH0ES frameworks contributes
-$3.9$\,\% of the nominal $H_0$ discrepancy
-(equation~\ref{eq:fraction}).
-This number is small but not negligible in the context of
-precision cosmology; it corresponds to
-$0.22/1.04 \approx 0.21\,\sigma_\mathrm{SH0ES}$,
-where $\sigma_\mathrm{SH0ES} = 1.04$ km\,s$^{-1}$\,Mpc$^{-1}$
-is the SH0ES $H_0$ uncertainty.
+The main implication of this work is methodological rather than
+dispositive.
+Within a transparent public-data Pantheon+SH0ES diagnostic,
+shifting $\Omega_m$ across the SH0ES--Planck range induces a
+comparatively small change in the fitted Hubble-flow $H_0$.
+Expressed relative to the nominal SH0ES--Planck central-value gap,
+this shift corresponds to $3.9$\,\%
+(equation~\ref{eq:fraction}), or
+$0.22/1.04 \approx 0.21\,\sigma_\mathrm{SH0ES}$.
+Our direct-refit value of $0.22$ km\,s$^{-1}$\,Mpc$^{-1}$ should
+be read as a bounded diagnostic estimate within the adopted
+pipeline.
+Translating this into an experiment-level correction to the
+SH0ES--Planck discrepancy would require matched likelihoods, full
+covariance treatment, and common nuisance handling.
 
-The more important implication is methodological.
 A complete comparison of the two $H_0$ determinations should
 be performed at a common $\Omega_m$ value, or should explicitly
 marginalise over $\Omega_m$ with its posterior uncertainty.
-Our measurement provides the empirical calibration constant for
-this correction: for every 0.010 unit change in $\Omega_m$,
+The locally fitted slope provides an empirical calibration input
+for such analyses: for every 0.010 unit change in $\Omega_m$,
 the Pantheon+ Hubble-flow $H_0$ changes by
-${\approx}\,0.12$ km\,s$^{-1}$\,Mpc$^{-1}$.
-This number should be propagated through any matched-likelihood
-analysis of the tension.
+${\approx}\,0.12$ km\,s$^{-1}$\,Mpc$^{-1}$ within this pipeline.
 
 We also note that the strong redshift dependence of the
 sensitivity (Table~\ref{tab:zbins}) suggests that future
@@ -872,15 +903,12 @@ analyses.
 Figure~\ref{fig:h0_ladder} places our measured best-fit $H_0$
 values in the context of published determinations from
 independent methods.
-The figure is explicitly not intended to represent our
-measurement as a standalone $H_0$ determination; the
-offset from SH0ES (${\sim}75.7$ vs $73.04$
-km\,s$^{-1}$\,Mpc$^{-1}$) reflects our use of diagonal-only
-uncertainties, which is an acknowledged limitation of this
-analysis.
-The figure is presented to make the \emph{differential}
-result ($\Delta H_0 = 0.22$ km\,s$^{-1}$\,Mpc$^{-1}$) legible
-against the landscape of published values.
+We include this comparison only to provide visual scale for
+the small differential shift reported here.
+Because the present pipeline is intentionally simplified and does
+not reproduce the full Pantheon+/SH0ES likelihood, the absolute
+values (${\approx}\,75.7$ km\,s$^{-1}$\,Mpc$^{-1}$) should not
+be interpreted as standalone competitive $H_0$ determinations.
 
 The literature on independent $H_0$ probes spans a range from
 ${\sim}67$ km\,s$^{-1}$\,Mpc$^{-1}$ (Planck CMB;
@@ -907,50 +935,48 @@ In that case, a change in $\Omega_m$ would be absorbed by
 a corresponding change in $M$, leaving $H_0$ unchanged.
 The non-zero sensitivity we report arises precisely because
 $M$ is anchored geometrically from the Cepheid distances.
-This is the physically correct procedure for estimating $H_0$
-from the Pantheon+SH0ES data: it mirrors the SH0ES methodology
-in which the Cepheid distances provide the absolute scale.
+This is the appropriate procedure for the anchored diagnostic
+considered here: it mirrors the SH0ES methodology in which
+the Cepheid distances provide the absolute scale.
 
 \subsection{Limitations and future work}
 
-Several limitations should be noted.
-First, our analysis uses diagonal uncertainties.
-A full reanalysis using the complete Pantheon+ covariance matrix
-would provide more accurate absolute $H_0$ values and
-may slightly alter the measured slope $dH_0/d\Omega_m$.
-However, given the consistency between the $\xi$-space and
-direct-refit results, we expect the differential measurement
-to be robust.
+Several limitations define the scope of the present result.
+First, our direct-refit analysis uses diagonal uncertainties
+rather than the full Pantheon+ covariance matrix.
+A full reanalysis would provide more accurate absolute $H_0$ values
+and may alter the measured slope $dH_0/d\Omega_m$.
 
 Second, we treat both $H_0$ and $\Omega_m$ as global constants.
 An analysis that allows for redshift evolution of dark energy
-or spatial variation of $H_0$ would require an extended framework;
-our measurement provides a baseline for such analyses.
+or spatial variation of $H_0$ would require an extended framework.
 
 Third, the Cepheid anchor depends on the SH0ES Cepheid distance
 scale, which itself may carry systematic uncertainties
 \citep{riess2023,breuval2024}.
-These do not affect $\Delta H_0$ at first order, since they
-enter as a uniform shift in $M_\mathrm{fixed}$, but a full
-treatment should propagate Cepheid systematics through the
-bootstrap.
+These enter as a near-uniform shift in $M_\mathrm{fixed}$ and are
+expected to have subdominant impact on the differential measurement,
+but a fully self-consistent treatment should propagate Cepheid
+systematics through the bootstrap.
 
-Future work should repeat this analysis using the DESI Year-1
-BAO constraints on $\Omega_m$ \citep{desicollaboration2024},
-which provide an independent, CMB-free determination of the
-matter density, and using the full Pantheon+ covariance matrix
-to obtain properly normalised $\chi^2$ values and
-marginalised $H_0$ posteriors.
+For that reason, the most defensible interpretation of this paper
+is as a transparent diagnostic study of local $\Omega_m$-sensitivity
+in Pantheon+SH0ES, rather than a final experiment-level
+decomposition of the Hubble tension.
+Future work should repeat this analysis using the full Pantheon+
+covariance matrix and the DESI Year-1 BAO constraints on $\Omega_m$
+\citep{desicollaboration2024}, which provide an independent,
+CMB-free determination of the matter density.
 
 % ---------------------------------------------------------------
 \section{Conclusions}
 \label{sec:conc}
 % ---------------------------------------------------------------
 
-Using the complete Pantheon+SH0ES Type~Ia supernova dataset
-we have measured the sensitivity of the Hubble-flow $H_0$ to
-the assumed $\Omega_m$, via two complementary, independently
-verified diagnostics.
+Using the public Pantheon+SH0ES Type~Ia supernova sample we have
+examined how the inferred Hubble-flow $H_0$ changes when the
+assumed $\Omega_m$ is shifted from 0.334 to 0.315, using two
+complementary diagnostics.
 Our principal conclusions are:
 
 \begin{enumerate}
@@ -966,14 +992,15 @@ Our principal conclusions are:
   across 1{,}671 SNe~Ia, a factor of 15 smaller than the
   nominal 8.4\,\% $H_0$ fractional gap.
 
-\item A Cepheid-anchored direct refit of the 1{,}616
-  Hubble-flow SNe~Ia yields
-  $\Delta H_0 = H_0(0.334) - H_0(0.315)
+\item A simplified Cepheid-anchored direct refit of the 1{,}616
+  Hubble-flow SNe~Ia, using diagonal distance-modulus uncertainties,
+  yields $\Delta H_0 = H_0(0.334) - H_0(0.315)
   = -0.22 \pm 0.005$ km\,s$^{-1}$\,Mpc$^{-1}$
-  (bootstrap $1\sigma$, $N = 1{,}000$, $\mathrm{S/N} = 46$),
-  with $P(\Delta H_0 \leq 0) = 100$\,\%.
-  This represents $3.9$\,\% of the nominal
-  5.64 km\,s$^{-1}$\,Mpc$^{-1}$ SH0ES--Planck gap.
+  (bootstrap internal uncertainty, $N = 1{,}000$),
+  uniformly negative across all bootstrap resamples.
+  Within this pipeline, the induced shift corresponds to $3.9$\,\%
+  of the nominal 5.64 km\,s$^{-1}$\,Mpc$^{-1}$ SH0ES--Planck
+  central-value gap.
 
 \item The sensitivity grows monotonically with redshift across
   four equal-count quartile bins, from
@@ -983,11 +1010,11 @@ Our principal conclusions are:
   $dH_0/d\Omega_m$ that steepens by a factor of
   ${\sim}22$ from the lowest to the highest redshift bin.
 
-\item The two diagnostics give results of the same order of
-  magnitude: the $\xi$-space residual of $0.56$\,\% corresponds
-  to $0.29$\,\% of $H_0$, while the direct-refit measurement is
-  $0.22/75.7 \approx 0.29$\,\% of $H_0$.
-  This provides a qualitative consistency check on the pipeline.
+\item The two diagnostics are qualitatively consistent in indicating
+  a modest $\Omega_m$-driven effect: the $\xi$-space statistic
+  measures the geometric response directly, while the anchored
+  refit shows how a related response maps into best-fit $H_0$ in
+  the adopted simplified likelihood.
 
 \item Under this diagnostic, the $\Omega_m$ framework assumption
   difference between SH0ES and Planck contributes a small, bounded
@@ -1001,8 +1028,10 @@ Our principal conclusions are:
 
 \end{enumerate}
 
-These results provide a clean empirical baseline for the
-$\Omega_m$-driven component of the Hubble tension.
+Throughout, the direct-refit result is interpreted as a diagnostic
+sensitivity estimate within a simplified public-data
+Pantheon+SH0ES pipeline, not as a full matched-likelihood partition
+of the SH0ES--Planck discrepancy.
 The remainder is not measured by this analysis and requires
 matched-likelihood treatment with the full covariance structure
 of both experiments.
