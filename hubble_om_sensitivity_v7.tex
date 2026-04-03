@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 % booktabs removed — MNRAS requires \hline style tables
 \usepackage{url}
+\usepackage[switch]{lineno}    % line numbers for editing/review prints
 
 % Match published MNRAS style: all links blue, author names not separately linked
 \hypersetup{linkcolor=blue,urlcolor=blue,citecolor=blue}
@@ -37,6 +38,7 @@
 \pubyear{2026}
 
 \begin{document}
+\linenumbers
 \label{firstpage}
 \pagerange{\pageref{firstpage}--\pageref{lastpage}}
 \maketitle
@@ -1326,4 +1328,48 @@ The underlying Pantheon+SH0ES catalogue is available at
 
 \bsp	% typesetting comment
 \label{lastpage}
+
+% ---------------------------------------------------------------
+% Trailing annotation notes page — editing/review use only
+% Remove or comment this block before journal submission
+% ---------------------------------------------------------------
+\clearpage
+\nolinenumbers
+\onecolumn
+\newgeometry{left=1in,right=1in,top=1in,bottom=1in}
+\thispagestyle{empty}
+\begin{center}
+  {\large\bfseries Annotation Notes}\\[4pt]
+  {\small\ttfamily hubble\_om\_sensitivity\_v7.tex \quad\textbar\quad Printed \today}
+\end{center}
+\vspace{6pt}
+\renewcommand{\arraystretch}{2.5}
+\noindent
+\begin{tabular}{|p{0.8in}|p{5.4in}|}
+\hline
+\multicolumn{1}{|c|}{\textbf{Line \#}} & \textbf{Note} \\
+\hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+ & \\ \hline
+\end{tabular}
+\restoregeometry
+
 \end{document}
