@@ -13,7 +13,69 @@
 % booktabs removed — MNRAS requires \hline style tables
 \usepackage{url}
 \usepackage[switch]{lineno}    % line numbers for editing/review prints
+\usepackage{etoolbox}          % required for math-env lineno patch
 \usepackage{tabularx}          % X column for full-width annotation notes table
+
+% ---------------------------------------------------------------
+% Patch every display-math environment so equations get line numbers.
+% Every line has a unique number — no exceptions.
+% ---------------------------------------------------------------
+\newcommand*\patchAmsMathForLineno[1]{%
+  \expandafter\let\csname old#1\expandafter\endcsname\csname #1\endcsname
+  \expandafter\let\csname oldend#1\expandafter\endcsname\csname end#1\endcsname
+  \renewenvironment{#1}%
+    {\linenomath\csname old#1\endcsname}%
+    {\csname oldend#1\endcsname\endlinenomath}%
+  \expandafter\let\csname old#1*\expandafter\endcsname\csname #1*\endcsname
+  \expandafter\let\csname oldend#1*\expandafter\endcsname\csname end#1*\endcsname
+  \renewenvironment{#1*}%
+    {\linenomath\csname old#1*\endcsname}%
+    {\csname oldend#1*\endcsname\endlinenomath}}
+\AtBeginDocument{%
+  \patchAmsMathForLineno{equation}%
+  \patchAmsMathForLineno{align}%
+  \patchAmsMathForLineno{alignat}%
+  \patchAmsMathForLineno{gather}%
+  \patchAmsMathForLineno{multline}%
+  \patchAmsMathForLineno{flalign}%
+}
+
+% ---------------------------------------------------------------
+% Patch MNRAS SFB caption commands so caption lines get line numbers.
+% MNRAS does not use \@makecaption — it uses \SFB@makefigurecaption
+% and \SFB@maketablecaption. The multi-line branch outputs text
+% directly; add \internallinenumbers there.
+% ---------------------------------------------------------------
+\makeatletter
+\long\def\SFB@makefigurecaption#1#2{\vskip 6pt
+  \setbox\@tempboxa\hbox{\reset@font\small{\bf #1}%
+    \if@cont \ -- {\it continued}\else{\bf .}\fi\ {\rm #2}\par}%
+ \ifdim \wd\@tempboxa >\hsize
+   {\internallinenumbers\reset@font\small{\bf #1}%
+     \if@cont \ -- {\it continued}\else{\bf .}\fi\ {\rm #2}\par}%
+ \else
+   \ifst@rredfloat
+     \hbox to\hsize{\hfill\box\@tempboxa\hfill}%
+   \else
+     \hbox to\hsize{\hfill\box\@tempboxa\hfill}%
+   \fi
+ \fi
+ \vskip 6pt
+ \@contfalse
+}
+\long\def\SFB@maketablecaption#1#2{\vskip 6pt
+  \setbox\@tempboxa\hbox{\reset@font\small{\bf #1}%
+    \if@cont \ -- {\it continued}\else{\bf .}\fi\ {\rm #2}\par}%
+ \ifdim \wd\@tempboxa >\hsize
+    {\internallinenumbers\reset@font\small{\bf #1}%
+    \if@cont \ -- {\it continued}\else{\bf .}\fi\ {\rm #2}\par}%
+ \else
+   \hbox to\hsize{\box\@tempboxa\hfill}%
+ \fi
+ \vskip 6pt
+ \@contfalse
+}
+\makeatother
 
 % Match published MNRAS style: all links blue, author names not separately linked
 \hypersetup{linkcolor=blue,urlcolor=blue,citecolor=blue}
@@ -97,7 +159,7 @@ cosmological parameters -- distance scale -- supernovae: general -- dark energy 
 \label{sec:intro}
 % ---------------------------------------------------------------
 
-The discrepancy between early- and late-Universe determinations of the
+The discrepancy between early-Universe and late-Universe determinations of the
 Hubble constant $H_0$ is among the most scrutinised open problems in
 modern cosmology.
 The Planck CMB analysis yields
@@ -237,7 +299,7 @@ The diagonal uncertainty (MU\_SH0ES\_ERR\_DIAG) increases with redshift as the p
 \begin{figure}
   \includegraphics[width=\columnwidth, alt={Scatter plot of distance-modulus uncertainty versus redshift for 1616 Hubble-flow Type Ia supernovae. Grey points show individual supernovae; orange curve shows the running mean. Uncertainty increases at high redshift, reflecting the photometric noise floor of high-z surveys.}]{sigma_vs_z}
   \caption{Diagonal distance-modulus uncertainty
-    (MU\_SH0ES\_ERR\_DIAG) as a function of redshift
+    ($\sigma_\mu$) as a function of redshift
     for the 1{,}616 Hubble-flow SNe~Ia.
     Grey points: individual SNe; orange curve: running mean.
     The increase in $\sigma_\mu$ at high $z$ reflects the
@@ -317,8 +379,9 @@ In flat $\Lambda$CDM the expansion rate is
              = \sqrt{\Omega_m(1+z)^3 + \Omega_\Lambda},
   \label{eq:Ez}
 \end{equation}
-where $\Omega_\Lambda = 1 - \Omega_m$ for a spatially flat universe (equation~\ref{eq:Ez}).
-The comoving distance to redshift $z$ is
+where $\Omega_\Lambda = 1 - \Omega_m$ for a spatially flat universe
+\citep{hogg1999} (equation~\ref{eq:Ez}).
+The comoving distance to redshift $z$ is \citep{hogg1999}
 \begin{equation}
   d_c(z) = \frac{c}{H_0}\int_0^z \frac{dz'}{E(z')}.
   \label{eq:dc}
@@ -346,8 +409,8 @@ arises solely from their different $\Omega_m$ values.
 
 \subsection{Relation to observable distance modulus}
 
-The luminosity distance is $d_L = (1+z)\,d_c$, so the
-theoretical distance modulus is
+The luminosity distance is $d_L = (1+z)\,d_c$ \citep{hogg1999}, so the
+theoretical distance modulus is \citep{hogg1999}
 \begin{equation}
   \mu^\mathrm{th}(z;\,H_0,\Omega_m)
     = 5\log_{10}\!\left[\frac{d_L(z)}{1\;\mathrm{Mpc}}\right] + 25
@@ -433,8 +496,8 @@ inverse-variance-weighted mean
   \quad w_i = \frac{1}{\sigma_i^2},
   \label{eq:M_fixed}
 \end{equation}
-where $\mu_i^\mathrm{Ceph} = CEPH\_DIST_i$ is the Cepheid
-geometric distance modulus and $\sigma_i = MU\_SH0ES\_ERR\_DIAG_i$.
+where $\mu_i^\mathrm{Ceph}$ is the Cepheid geometric distance modulus
+and $\sigma_i$ is the diagonal distance-modulus uncertainty.
 Evaluating equation~(\ref{eq:M_fixed}) yields $M_\mathrm{fixed} = +0.0802$~mag (Fig.~\ref{fig:calibrator_plot}).
 This offset captures the mean discrepancy between the SH0ES
 Cepheid distance scale and our reference theoretical prediction
@@ -444,13 +507,13 @@ Section~\ref{sec:systematics}).
 
 \begin{figure}
   \includegraphics[width=\columnwidth, alt={Scatter plot comparing Cepheid geometric distance modulus versus SH0ES photometric distance modulus for 77 calibrator Type Ia supernovae. Dashed line shows the 1:1 relation. The weighted mean vertical offset gives M_fixed equals +0.0802 mag. Error bars show diagonal distance-modulus uncertainty.}]{calibrator_ceph_vs_mu}
-  \caption{Cepheid geometric distance modulus (CEPH\_DIST)
-    vs SH0ES photometric distance modulus (MU\_SH0ES)
+  \caption{Cepheid geometric distance modulus ($\mu_\mathrm{Ceph}$)
+    vs SH0ES photometric distance modulus ($\mu_\mathrm{SH0ES}$)
     for the 77 calibrator SNe~Ia.
     The dashed line is the 1:1 relation.
     The weighted mean offset $M_\mathrm{fixed} = +0.0802$~mag
     is the anchor used throughout the Cepheid-anchored refit.
-    Error bars show the diagonal uncertainty MU\_SH0ES\_ERR\_DIAG.}
+    Error bars show the diagonal uncertainty $\sigma_\mu$.}
   \label{fig:calibrator_plot}
 \end{figure}
 
@@ -528,7 +591,8 @@ The mean absolute residual $\langle|\Delta\xi|\rangle = 1.11 \times 10^{-3}$
 is measured against the mean mid-coordinate value
 $\langle\xi_\mathrm{mid}\rangle = 0.197$.
 The nominal $H_0$ fractional gap is
-$|{\Delta H_0}/{H_0}| = 5.64/70.2 = 8.4$\,\%, so the
+$|{\Delta H_0}/{H_0}| = 5.64/70.2 = 8.4$\,\%
+\citep{riess2022,planck2020}, so the
 geometric $\xi$-space residual is a factor of
 \begin{equation}
   \frac{8.4\,\%}{0.56\,\%} \approx 15
@@ -540,7 +604,7 @@ smaller than the parameter-space discrepancy.
 
 The fractional $\xi$-residual $\Delta_\xi(z_i)$ grows with redshift,
 as expected from the redshift dependence of $E(z)$.
-At low $z$, $E(z) \approx 1 + (3\Omega_m/2)z$, so the $\Omega_m$
+At low $z$, $E(z) \approx 1 + (3\Omega_m/2)z$ \citep{hogg1999}, so the $\Omega_m$
 sensitivity of $\xi$ is $\partial\xi/\partial\Omega_m \approx 0$
 to leading order.
 At higher $z$, the shape of the matter-dominated portion of $E(z)$
@@ -690,13 +754,13 @@ The distribution is tightly clustered around its mean
     \;\text{km\,s}^{-1}\text{Mpc}^{-1}.
   \label{eq:bootstrap_result}
 \end{equation}
-The signal-to-noise ratio is $\mathrm{S/N} = 0.218/0.005 = 46$.
+The signal-to-noise ratio (equation~\ref{eq:snr}) is $\mathrm{S/N} = 46$.
 All 1{,}000 bootstrap resamples yield negative $\Delta H_0^{(k)}$
 values within the adopted pipeline:
 $P(\Delta H_0 \leq 0) = 100$\,\%.
 This bootstrap result quantifies internal resampling stability; it
 does not include uncertainty associated with covariance modelling,
-nuisance treatment, or alternative likelihood choices.
+nuisance treatment, or alternative likelihood choices within the adopted pipeline.
 
 \begin{figure}
   \includegraphics[width=\columnwidth, alt={Histogram of the bootstrap distribution of delta-H0 equals H0(Omega_m=0.334) minus H0(Omega_m=0.315) over 1000 resamples of 1616 Hubble-flow Type Ia supernovae. The distribution is entirely negative, with mean minus 0.218 and standard deviation 0.005 km per second per megaparsec. Vertical line marks the mean; shading indicates the 16th to 84th percentile interval.}]{bootstrap_histogram}
@@ -954,8 +1018,8 @@ compared with the nominal SH0ES--Planck central-value gap.
 
 \subsection{Diagonal vs full covariance}
 
-Our direct-refit analysis uses only the diagonal elements
-MU\_SH0ES\_ERR\_DIAG of the Pantheon+ uncertainty matrix
+Our direct-refit analysis uses only the diagonal distance-modulus
+uncertainties $\sigma_\mu$ of the Pantheon+ uncertainty matrix
 rather than the full $1{,}701 \times 1{,}701$ covariance
 \citep{brout2022}.
 This simplification is sufficient for a transparent sensitivity
@@ -989,7 +1053,7 @@ Residuals of the best-fit distance moduli show no systematic redshift trend (Fig
 \subsection{Sensitivity of $M_\mathrm{fixed}$ to $\Omega_m$}
 
 The calibrator supernovae lie at $z < 0.017$, where the theoretical
-distance modulus,
+distance modulus \citep{hogg1999},
 \begin{equation}
   \mu^\mathrm{th}(z;\,H_0,\Omega_m)
   \approx 5\log_{10}\!\left[\frac{cz(1+z/2)}{H_0}\right] + 25,
@@ -1126,9 +1190,9 @@ supernova surveys with larger high-$z$ samples would be expected
 to show greater sensitivity to the $\Omega_m$ prior under the
 same framework.
 The Vera C. Rubin Observatory Legacy Survey of Space and Time
-and the Roman Space Telescope will both expand the high-$z$ SN
-sample substantially, making this calibration relevant for those
-analyses.
+\citep{ivezic2019} and the Roman Space Telescope \citep{spergel2015}
+will both expand the high-$z$ SN sample substantially, making this
+calibration relevant for those analyses.
 
 \subsection{Comparison with literature $H_0$ measurements}
 
