@@ -47,6 +47,14 @@
 % directly; add \internallinenumbers there.
 % ---------------------------------------------------------------
 \makeatletter
+% Patch \start@SFBbox so abstract and keywords get line numbers.
+% MNRAS wraps abstract/keywords in a \vbox via \start@SFBbox;
+% lineno cannot reach inside a \vbox without \internallinenumbers.
+\let\orig@start@SFBbox\start@SFBbox
+\def\start@SFBbox{%
+  \orig@start@SFBbox
+  \internallinenumbers
+}
 \long\def\SFB@makefigurecaption#1#2{\vskip 6pt
   \setbox\@tempboxa\hbox{\reset@font\small{\bf #1}%
     \if@cont \ -- {\it continued}\else{\bf .}\fi\ {\rm #2}\par}%
